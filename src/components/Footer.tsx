@@ -1,6 +1,6 @@
 "use client";
 
-import { brand } from "../../lib/brand.config";
+import { brand } from "@lib/brand.config";
 
 const YEAR = new Date().getFullYear();
 

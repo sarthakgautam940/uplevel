@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { brand } from "../../lib/brand.config";
+import { brand } from "@lib/brand.config";
 
 export default function HowItWorks() {
   const [activeStep, setActiveStep] = useState(0);

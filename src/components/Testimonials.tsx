@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { brand } from "../../lib/brand.config";
+import { brand } from "@lib/brand.config";
 
 export default function Testimonials() {
   const [active, setActive] = useState(0);
@@ -83,7 +83,7 @@ export default function Testimonials() {
               color: "rgba(36,97,232,0.06)", lineHeight: 1,
               pointerEvents: "none", userSelect: "none",
             }}>
-              "
+              &quot;
             </div>
 
             <AnimatePresence mode="wait">

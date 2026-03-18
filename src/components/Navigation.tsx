@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { brand } from "../../lib/brand.config";
+import { brand } from "@lib/brand.config";
 import { useMagneticEffect } from "../hooks/useMagneticEffect";
 
 const NAV_ITEMS = [

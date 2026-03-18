@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { brand } from "../../lib/brand.config";
+import { brand } from "@lib/brand.config";
 
 function useReveal() {
   const ref = useRef<HTMLDivElement>(null);

@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
-import { brand } from "../../lib/brand.config";
+import { brand } from "@lib/brand.config";
 
 export default function BookCall() {
   const headRef = useRef<HTMLDivElement>(null);

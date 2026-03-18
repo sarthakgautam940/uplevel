@@ -3,7 +3,7 @@
 import { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
-import { brand } from "../../lib/brand.config";
+import { brand } from "@lib/brand.config";
 import { useMagneticEffect } from "../hooks/useMagneticEffect";
 
 const GridPulseCanvas = dynamic(() => import("./GridPulseCanvas"), { ssr: false });

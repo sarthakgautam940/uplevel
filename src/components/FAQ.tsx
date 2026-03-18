@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
-import { brand } from "../../lib/brand.config";
+import { brand } from "@lib/brand.config";
 
 export default function FAQ() {
   const [open, setOpen] = useState<number | null>(0);

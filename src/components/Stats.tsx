@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { brand } from "../../lib/brand.config";
+import { brand } from "@lib/brand.config";
 
 function useCountUp(target: number, trigger: boolean, duration = 2000) {
   const [val, setVal] = useState(0);

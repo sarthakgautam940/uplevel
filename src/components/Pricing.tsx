@@ -3,7 +3,7 @@
 import { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
-import { brand } from "../../lib/brand.config";
+import { brand } from "@lib/brand.config";
 
 function useReveal() {
   const ref = useRef<HTMLDivElement>(null);

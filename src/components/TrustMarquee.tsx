@@ -1,6 +1,6 @@
 "use client";
 
-import { brand } from "../../lib/brand.config";
+import { brand } from "@lib/brand.config";
 
 const ITEMS = [
   "AI Voice — 24/7 Lead Capture",

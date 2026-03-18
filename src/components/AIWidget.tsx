@@ -1,18 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Mic, X, MicOff, Activity } from "lucide-react";
-import { brand } from "../../lib/brand.config";
-
-declare global {
-  interface Window {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    vapiSDK?: any;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    vapiInstance?: any;
-  }
-}
+import Vapi from "@vapi-ai/web";
+import { brand } from "@lib/brand.config";
 
 const WAVE_HEIGHTS = [20, 50, 35, 65, 28, 58, 42, 72, 32, 55, 45, 62, 22, 70, 38];
 
@@ -21,6 +13,7 @@ export default function AIWidget() {
   const [active, setActive] = useState(false);
   const [tooltip, setTooltip] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const vapiInstanceRef = useRef<Vapi | null>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -46,22 +39,20 @@ export default function AIWidget() {
   const handleMicToggle = async () => {
     if (!active) {
       setActive(true);
-      // Init Vapi if keys are set
-      if (vapiKey && vapiAssistantId && window.vapiSDK) {
+      if (vapiKey && vapiAssistantId) {
         try {
-          window.vapiInstance = await window.vapiSDK.run({
-            apiKey: vapiKey,
-            assistant: vapiAssistantId,
-          });
+          const vapi = new Vapi(vapiKey);
+          vapiInstanceRef.current = vapi;
+          await vapi.start(vapiAssistantId);
         } catch {
           // Vapi not available — mock mode
         }
       }
     } else {
       setActive(false);
-      if (window.vapiInstance) {
-        window.vapiInstance.stop?.();
-        window.vapiInstance = null;
+      if (vapiInstanceRef.current) {
+        await vapiInstanceRef.current.stop();
+        vapiInstanceRef.current = null;
       }
     }
   };
