@@ -1,71 +1,55 @@
 "use client";
-
+import { useState, useCallback, useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
-import { useState, useEffect } from "react";
+import Nav from "@/components/Nav";
+import Hero from "@/components/Hero";
+import { MarqueeStrip, Manifesto, KineticBand, Services, Work, Stats, Process, Pricing, Testimonials, FAQ } from "@/components/Sections";
+import { Contact, Footer, AIWidget } from "@/components/BottomSections";
 
-// Dynamic imports — all heavy components are client-side only
-const LoadingScreen = dynamic(() => import("@/components/LoadingScreen"), { ssr: false });
-const Navigation = dynamic(() => import("@/components/Navigation"), { ssr: false });
-const Hero = dynamic(() => import("@/components/Hero"), { ssr: false });
-const TrustMarquee = dynamic(() => import("@/components/TrustMarquee"), { ssr: false });
-const Manifesto = dynamic(() => import("@/components/Manifesto"), { ssr: false });
-const Services = dynamic(() => import("@/components/Services"), { ssr: false });
-const Work = dynamic(() => import("@/components/Work"), { ssr: false });
-const Process = dynamic(() => import("@/components/Process"), { ssr: false });
-const Stats = dynamic(() => import("@/components/Stats"), { ssr: false });
-const Pricing = dynamic(() => import("@/components/Pricing"), { ssr: false });
-const Testimonials = dynamic(() => import("@/components/Testimonials"), { ssr: false });
-const FAQ = dynamic(() => import("@/components/FAQ"), { ssr: false });
-const Contact = dynamic(() => import("@/components/Contact"), { ssr: false });
-const Footer = dynamic(() => import("@/components/Footer"), { ssr: false });
-const AIChat = dynamic(() => import("@/components/AIChat"), { ssr: false });
-const CustomCursor = dynamic(() => import("@/components/CustomCursor"), { ssr: false });
-const ScrollProgress = dynamic(() => import("@/components/ScrollProgress"), { ssr: false });
+const Loader = dynamic(() => import("@/components/Loader"), { ssr: false });
+const Cursor = dynamic(() => import("@/components/Cursor"), { ssr: false });
+const SmoothScroll = dynamic(() => import("@/components/SmoothScroll"), { ssr: false });
 
 export default function Home() {
-  const [loaderComplete, setLoaderComplete] = useState(false);
-  const [contentVisible, setContentVisible] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+  const [heroReady, setHeroReady] = useState(false);
+  const mainRef = useRef<HTMLDivElement>(null);
+
+  const onDone = useCallback(() => {
+    setLoaded(true);
+    setTimeout(() => setHeroReady(true), 100);
+  }, []);
 
   useEffect(() => {
-    if (loaderComplete) {
-      // Small delay to let exit animation complete
-      const timer = setTimeout(() => setContentVisible(true), 100);
-      return () => clearTimeout(timer);
-    }
-  }, [loaderComplete]);
+    if (!loaded || !mainRef.current) return;
+    mainRef.current.style.opacity = "1";
+    mainRef.current.style.transform = "none";
+  }, [loaded]);
 
   return (
     <>
-      <CustomCursor />
-      <ScrollProgress />
-      <LoadingScreen onComplete={() => setLoaderComplete(true)} />
+      <Cursor />
+      <SmoothScroll />
+      {!loaded && <Loader onDone={onDone} />}
 
-      <div
-        style={{
-          opacity: contentVisible ? 1 : 0,
-          transition: "opacity 0.5s ease",
-          background: "var(--bg)",
-          minHeight: "100vh",
-        }}
-      >
-        <Navigation />
-
+      <div ref={mainRef} style={{ opacity: 0, transform: "scale(0.998)", transition: "opacity 0.55s ease, transform 0.55s ease" }}>
+        <Nav />
         <main>
-          <Hero loaderComplete={loaderComplete} />
-          <TrustMarquee />
+          <Hero ready={heroReady} />
+          <MarqueeStrip />
           <Manifesto />
+          <KineticBand />
           <Services />
           <Work />
-          <Process />
           <Stats />
+          <Process />
           <Pricing />
           <Testimonials />
           <FAQ />
           <Contact />
         </main>
-
         <Footer />
-        <AIChat />
+        <AIWidget />
       </div>
     </>
   );

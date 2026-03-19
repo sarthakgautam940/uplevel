@@ -1,23 +1,21 @@
 {
   "name": "uplevel-services",
-  "version": "0.1.0",
+  "version": "3.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start"
   },
   "dependencies": {
+    "@studio-freight/lenis": "^1.0.42",
+    "framer-motion": "^11.0.0",
+    "gsap": "^3.12.5",
+    "lucide-react": "^0.400.0",
     "next": "15.1.12",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "framer-motion": "^11.0.0",
-    "gsap": "^3.12.5",
-    "three": "^0.165.0",
-    "lucide-react": "^0.400.0",
-    "@studio-freight/lenis": "^1.0.42",
-    "resend": "^3.2.0"
+    "three": "^0.165.0"
   },
   "devDependencies": {
     "@types/node": "^20",
