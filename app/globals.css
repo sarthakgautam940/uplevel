@@ -1,0 +1,312 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&family=DM+Sans:wght@300;400&family=DM+Mono:wght@400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --void:  #05050A;
+  --srf:   #0C0D14;
+  --srf2:  #13141E;
+  --srf3:  #1A1B28;
+  --bd:    rgba(255, 255, 255, 0.06);
+  --bd-hi: rgba(255, 255, 255, 0.12);
+  --bd-el: rgba(47, 126, 255, 0.22);
+  --el:    #2F7EFF;
+  --el-hi: #78AAFF;
+  --el-lo: rgba(47, 126, 255, 0.10);
+  --el-md: rgba(47, 126, 255, 0.22);
+  --alert: #FF3D2E;
+  --t1:    #F1F2FF;
+  --t2:    #5C6278;
+  --t3:    #21222E;
+
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-elastic: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --font-display: 'Outfit', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+
+  --fs-hero: clamp(60px, 9.5vw, 144px);
+  --fs-section: clamp(38px, 5.5vw, 88px);
+  --fs-sub: clamp(22px, 2.8vw, 38px);
+  --fs-body: clamp(13px, 1.05vw, 15px);
+  --fs-label: 9px;
+  --fs-micro: 8px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: var(--void);
+  color: var(--t1);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.85;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--void);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* Smooth scroll handled by Lenis — disable native */
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+/* ── Typography ── */
+.t-hero {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: var(--fs-hero);
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  color: var(--t1);
+}
+
+.t-section {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-section);
+  line-height: 1.0;
+  letter-spacing: -0.028em;
+  color: var(--t1);
+}
+
+.t-sub {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-sub);
+  line-height: 1.15;
+  letter-spacing: -0.022em;
+  color: var(--t1);
+}
+
+.t-body {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: var(--fs-body);
+  line-height: 1.85;
+  color: var(--t2);
+}
+
+.t-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--t2);
+}
+
+.t-micro {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.t-el {
+  color: var(--el);
+}
+
+/* ── Buttons ── */
+.btn-electric {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: var(--el);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  cursor: none;
+  transition: background 0.2s ease, transform 0.15s ease;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.btn-electric::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.08);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.btn-electric:hover::after {
+  opacity: 1;
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: transparent;
+  color: var(--t1);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid var(--bd-hi);
+  cursor: none;
+  transition: border-color 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-ghost:hover {
+  border-color: var(--el);
+  color: var(--el-hi);
+}
+
+/* ── Cards ── */
+.card {
+  background: var(--srf);
+  border: 1px solid var(--bd);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--el);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+/* ── Section spacing ── */
+.section {
+  padding: clamp(80px, 12vw, 160px) clamp(24px, 6vw, 120px);
+  position: relative;
+}
+
+/* ── Corner brackets ── */
+.corner-bracket {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-color: rgba(47, 126, 255, 0.3);
+  border-style: solid;
+}
+.corner-bracket.tl { top: 0; left: 0; border-width: 1px 0 0 1px; }
+.corner-bracket.tr { top: 0; right: 0; border-width: 1px 1px 0 0; }
+.corner-bracket.bl { bottom: 0; left: 0; border-width: 0 0 1px 1px; }
+.corner-bracket.br { bottom: 0; right: 0; border-width: 0 1px 1px 0; }
+
+/* ── Eyebrow ── */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--el);
+  margin-bottom: 20px;
+}
+
+/* ── Hairline border ── */
+.hairline {
+  border: 1px solid var(--bd);
+}
+.hairline-hi {
+  border: 1px solid var(--bd-hi);
+}
+.hairline-el {
+  border: 1px solid var(--bd-el);
+}
+
+/* ── Overflow hidden for text reveal animations ── */
+.overflow-clip {
+  overflow: hidden;
+}
+
+/* ── Glass panel ── */
+.glass {
+  background: rgba(13, 14, 20, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--bd);
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--void); }
+::-webkit-scrollbar-thumb { background: var(--srf3); border-radius: 2px; }
+
+/* ── Selection ── */
+::selection {
+  background: var(--el-md);
+  color: var(--t1);
+}
+
+/* ── Kinetic band text ── */
+.kinetic-outline {
+  -webkit-text-stroke: 1px rgba(241, 242, 255, 0.18);
+  color: transparent;
+}
+
+/* ── Pulse animation ── */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes pulse-ring {
+  0% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+  100% { opacity: 0.3; }
+}
+
+@keyframes scroll-dot {
+  0% { transform: translateY(0); opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateY(44px); opacity: 0; }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+/* ── Radial pulse ── */
+@keyframes radial-pulse {
+  0% { transform: scale(0); opacity: 0.06; }
+  100% { transform: scale(1); opacity: 0; }
+}
