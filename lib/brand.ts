@@ -1,368 +1,76 @@
-export const brand = {
-  name: 'UpLevel',
-  fullName: 'UpLevel Services',
-  tagline: 'THE WEBSITE YOUR WORK DESERVES.',
-  email: 'hello@uplevelservices.co',
-  calendly: 'https://calendly.com/uplevelservices/discovery',
-  location: 'Richmond, VA',
-  entity: 'VA LLC Est. 2024',
+export const B = {
+  name: "UpLevel Services",
+  email: "hello@uplevelservices.co",
+  location: "Richmond, VA",
+  calendly: "https://calendly.com/uplevelservices/discovery",
   slots: 1,
 
-  stats: {
-    clients: 47,
-    satisfaction: 98,
-    roi: 340,
-    avgLaunch: 48,
-  },
+  stats: { clients: 47, satisfaction: 98, roi: 340, avgLaunch: 48 },
 
   hero: {
-    eyebrow: 'RICHMOND, VA  ·  DIGITAL GROWTH AGENCY',
-    h1: ['THE WEBSITE', 'YOUR WORK', 'DESERVES.'],
-    sub: 'UpLevel builds premium website systems, AI phone agents, and automated lead pipelines for elite contractors — live in 48 hours.',
-    cta1: 'START A PROJECT',
-    cta2: 'SEE OUR WORK',
-    badges: ['48-HOUR DELIVERY', 'MONTH-TO-MONTH', 'VA LLC EST. 2024'],
+    eyebrow: "RICHMOND, VA  ·  DIGITAL GROWTH AGENCY",
+    h1: ["THE WEBSITE", "YOUR WORK", "DESERVES."],
+    sub: "UpLevel builds premium website systems, AI phone agents, and automated lead pipelines for elite contractors — live in 48 hours.",
+    cta1: "START A PROJECT",
+    cta2: "SEE OUR WORK",
+    badges: ["48-HOUR DELIVERY", "MONTH-TO-MONTH", "VA LLC EST. 2024"],
   },
 
   manifesto: {
-    eyebrow: 'OUR BELIEF',
-    statement:
-      'Every contractor who builds something extraordinary deserves a digital presence that says so.',
-    body: 'The best pool builders, custom home crafters, and HVAC engineers in the country are losing clients to inferior competitors with better websites. That ends here.',
-    stats: [
-      { value: 340, suffix: '%', label: 'Average Year-One ROI' },
-      { value: 47, suffix: '+', label: 'Contractor Clients Served' },
-      { value: 98, suffix: '%', label: 'Client Satisfaction Rate' },
-    ],
+    statement: "Every contractor who builds something extraordinary deserves a digital presence that says so.",
+    body: "You've spent years perfecting your craft. Your reputation is earned job by job. The contractors winning the best work — the high-ticket projects, the design-build contracts, the referrals that compound — have one thing in common: when a prospect Googles them, what they find is unimpeachable. We build that.",
   },
 
   services: [
-    {
-      id: '01',
-      name: 'Website System',
-      short: 'WEB',
-      description:
-        'A conversion-engineered website that turns traffic into booked calls. Not a brochure. A business asset.',
-      deliverables: [
-        'Full custom design & development',
-        'CRM integration & lead capture',
-        'Mobile-first, <2s load time',
-        'Analytics & conversion tracking',
-      ],
-      price: '$3,500',
-      recurring: '$297/mo',
-      accent: '#2F7EFF',
-    },
-    {
-      id: '02',
-      name: 'AI Concierge',
-      short: 'AI',
-      description:
-        'An AI phone agent that answers calls, qualifies leads, and books appointments — 24/7, never takes a day off.',
-      deliverables: [
-        'Custom AI voice agent',
-        'Lead qualification logic',
-        'CRM sync & appointment booking',
-        'Call transcripts & analytics',
-      ],
-      price: '$6,500',
-      recurring: '$497/mo',
-      accent: '#78AAFF',
-    },
-    {
-      id: '03',
-      name: 'SEO Domination',
-      short: 'SEO',
-      description:
-        "Own the first page in your market. We build the content and technical architecture that makes Google choose you.",
-      deliverables: [
-        'Local SEO + Google Business optimization',
-        'Technical SEO audit & remediation',
-        'Monthly content & link building',
-        'Ranking reports & strategy calls',
-      ],
-      price: '$4,800',
-      recurring: '$397/mo',
-      accent: '#5A7FD4',
-    },
-    {
-      id: '04',
-      name: 'Brand Identity',
-      short: 'BRAND',
-      description:
-        'Logo, color system, typography, and visual standards. The foundation that makes every touchpoint look elite.',
-      deliverables: [
-        'Logo suite & brand mark',
-        'Color & typography system',
-        'Brand standards guide',
-        'Business card & collateral design',
-      ],
-      price: '$2,800',
-      recurring: '$197/mo',
-      accent: '#4A6BAA',
-    },
+    { n:"01", icon:"◈", title:"Website System",      sub:"A high-conversion website engineered around your trade, market, and target customer — not a template.",      price:"From $3,500 + $297/mo", deliverables:["Custom design & development","Mobile-first responsive build","Quote & contact forms → CRM","Google Analytics + heatmaps","PageSpeed 95+ guaranteed","Hosting, SSL, domain management","Monthly maintenance & updates","24-hour emergency support"] },
+    { n:"02", icon:"◎", title:"AI Phone Concierge",  sub:"An AI that answers every call, qualifies every lead, and books appointments 24/7 — even while you're on a job site.", price:"From $6,500 + $497/mo", deliverables:["Custom AI voice agent setup","Connects to your existing number","Lead qualification scripts","Appointment booking automation","After-hours call handling","Daily transcript & recordings","Human escalation protocols","Continuous model improvement"] },
+    { n:"03", icon:"◇", title:"SEO & Growth",        sub:"Own page one for every high-intent search in your market. Rankings that compound month after month.",          price:"From $4,800 + $397/mo", deliverables:["Full technical SEO audit","Local SEO domination strategy","Google Business optimization","Monthly content system","Citation building & cleanup","Review generation automation","Competitor gap analysis","Ranking reports with attribution"] },
+    { n:"04", icon:"◉", title:"Brand Identity",      sub:"A brand built to win premium jobs — logo, color system, and the visual language your best customers expect.",   price:"From $2,800 + $197/mo", deliverables:["Logo system (all variants)","Color palette & typography guide","Business card & letterhead","Proposal & estimate templates","Vehicle wrap design","Social media template library","Brand guidelines document","Unlimited revision rounds"] },
   ],
 
   work: [
-    {
-      slug: 'palmetto-pools',
-      name: 'Palmetto Pools',
-      type: 'Pool Builder',
-      location: 'Charleston, SC',
-      metric: '$340K',
-      metricLabel: 'attributed revenue, Q1',
-      story:
-        'Transformed a word-of-mouth pool builder into the dominant digital presence in Charleston. Booked solid through summer within 6 weeks of launch.',
-      accent: '#1E6B9C',
-      image: '/work/palmetto.jpg',
-    },
-    {
-      slug: 'summit-hvac',
-      name: 'Summit HVAC',
-      type: 'HVAC Contractor',
-      location: 'Denver, CO',
-      metric: '340%',
-      metricLabel: 'increase in inbound leads',
-      story:
-        'New website + AI phone agent combination. Summit went from 3 leads/week to 14 leads/week in 90 days.',
-      accent: '#2A5C8A',
-      image: '/work/summit.jpg',
-    },
-    {
-      slug: 'vincraft-cellars',
-      name: 'VinCraft Cellars',
-      type: 'Wine Cellar Builder',
-      location: 'Napa, CA',
-      metric: '$180K',
-      metricLabel: 'single project from website inquiry',
-      story:
-        'Ultra-premium positioning for a luxury wine cellar builder. The site speaks to collectors, not contractors.',
-      accent: '#3D3260',
-      image: '/work/vincraft.jpg',
-    },
-    {
-      slug: 'cascade-custom-homes',
-      name: 'Cascade Custom Homes',
-      type: 'Custom Home Builder',
-      location: 'Seattle, WA',
-      metric: '$1.2M',
-      metricLabel: 'project closed from web contact',
-      story:
-        "James Whitfield's client said they chose Cascade before they even called — just from the website.",
-      accent: '#2E5E4A',
-      image: '/work/cascade.jpg',
-    },
-    {
-      slug: 'apex-restoration',
-      name: 'Apex Restoration',
-      type: 'Restoration Contractor',
-      location: 'Atlanta, GA',
-      metric: '2.8×',
-      metricLabel: 'revenue growth in 12 months',
-      story:
-        'Full system: website + SEO + AI agent. Apex went from $800K to $2.2M in annual revenue.',
-      accent: '#7A2E2E',
-      image: '/work/apex.jpg',
-    },
-  ],
-
-  testimonials: {
-    featured: {
-      quote:
-        '$1.2 million custom build from a website contact form. The client said they chose us before they even called — just from the website.',
-      name: 'James Whitfield',
-      company: 'Cascade Custom Homes',
-      title: 'Owner & Principal Builder',
-    },
-    cards: [
-      {
-        quote:
-          "We went from 3 leads a week to 14. I didn't realize how much money we were leaving on the table with our old site.",
-        name: 'Marcus Chen',
-        company: 'Summit HVAC',
-        stars: 5,
-      },
-      {
-        quote:
-          'UpLevel delivered in 6 days. Six days. My old agency took 4 months and gave me something I was embarrassed to show clients.',
-        name: 'Sandra Reeves',
-        company: 'Palmetto Pools',
-        stars: 5,
-      },
-      {
-        quote:
-          'The AI phone agent paid for itself in the first month. I was missing calls at 10pm. Now those calls become booked appointments.',
-        name: 'David Okonkwo',
-        company: 'Apex Restoration',
-        stars: 5,
-      },
-    ],
-  },
-
-  pricing: [
-    {
-      name: 'Starter',
-      price: '$3,500',
-      recurring: '$297/mo',
-      description: 'A conversion-engineered website to establish your digital presence.',
-      features: [
-        'Custom 5-page website',
-        'Mobile & speed optimized',
-        'Lead capture forms',
-        'Google Analytics setup',
-        'CRM integration',
-        '1 revision round',
-        '48-hour delivery',
-      ],
-      cta: 'START STARTER',
-      highlight: false,
-    },
-    {
-      name: 'Authority',
-      price: '$6,500',
-      recurring: '$497/mo',
-      description: 'Website + AI Concierge. The full acquisition system that runs itself.',
-      features: [
-        'Everything in Starter',
-        'AI phone agent (24/7)',
-        'Lead qualification logic',
-        'Appointment booking system',
-        'Call analytics dashboard',
-        '3 revision rounds',
-        'Priority support',
-      ],
-      cta: 'START AUTHORITY',
-      highlight: true,
-      badge: 'MOST POPULAR',
-    },
-    {
-      name: 'Dominator',
-      price: '$12,000',
-      recurring: '$797/mo',
-      description: 'Full system: website + AI + SEO. Own your market completely.',
-      features: [
-        'Everything in Authority',
-        'Full SEO campaign',
-        'Google Business optimization',
-        'Monthly content & links',
-        'Ranking reports',
-        'Quarterly strategy calls',
-        'Dedicated account manager',
-      ],
-      cta: 'START DOMINATOR',
-      highlight: false,
-    },
-    {
-      name: 'Bespoke',
-      price: '$18K–$35K',
-      recurring: '$1,200/mo',
-      description: 'Fully custom engagement for category-defining contractors.',
-      features: [
-        'Custom scope & deliverables',
-        'Brand identity system',
-        'Full digital infrastructure',
-        'White-glove onboarding',
-        'Executive strategy sessions',
-        'Direct founder access',
-        'Performance guarantees',
-      ],
-      cta: 'INQUIRE',
-      highlight: false,
-    },
+    { slug:"palmetto-pools",   title:"Palmetto Pools",        cat:"Custom Pool Builder",     tier:"AUTHORITY", year:"2024", accent:"#2F7EFF", metric:"$180K attributed, Q1",        story:"Replaced a 2011 WordPress site with a conversion machine. 340% increase in qualified leads within 90 days of launch." },
+    { slug:"summit-hvac",      title:"Summit HVAC",           cat:"Premium HVAC",            tier:"DOMINATOR", year:"2024", accent:"#78AAFF", metric:"3-week backlog, $0 ad spend",   story:"Full system: website, AI concierge, local SEO. Now books three weeks out with zero paid advertising." },
+    { slug:"vincraft-cellars", title:"VinCraft Cellars",      cat:"Wine Cellar Installer",   tier:"BESPOKE",   year:"2024", accent:"#9B8EFF", metric:"Avg project value +28% YoY",   story:"Editorial luxury brand for a $40K+ average project value installer targeting architects and interior designers." },
+    { slug:"cascade-homes",    title:"Cascade Custom Homes",  cat:"Custom Home Builder",     tier:"DOMINATOR", year:"2025", accent:"#2F7EFF", metric:"First $1.2M close from web",    story:"Complete brand rebuild. Website contact forms now generate $1.2M+ custom home leads monthly." },
+    { slug:"apex-restoration", title:"Apex Restoration",      cat:"Water & Fire Restoration",tier:"AUTHORITY", year:"2025", accent:"#FF6B3D", metric:"0 missed calls in 4 months",   story:"Emergency-response optimized site with AI call handling. Every call answered under one ring, 24/7." },
   ],
 
   process: [
-    {
-      number: '01',
-      title: 'Discovery',
-      description:
-        'We learn your market, your competitors, and your best clients. Everything we build is informed by what actually wins in your specific trade.',
-      duration: 'Day 1',
-    },
-    {
-      number: '02',
-      title: 'Strategy',
-      description:
-        'We map the conversion architecture — what pages exist, what each one does, how visitors move through the system toward a booked call.',
-      duration: 'Day 1–2',
-    },
-    {
-      number: '03',
-      title: 'Design',
-      description:
-        'Full design in Figma. You see exactly what you get before we write a line of code. One round of feedback, then locked.',
-      duration: 'Day 2–3',
-    },
-    {
-      number: '04',
-      title: 'Build',
-      description:
-        "We develop, integrate, and test. Every form works. Every pixel is correct. No 'we'll fix that later' — it's right before we ship.",
-      duration: 'Day 3–6',
-    },
-    {
-      number: '05',
-      title: 'Launch',
-      description:
-        'Live on your domain. Analytics tracking from minute one. We monitor performance for 30 days and optimize based on real visitor data.',
-      duration: 'Day 6–48',
-    },
+    { n:"01", label:"DISCOVERY", title:"We learn your market",       time:"48 HRS",   body:"We study your top competitors, target zip codes, average project value, and what your ideal customer Googles at 10pm when they finally decide to hire someone.", what:["Competitor teardown","Keyword opportunity map","Conversion strategy session","Brand assessment & audit"], you:"One 30-minute call. Send us your existing assets.", us:"Full market research, competitor analysis, strategy brief." },
+    { n:"02", label:"STRATEGY",  title:"We build the blueprint",     time:"24 HRS",   body:"A detailed sitemap, wireframe, and copy brief — everything approved before a single pixel is designed.",         what:["Sitemap finalized","Wireframes presented","Copy brief reviewed","Timeline locked"],         you:"Review and approve the blueprint.",            us:"Design brief, copy direction, technical specification." },
+    { n:"03", label:"BUILD",     title:"We execute with precision",  time:"3–5 DAYS", body:"Design and development run simultaneously. You see progress updates daily. No disappearing for two weeks.",      what:["Design system built","Development begins immediately","Daily progress updates","Copy finalized"], you:"One feedback round at 50% and one at 90%.",    us:"Full build, testing, cross-browser optimization." },
+    { n:"04", label:"LAUNCH",    title:"Live in 48 hours",           time:"24 HRS",   body:"Full QA, cross-browser testing, mobile audit, PageSpeed above 95, then live. You watch us flip the switch.",      what:["Full QA & testing","PageSpeed 95+ confirmed","Analytics wired","DNS + SSL activated"],        you:"Final approval — you get the keys.",           us:"Post-launch monitoring, 72-hour support window." },
+    { n:"05", label:"GROWTH",    title:"We optimize relentlessly",   time:"ONGOING",  body:"Monthly reporting, A/B testing, conversion updates, and SEO compounding. The site gets better every month.",     what:["Monthly analytics review","Conversion rate testing","Content updates","SEO compounding"],       you:"Review monthly report, approve large changes.", us:"Active management, continuous improvement." },
+  ],
+
+  testimonials: [
+    { name:"Marcus Webb",       init:"MW", project:"Palmetto Pools · Authority Package",  quote:"I had three other agencies pitch me. UpLevel was the only one that actually understood the pool business. They knew what our customers search for before I told them." },
+    { name:"Derek Haines",      init:"DH", project:"Summit HVAC · Dominator Package",     quote:"The AI answers every call now. We haven't missed a lead in four months. My office manager calls it the best hire we ever made." },
+    { name:"Robert Castellano", init:"RC", project:"VinCraft Cellars · Bespoke Package",  quote:"The brand they built made our competitors look like they operate out of a van. That's the point." },
+  ],
+
+  featured: {
+    name:"James Whitfield", init:"JW", project:"Cascade Custom Homes · Dominator Package",
+    quote:"We closed a $1.2 million custom build from a website contact form. The client said they chose us before they even called — just from the website. I've never had that happen before UpLevel.",
+  },
+
+  pricing: [
+    { name:"STARTER",  setup:"$3,500",    mo:"$297/mo",   badge:null,           hi:false, desc:"The foundation. A high-performance website that converts visitors into calls.",                          features:["Custom 5-page website","Mobile-first build","Contact & quote forms","Google Analytics","PageSpeed 95+","Monthly maintenance","24hr support response"] },
+    { name:"AUTHORITY", setup:"$6,500",   mo:"$497/mo",   badge:"MOST POPULAR", hi:true,  desc:"The full digital presence. Website plus AI phone agent for 24/7 lead capture.",                       features:["Everything in Starter","AI Phone Concierge setup","CRM integration","Call logging & reports","Lead qualification scripts","SEO foundations built","Quarterly strategy call"] },
+    { name:"DOMINATOR", setup:"$12,000",  mo:"$797/mo",   badge:"BEST VALUE",   hi:false, desc:"Full system domination. Website, AI, and SEO compounding from day one.",                               features:["Everything in Authority","Full local SEO campaign","Monthly content system","Google Business management","Review automation","Competitor monitoring","Monthly 1-on-1 strategy"] },
+    { name:"BESPOKE",   setup:"$18K–$35K",mo:"$1,200/mo", badge:null,           hi:false, desc:"For contractors ready to own their market and operate as a category of one.",                          features:["Everything in Dominator","Full brand identity system","Editorial photography direction","Custom integrations","Dedicated account manager","Weekly strategy sessions","Priority SLA response"] },
   ],
 
   faq: [
-    {
-      category: 'Process',
-      question: 'Do you really deliver in 48 hours?',
-      answer:
-        'Yes, with conditions. The 48-hour timeline applies to our Starter package for clients who complete onboarding promptly and have their content ready. More complex packages take 5-7 days. Either way, we move faster than any agency you\'ve worked with.',
-    },
-    {
-      category: 'Process',
-      question: "What do you need from me to get started?",
-      answer:
-        'A call, your logo files, and answers to 8 questions about your business. We handle everything else — copywriting, photography direction, and technical setup. You don\'t need to know anything about websites.',
-    },
-    {
-      category: 'Pricing',
-      question: "Why is there a monthly fee?",
-      answer:
-        'The monthly retainer covers hosting (fast, enterprise-grade), security monitoring, software updates, analytics review, and ongoing optimization. It\'s not support ticketing — it\'s active maintenance of a live business asset.',
-    },
-    {
-      category: 'Pricing',
-      question: 'Are there contracts?',
-      answer:
-        'Month-to-month after the first 3 months. We don\'t lock you in because we\'re confident in the results. The 3-month initial term exists because meaningful SEO and lead generation results take time to materialize.',
-    },
-    {
-      category: 'AI',
-      question: 'How does the AI phone agent work?',
-      answer:
-        'It answers your business calls using a trained AI voice that knows your services, pricing, and availability. It qualifies leads, answers common questions, and books appointments directly into your calendar. You get a transcript of every call.',
-    },
-    {
-      category: 'AI',
-      question: "Will my clients know they're talking to AI?",
-      answer:
-        "Your agent can be configured to disclose or not — your call. What we've found is that clients care about getting answers, not who gives them. The agent is more responsive and knowledgeable than most receptionists.",
-    },
-    {
-      category: 'Results',
-      question: 'What results can I realistically expect?',
-      answer:
-        'Our clients average 340% ROI in year one. Concrete examples: Palmetto Pools attributed $340K to the website in Q1. Summit HVAC went from 3 to 14 leads per week. Cascade Custom Homes closed a $1.2M project from a web contact form.',
-    },
-    {
-      category: 'Results',
-      question: 'What if I already have a website?',
-      answer:
-        "Then you have a chance to see exactly what's costing you leads. We'll audit your current site on the discovery call and show you the specific gaps. Most contractors are surprised by how much low-hanging fruit exists.",
-    },
+    { cat:"Process", q:"How fast can you actually launch?",             a:"Our record is 29 hours from deposit to live site. The standard timeline is 48 hours for Starter builds, 5–7 days for Authority and Dominator packages when custom photography or extensive copywriting is required. We've never missed a committed launch date." },
+    { cat:"Process", q:"What do I need to provide?",                    a:"A 30-minute call, your logo files (if you have them), and a list of your services and service areas. We handle everything else — copy, photography direction, strategy, and all technical setup." },
+    { cat:"Process", q:"Can I see the site before it goes live?",       a:"Yes. Every build goes to a staging URL at the 50% and 90% milestones. You have unlimited revision rounds at each checkpoint. We don't go live until you are completely satisfied." },
+    { cat:"Pricing", q:"Is there a long-term contract?",                a:"No. Month-to-month after your initial 3-month commitment, which covers our build costs. Cancel after that with 30 days notice. We keep clients by building systems they can't afford to turn off — not by locking them in." },
+    { cat:"Pricing", q:"What's included in the monthly retainer?",      a:"Hosting, SSL, weekly backups, security monitoring, platform updates, monthly analytics reporting, and one round of content changes per month. Your site is never broken and always improving." },
+    { cat:"AI",      q:"How does the AI Phone Concierge work?",         a:"It connects to your existing phone number via call forwarding. When you can't answer, it picks up in one ring, qualifies the lead, and either books a callback or routes urgent calls to you. Transcripts and recordings land in your email daily." },
+    { cat:"AI",      q:"Will callers know it's an AI?",                 a:"Most don't — and those who do rarely care, because it's fast, capable, and professional. Our voice models are trained on thousands of contractor-specific conversations." },
+    { cat:"Results", q:"What ROI can I realistically expect?",          a:"Our average client attributes 340% ROI in year one. If you close one additional $15,000 job per month from your new site, you've covered your Dominator package for the year with the first project." },
+    { cat:"Results", q:"Do you guarantee results?",                     a:"We guarantee a site you're proud of that technically performs at 95+ PageSpeed and converts visitors to contacts at above-industry rates. We cannot guarantee business results — those depend on your market, pricing, and reputation." },
   ],
-}
-
-export type Service = (typeof brand.services)[0]
-export type WorkItem = (typeof brand.work)[0]
-export type PricingTier = (typeof brand.pricing)[0]
-export type ProcessStep = (typeof brand.process)[0]
-export type FaqItem = (typeof brand.faq)[0]
+};
