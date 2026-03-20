@@ -1,39 +1,22 @@
 "use client";
 import { useEffect } from "react";
-
 export default function SmoothScroll() {
   useEffect(() => {
-    // Scroll progress bar
-    const prog = document.getElementById("scroll-prog");
-
-    const onScroll = () => {
-      if (!prog) return;
-      const total = document.documentElement.scrollHeight - window.innerHeight;
-      const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
-      prog.style.height = pct + "%";
-    };
-
-    // Lenis smooth scroll
+    const sp = document.getElementById("sp");
     let lenis: any;
-    import("@studio-freight/lenis").then(({ default: Lenis }) => {
-      lenis = new Lenis({
-        duration: 1.2,
-        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        smoothWheel: true,
-      });
-
+    import("lenis").then(({ default: Lenis }) => {
+      lenis = new Lenis({ duration: 1.15, easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
       const raf = (time: number) => {
         lenis.raf(time);
-        onScroll();
+        if (sp) {
+          const total = document.documentElement.scrollHeight - window.innerHeight;
+          sp.style.height = total > 0 ? (window.scrollY / total * 100) + "%" : "0%";
+        }
         requestAnimationFrame(raf);
       };
       requestAnimationFrame(raf);
     });
-
-    return () => {
-      lenis?.destroy();
-    };
+    return () => lenis?.destroy();
   }, []);
-
-  return <div id="scroll-prog" aria-hidden="true" />;
+  return null;
 }

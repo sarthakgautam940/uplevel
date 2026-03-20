@@ -73,3 +73,8 @@ export const B = {
     { cat: "Results", q: "Do you work with contractors who have an existing website?", a: "Yes — our best case studies are complete rebuilds. A new UpLevel build pays for itself within 30–60 days in most cases. We'll show you exactly where your current site is failing before you commit to anything." },
   ],
 };
+
+// Appended
+export const brandExtra = {
+  aiConcierge: { greeting: "Hey — I'm Aria, UpLevel's AI. I can answer questions about our services, pricing, and process. What would you like to know?" }
+};
