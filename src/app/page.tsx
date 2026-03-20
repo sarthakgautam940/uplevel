@@ -1,60 +1,111 @@
-"use client";
-import { useState, useCallback, useRef, useEffect } from "react";
-import dynamic from "next/dynamic";
-import {
-  MarqueeStrip, Manifesto, KineticBand, Services,
-  WorkPreview, Stats, Process, Testimonials,
-  Pricing, FAQ, FinalCTA,
-} from "@/components/Sections";
+'use client'
 
-const Loader       = dynamic(() => import("@/components/Loader"),       { ssr:false });
-const Cursor       = dynamic(() => import("@/components/Cursor"),       { ssr:false });
-const SmoothScroll = dynamic(() => import("@/components/SmoothScroll"), { ssr:false });
-const Nav          = dynamic(() => import("@/components/Nav"),          { ssr:false });
-const Hero         = dynamic(() => import("@/components/Hero"),         { ssr:false });
-const Footer       = dynamic(() => import("@/components/Footer"),       { ssr:false });
+import { useState, useEffect } from 'react'
+import dynamic from 'next/dynamic'
+import HeroSection from '@/components/sections/HeroSection'
+import ManifestoSection from '@/components/sections/ManifestoSection'
+import KineticBand from '@/components/sections/KineticBand'
+import ServicesSection from '@/components/sections/ServicesSection'
+import WorkSection from '@/components/sections/WorkSection'
+import StatsSection from '@/components/sections/StatsSection'
+import ProcessSection from '@/components/sections/ProcessSection'
+import TestimonialsSection from '@/components/sections/TestimonialsSection'
+import PricingSection from '@/components/sections/PricingSection'
+import FAQSection from '@/components/sections/FAQSection'
+import FinalCTA from '@/components/sections/FinalCTA'
+import Footer from '@/components/sections/Footer'
+import IntroAnimation from '@/components/intro/IntroAnimation'
 
-export default function Home() {
-  const [loaded,    setLoaded]    = useState(false);
-  const [heroReady, setHeroReady] = useState(false);
-  const mainRef = useRef<HTMLDivElement>(null);
+// Dynamic import Three.js world — SSR off
+const WorldScene = dynamic(() => import('@/components/world/WorldScene'), {
+  ssr: false,
+  loading: () => null,
+})
 
-  const onComplete = useCallback(() => {
-    setLoaded(true);
-    setTimeout(() => setHeroReady(true), 100);
-  }, []);
+export default function HomePage() {
+  const [introComplete, setIntroComplete] = useState(false)
+  const [heroVisible, setHeroVisible] = useState(false)
 
+  const handleIntroComplete = () => {
+    setIntroComplete(true)
+    // Hero content begins entrance while exit aperture is 30% open
+    setTimeout(() => setHeroVisible(true), 200)
+  }
+
+  // Lock scroll during intro
   useEffect(() => {
-    if (!loaded || !mainRef.current) return;
-    const el = mainRef.current;
-    el.style.transition = "opacity .55s ease, transform .55s ease";
-    el.style.opacity    = "1";
-    el.style.transform  = "none";
-  }, [loaded]);
+    if (!introComplete) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [introComplete])
 
   return (
     <>
-      <Cursor />
-      <SmoothScroll />
-      {!loaded && <Loader onComplete={onComplete} />}
-      <div ref={mainRef} style={{ opacity:0, transform:"scale(0.998)" }}>
-        <Nav />
-        <main>
-          <Hero ready={heroReady} />
-          <MarqueeStrip />
-          <Manifesto />
-          <KineticBand />
-          <Services />
-          <WorkPreview />
-          <Stats />
-          <Process />
-          <Testimonials />
-          <Pricing />
-          <FAQ />
-          <FinalCTA />
-        </main>
+      {/* Three.js World — always rendered, fills viewport */}
+      <WorldScene />
+
+      {/* Intro animation — renders above world until exit */}
+      {!introComplete && (
+        <IntroAnimation onComplete={handleIntroComplete} />
+      )}
+
+      {/* Hero — fixed overlay in world space */}
+      {heroVisible && <HeroSection isVisible={heroVisible} />}
+
+      {/*
+        Scroll container — all sections layer above the Three.js world.
+        The world camera journey continues behind all of them.
+        800vh total scroll height corresponding to the camera journey.
+      */}
+      <div
+        className="scroll-container"
+        style={{
+          opacity: introComplete ? 1 : 0,
+          transition: 'opacity 600ms',
+          pointerEvents: introComplete ? 'auto' : 'none',
+        }}
+      >
+        {/* ── Hero spacer (100vh) ── */}
+        <div style={{ height: '100vh' }} aria-hidden="true" />
+
+        {/* ── Manifesto (100–200vh, camera rises above top plate) ── */}
+        <ManifestoSection />
+
+        {/* ── Kinetic band (transition element) ── */}
+        <KineticBand />
+
+        {/* ── Services (200–350vh, lateral camera gallery) ── */}
+        <ServicesSection />
+
+        {/* ── Work preview (350–470vh, glulam beam territory) ── */}
+        <WorkSection />
+
+        {/* ── Stats (visual breath section) ── */}
+        <StatsSection />
+
+        {/* ── Process (470–570vh, aerial overview) ── */}
+        <ProcessSection />
+
+        {/* ── Testimonials (570–650vh, amber warmth chapter) ── */}
+        <TestimonialsSection />
+
+        {/* ── Pricing (650–740vh, FOV compression corridor) ── */}
+        <PricingSection />
+
+        {/* ── FAQ ── */}
+        <FAQSection />
+
+        {/* ── Final CTA (740–800vh, backward camera movement) ── */}
+        <FinalCTA />
+
+        {/* ── Footer ── */}
         <Footer />
       </div>
     </>
-  );
+  )
 }
