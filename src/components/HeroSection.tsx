@@ -361,8 +361,9 @@ export default function HeroSection({ ready }: Props) {
             >
               <span className="block">The authority</span>
               <span className="block">your market</span>
-              <span className="block">feels on</span>
-              <span className="block text-white/82">first contact.</span>
+              <span className="block">feels before</span>
+              <span className="block">you ever</span>
+              <span className="block">speak.</span>
             </h1>
 
             <p
