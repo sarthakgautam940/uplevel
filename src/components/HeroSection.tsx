@@ -337,7 +337,7 @@ export default function HeroSection({ ready }: Props) {
         </svg>
       </div>
 
-      <div className="relative z-[5] mx-auto max-w-[1600px] px-6 pb-[max(3rem,calc(env(safe-area-inset-bottom)+1.25rem))] pt-[calc(5.6rem+env(safe-area-inset-top))] sm:px-8 lg:px-12 lg:pb-[max(4rem,calc(env(safe-area-inset-bottom)+1.5rem))] lg:pt-[calc(6.4rem+env(safe-area-inset-top))] xl:px-16">
+      <div className="relative z-[5] mx-auto max-w-[1600px] px-6 pb-[max(3rem,calc(env(safe-area-inset-bottom)+1.25rem))] pt-[calc(3.36rem+env(safe-area-inset-top))] sm:px-8 lg:px-12 lg:pb-[max(4rem,calc(env(safe-area-inset-bottom)+1.5rem))] lg:pt-[calc(3.84rem+env(safe-area-inset-top))] xl:px-16">
         <div className="grid min-h-[100dvh] items-center gap-14 lg:grid-cols-[minmax(0,0.92fr)_minmax(480px,0.88fr)] lg:gap-[4.5rem]">
           <div
             ref={contentRef}
