@@ -1,0 +1,337 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Design tokens ─────────────────────────────────────────────── */
+
+:root {
+  --void:          #06080f;
+  --surface:       #0d1119;
+  --electric:      #4d82ff;
+  --electric-glow: #7aa3ff;
+  --warm:          #c9a84c;
+  --teal:          #00d4c0;
+  --text:          #edf0f7;
+  --text-dim:      #8895aa;
+  --border:        rgba(237, 240, 247, 0.10);
+  --border-mid:    rgba(237, 240, 247, 0.16);
+
+  /* Contact brief (glass) — deep gold-brown ink (~4× darker than prior mix) */
+  --glass-ink:       color-mix(in srgb, var(--warm) 9%, rgb(3, 2, 1));
+  --glass-ink-soft:  color-mix(in srgb, var(--warm) 7%, rgb(6, 4, 2));
+  --glass-ink-muted: color-mix(in srgb, var(--warm) 5%, rgb(10, 7, 4));
+
+  /* Named easing curves — reference in inline styles */
+  --ease-expo:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-elastic: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth:  cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ─── Reset ─────────────────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: auto; /* Lenis handles smooth scroll */
+}
+
+body {
+  background-color: var(--void);
+  color: var(--text);
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  cursor: none; /* Custom cursor takes over */
+}
+
+/* Restore default cursor on touch devices */
+@media (pointer: coarse) {
+  body { cursor: auto; }
+}
+
+/* Prevent zooming on iOS form focus */
+input,
+textarea,
+select {
+  font-size: max(16px, 1rem);
+}
+
+/* Selection */
+::selection {
+  background: rgba(36, 97, 232, 0.35);
+  color: var(--text);
+}
+
+/* Focus ring — keyboard accessibility */
+:focus-visible {
+  outline: 2px solid var(--electric);
+  outline-offset: 3px;
+}
+
+/* ─── Typography utilities ──────────────────────────────────────── */
+
+.font-display {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
+.font-body {
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────────── */
+
+html {
+  scrollbar-width: none;
+}
+::-webkit-scrollbar {
+  display: none;
+  width: 0;
+}
+
+/* ─── Page transition overlay ───────────────────────────────────── */
+
+/* Pointer-events off during overlay animation so nav stays interactive */
+body.transitioning {
+  pointer-events: none;
+}
+
+/* ─── Keyframes ─────────────────────────────────────────────────── */
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes thumbSheen {
+  0%, 100% {
+    transform: translateX(-20%) skewX(-12deg);
+    opacity: 0.25;
+  }
+  50% {
+    transform: translateX(30%) skewX(-12deg);
+    opacity: 0.55;
+  }
+}
+
+@keyframes pulseDot {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.35);
+  }
+}
+
+@keyframes scrollDot {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.6; }
+  50% { transform: translateX(-50%) translateY(36px); opacity: 0.2; }
+}
+
+/* HeroSection scroll indicator (Tailwind arbitrary animation) */
+@keyframes heroScrollShine {
+  0% {
+    transform: translateY(-120%);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.4;
+  }
+  55% {
+    transform: translateY(120%);
+    opacity: 0.22;
+  }
+  100% {
+    transform: translateY(120%);
+    opacity: 0;
+  }
+}
+
+@keyframes heroSignalSweep {
+  0% {
+    transform: translate3d(-12%, 0, 0);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.18;
+  }
+  52% {
+    opacity: 0.32;
+  }
+  100% {
+    transform: translate3d(12%, 0, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes heroSignalPulse {
+  0%,
+  100% {
+    opacity: 0.56;
+    transform: scale(0.96);
+    box-shadow: 0 0 0 0 rgba(201, 168, 76, 0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+    box-shadow:
+      0 0 16px 0 rgba(201, 168, 76, 0.32),
+      0 0 28px 0 rgba(77, 130, 255, 0.18);
+  }
+}
+
+@keyframes heroWaveBar {
+  0%,
+  100% {
+    transform: scaleY(0.6);
+    opacity: 0.28;
+  }
+  45% {
+    transform: scaleY(1.2);
+    opacity: 0.92;
+  }
+  70% {
+    transform: scaleY(0.82);
+    opacity: 0.52;
+  }
+}
+
+@keyframes introCursorBlink {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Vapi widget — panel entrance (power3.out-style easing) */
+@keyframes vapiPanelEnter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.vapi-panel-enter {
+  animation: vapiPanelEnter 300ms cubic-bezier(0.215, 0.61, 0.355, 1) both;
+}
+
+/* Soft entrance for page content after overlay lifts */
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── Hero — minimal motion (HeroSection only) ─────────────────── */
+
+@keyframes hero-system-pulse {
+  0%, 100% { opacity: 0.45; box-shadow: 0 0 0 0 rgba(201, 168, 76, 0); }
+  50% { opacity: 0.95; box-shadow: 0 0 12px 0 rgba(201, 168, 76, 0.12); }
+}
+
+.hero-system-intent {
+  animation: hero-system-pulse 4.5s ease-in-out infinite;
+}
+
+/* ─── Accolades — connected shine sweep ─────────────────────────────── */
+/*
+ * Each .acc-card has --card-offset (set by JS) = (left + top) relative to
+ * the section. The section has --shine-p (animated by JS RAF).
+ * Subtracting offset from shine-p gives the band's position in card-local
+ * coordinates — so one sweep feels continuous across all cards.
+ */
+.acc-shine-overlay {
+  background: linear-gradient(
+    135deg,
+    transparent                               calc(var(--shine-p, -9999px) - var(--card-offset, -9999px) - 210px),
+    rgba(255, 248, 215, 0)                    calc(var(--shine-p, -9999px) - var(--card-offset, -9999px) - 90px),
+    rgba(255, 253, 235, 0.028)               calc(var(--shine-p, -9999px) - var(--card-offset, -9999px) - 15px),
+    rgba(255, 255, 255, 0.048)               calc(var(--shine-p, -9999px) - var(--card-offset, -9999px) + 16px),
+    rgba(255, 253, 235, 0.028)               calc(var(--shine-p, -9999px) - var(--card-offset, -9999px) + 55px),
+    rgba(255, 248, 215, 0)                    calc(var(--shine-p, -9999px) - var(--card-offset, -9999px) + 135px),
+    transparent                               calc(var(--shine-p, -9999px) - var(--card-offset, -9999px) + 240px)
+  );
+}
+
+/* Hero shine: render the same sweep only inside the 3 hero surfaces. */
+.acc-card.acc-hero .acc-hero-shine-host {
+  pointer-events: none;
+}
+
+.acc-card.acc-hero .acc-hero-shine {
+  opacity: 0.9;
+  filter: blur(0.55px);
+  background: linear-gradient(
+    135deg,
+    transparent calc(var(--shine-p, -9999px) - var(--card-offset, -9999px) - var(--hero-offset, 0px) - 210px),
+    rgba(255, 248, 215, 0) calc(var(--shine-p, -9999px) - var(--card-offset, -9999px) - var(--hero-offset, 0px) - 90px),
+    rgba(255, 253, 235, 0.03) calc(var(--shine-p, -9999px) - var(--card-offset, -9999px) - var(--hero-offset, 0px) - 15px),
+    rgba(255, 255, 255, 0.052) calc(var(--shine-p, -9999px) - var(--card-offset, -9999px) - var(--hero-offset, 0px) + 16px),
+    rgba(255, 253, 235, 0.03) calc(var(--shine-p, -9999px) - var(--card-offset, -9999px) - var(--hero-offset, 0px) + 55px),
+    rgba(255, 248, 215, 0) calc(var(--shine-p, -9999px) - var(--card-offset, -9999px) - var(--hero-offset, 0px) + 135px),
+    transparent calc(var(--shine-p, -9999px) - var(--card-offset, -9999px) - var(--hero-offset, 0px) + 240px)
+  );
+}
+
+/* ─── Accolades — placement number: single static glow (no animation) ─ */
+
+.acc-placement-glow-static {
+  text-shadow:
+    0 0 12px color-mix(in srgb, currentColor 28%, transparent),
+    0 0 28px color-mix(in srgb, currentColor 10%, transparent);
+}
+
+/* PageWrapper — initial frame (no inline styles: avoids React opacity string/number + transform serialization drift) */
+.page-wrapper-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+/* ─── Reduced motion ────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  /* PageWrapper: reveal without motion; beats base .page-wrapper-enter */
+  .page-wrapper-enter {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

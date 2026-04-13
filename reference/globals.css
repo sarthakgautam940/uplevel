@@ -1,0 +1,457 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Design tokens ─────────────────────────────────────────────── */
+
+:root {
+  /* Signature ink-navy (electric undertone) — not flat black */
+  --void:          #061528;
+  --surface:       #0c1830;
+  --electric:      #4d82ff;
+  --electric-glow: #7aa3ff;
+  --warm:          #c9a84c;
+  --teal:          #00d4c0;
+  --text:          #edf0f7;
+  --text-dim:      #8895aa;
+  --border:        rgba(237, 240, 247, 0.10);
+  --border-mid:    rgba(237, 240, 247, 0.16);
+
+  /* Contact brief (glass) — deep gold-brown ink (~4× darker than prior mix) */
+  --glass-ink:       color-mix(in srgb, var(--warm) 9%, rgb(3, 2, 1));
+  --glass-ink-soft:  color-mix(in srgb, var(--warm) 7%, rgb(6, 4, 2));
+  --glass-ink-muted: color-mix(in srgb, var(--warm) 5%, rgb(10, 7, 4));
+
+  /* Named easing curves — reference in inline styles */
+  --ease-expo:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-elastic: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth:  cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ─── Reset ─────────────────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: auto; /* Lenis handles smooth scroll */
+}
+
+body {
+  background-color: var(--void);
+  color: var(--text);
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  cursor: auto;
+}
+
+/* Hide system cursor when custom layer is active (real hover devices only) */
+@media (hover: hover) {
+  html[data-cursor-ready] body {
+    cursor: none;
+  }
+}
+
+/* Prevent zooming on iOS form focus */
+input,
+textarea,
+select {
+  font-size: max(16px, 1rem);
+}
+
+/* Selection */
+::selection {
+  background: rgba(36, 97, 232, 0.35);
+  color: var(--text);
+}
+
+/* Focus ring — keyboard accessibility */
+:focus-visible {
+  outline: 2px solid var(--electric);
+  outline-offset: 3px;
+}
+
+/* ─── Typography utilities ──────────────────────────────────────── */
+
+.font-display {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
+.font-body {
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────────── */
+
+html {
+  scrollbar-width: none;
+}
+::-webkit-scrollbar {
+  display: none;
+  width: 0;
+}
+
+/* ─── Page transition overlay ───────────────────────────────────── */
+
+/* Pointer-events off during overlay animation so nav stays interactive */
+body.transitioning {
+  pointer-events: none;
+}
+
+/* Inner pages — hidden until PageWrapper GSAP reveal (matches fromTo initial state) */
+.page-wrapper-enter {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+/* ─── Keyframes ─────────────────────────────────────────────────── */
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes thumbSheen {
+  0%, 100% {
+    transform: translateX(-20%) skewX(-12deg);
+    opacity: 0.25;
+  }
+  50% {
+    transform: translateX(30%) skewX(-12deg);
+    opacity: 0.55;
+  }
+}
+
+@keyframes pulseDot {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.35);
+  }
+}
+
+@keyframes scrollDot {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.6; }
+  50% { transform: translateX(-50%) translateY(36px); opacity: 0.2; }
+}
+
+/* Hero — rail & glow “alive” light (motion-safe classes in HeroSection) */
+@keyframes heroRailFlow {
+  0%,
+  100% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 0% 100%;
+  }
+}
+
+@keyframes heroRailPulse {
+  0%,
+  100% {
+    opacity: 0.42;
+    transform: scaleY(1);
+  }
+  50% {
+    opacity: 0.82;
+    transform: scaleY(1.04);
+  }
+}
+
+@keyframes heroGlowDrift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(1.8%, -1.2%) scale(1.035);
+  }
+}
+
+@keyframes heroScrollShine {
+  0% {
+    transform: translateY(-120%);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.4;
+  }
+  55% {
+    transform: translateY(120%);
+    opacity: 0.22;
+  }
+  100% {
+    transform: translateY(120%);
+    opacity: 0;
+  }
+}
+
+@keyframes heroAmbient {
+  0%,
+  100% {
+    opacity: 0.42;
+  }
+  50% {
+    opacity: 0.78;
+  }
+}
+
+/* Fluid rift — CSS backbone (always visible; canvas adds noise on top) */
+@keyframes heroRiftEnergy {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.92;
+  }
+  33% {
+    transform: translate3d(-0.6%, 0.4%, 0) scale(1.02);
+    opacity: 1;
+  }
+  66% {
+    transform: translate3d(0.5%, -0.3%, 0) scale(1.015);
+    opacity: 0.96;
+  }
+}
+
+.hero-rift-css-backbone {
+  clip-path: polygon(43% 0%, 57% 0%, 72% 100%, 28% 100%);
+  background:
+    radial-gradient(ellipse 55% 100% at 50% 42%, rgba(255, 255, 255, 0.14) 0%, rgba(120, 200, 255, 0.38) 22%, rgba(70, 150, 255, 0.28) 45%, rgba(110, 70, 240, 0.22) 62%, transparent 76%),
+    linear-gradient(180deg, rgba(40, 100, 220, 0.12) 0%, rgba(90, 60, 200, 0.1) 55%, rgba(255, 110, 70, 0.07) 100%);
+  mix-blend-mode: screen;
+  animation: heroRiftEnergy 11s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-rift-css-backbone {
+    animation: none;
+    opacity: 0.88;
+  }
+}
+
+
+/* Hero key visual — slow ambient drift (gaze-adjacent light pool) */
+@keyframes heroMeshPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 0.92;
+  }
+}
+
+.hero-mesh-breathe {
+  animation: heroMeshPulse 22s ease-in-out infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-mesh-breathe {
+    animation: none;
+  }
+}
+
+/* Hero — ambient field drift (right panel, back layer) */
+@keyframes hero-field-drift {
+  0%,
+  100% {
+    transform: translate(0%, 0%) scale(1);
+  }
+  40% {
+    transform: translate(1.8%, -1.2%) scale(1.03);
+  }
+  70% {
+    transform: translate(-1.2%, 0.9%) scale(1.015);
+  }
+}
+
+.hero-field-drift {
+  animation: hero-field-drift 32s ease-in-out infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-field-drift {
+    animation: none;
+  }
+}
+
+/* Hero — single orb field: subtle breathe only (no competing motion) */
+@keyframes hero-orb-breathe {
+  0%,
+  100% {
+    opacity: 0.88;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.98;
+    transform: scale(1.02);
+  }
+}
+
+.hero-orb-breathe {
+  animation: hero-orb-breathe 20s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-orb-breathe {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Hero — slow ring (authority / system signal) */
+@keyframes hero-ring-turn {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.hero-ring-slow {
+  animation: hero-ring-turn 140s linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-ring-slow {
+    animation: none;
+  }
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Vapi widget — idle center bar (11px → 14px equivalent via scaleY) */
+@keyframes vapi-idle-center {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.273);
+  }
+}
+
+.vapi-wave-idle .vapi-bar-center {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: vapi-idle-center 3s ease-in-out infinite;
+}
+
+@keyframes vapi-connecting-bars {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.vapi-wave-connecting {
+  animation: vapi-connecting-bars 1.4s ease-in-out infinite;
+}
+
+/* Soft entrance for page content after overlay lifts */
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── Hero — minimal motion (HeroSection only) ─────────────────── */
+
+@keyframes hero-system-pulse {
+  0%, 100% { opacity: 0.45; box-shadow: 0 0 0 0 rgba(201, 168, 76, 0); }
+  50% { opacity: 0.95; box-shadow: 0 0 12px 0 rgba(201, 168, 76, 0.12); }
+}
+
+.hero-system-intent {
+  animation: hero-system-pulse 4.5s ease-in-out infinite;
+}
+
+/* ─── Home runway — fixed atmosphere behind homepage sections ───── */
+
+.home-runway {
+  position: relative;
+}
+
+/* Atmospheric base only — no static radial/glow orbs (hero handles light) */
+.home-runway::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--void) 92%, #142844) 0%,
+    color-mix(in srgb, var(--void) 86%, #0c1834) 52%,
+    var(--void) 100%
+  );
+}
+
+/* Accolade certificate frame — soft gold “breathing” edge wash */
+@keyframes accImageBreath {
+  0%,
+  100% {
+    opacity: 0.38;
+    filter: blur(0px);
+  }
+  50% {
+    opacity: 0.78;
+    filter: blur(1px);
+  }
+}
+
+/* ─── Accolades — placement number: single static glow (no animation) ─ */
+
+.acc-placement-glow-static {
+  text-shadow:
+    0 0 12px color-mix(in srgb, currentColor 28%, transparent),
+    0 0 28px color-mix(in srgb, currentColor 10%, transparent);
+}
+
+/* ─── Reduced motion ────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

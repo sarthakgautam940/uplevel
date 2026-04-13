@@ -1,0 +1,57 @@
+# ── Dependencies ─────────────────────────────────────────────────
+node_modules/
+.pnp
+.pnp.js
+
+# ── Testing ───────────────────────────────────────────────────────
+/coverage
+
+# ── Next.js build output ──────────────────────────────────────────
+/.next/
+/out/
+/build
+
+# ── Environment variables — NEVER commit these ────────────────────
+# Any .env* file that is NOT the public example template.
+.env
+.env.local
+.env.development
+.env.development.local
+.env.test
+.env.test.local
+.env.production
+.env.production.local
+.env*.local
+# Extra safety net: catch any file with "secret" or "key" in the name
+*.secret
+*.secrets
+secrets.json
+*.pem
+*.key
+*.crt
+*.p12
+
+# ── Vercel deployment state ───────────────────────────────────────
+.vercel
+
+# ── OS artifacts ──────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Debug logs ────────────────────────────────────────────────────
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# ── TypeScript build info ─────────────────────────────────────────
+*.tsbuildinfo
+next-env.d.ts
+
+# ── Editor state ──────────────────────────────────────────────────
+.idea/
+.vscode/settings.json
+.vscode/launch.json
+*.swp
+*.swo
