@@ -1,0 +1,48 @@
+{
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://api.vapi.ai wss://api.vapi.ai https://*.daily.co wss://*.daily.co https://*.vapi.ai; media-src 'self' blob:; worker-src blob:; frame-src 'none'; frame-ancestors 'none'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
+        },
+        { "key": "X-Frame-Options",               "value": "DENY" },
+        { "key": "X-Content-Type-Options",         "value": "nosniff" },
+        { "key": "X-XSS-Protection",               "value": "1; mode=block" },
+        { "key": "Referrer-Policy",                "value": "strict-origin-when-cross-origin" },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(self), geolocation=(), payment=(), usb=(), bluetooth=()"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        },
+        { "key": "Cross-Origin-Opener-Policy",     "value": "same-origin-allow-popups" },
+        { "key": "Cross-Origin-Resource-Policy",   "value": "same-origin" },
+        { "key": "X-DNS-Prefetch-Control",         "value": "off" }
+      ]
+    },
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "X-Robots-Tag",   "value": "noindex, nofollow" },
+        { "key": "Cache-Control",  "value": "no-store, no-cache, must-revalidate, private" },
+        { "key": "Pragma",         "value": "no-cache" }
+      ]
+    },
+    {
+      "source": "/_next/static/(.*)",
+      "headers": [
+        { "key": "Cache-Control",  "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/fonts/(.*)",
+      "headers": [
+        { "key": "Cache-Control",  "value": "public, max-age=31536000, immutable" }
+      ]
+    }
+  ]
+}
