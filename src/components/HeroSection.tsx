@@ -352,7 +352,7 @@ export default function HeroSection({ ready }: Props) {
 
             <h1
               ref={headlineRef}
-              className={`mt-6 font-display text-[rgba(246,247,251,0.97)] ${HERO_ANIM_INIT}`}
+              className={`mt-[0.9rem] font-display text-[rgba(246,247,251,0.97)] ${HERO_ANIM_INIT}`}
               style={{
                 fontSize: "clamp(3.2rem, 6.3vw, 6.1rem)",
                 lineHeight: 0.92,
