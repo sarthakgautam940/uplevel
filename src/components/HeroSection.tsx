@@ -359,9 +359,10 @@ export default function HeroSection({ ready }: Props) {
                 letterSpacing: "-0.055em",
               }}
             >
-              <span className="block">The authority your</span>
-              <span className="block">market feels</span>
-              <span className="block text-white/82">on first contact.</span>
+              <span className="block">The authority</span>
+              <span className="block">your market</span>
+              <span className="block">feels on</span>
+              <span className="block text-white/82">first contact.</span>
             </h1>
 
             <p
