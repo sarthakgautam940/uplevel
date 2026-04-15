@@ -1,25 +1,31 @@
 "use client";
 
-import { useEffect, useId, useRef } from "react";
+import { useEffect, useRef } from "react";
 import type { MouseEventHandler } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { bookUrl } from "../../lib/brand.config";
 import MagneticButton from "./MagneticButton";
 import TransitionLink from "./TransitionLink";
-import HeroSignalInteractive from "./HeroSignalInteractive";
 
 gsap.registerPlugin(ScrollTrigger);
 
 type Props = { ready: boolean };
 
-const METRICS = [
-  { value: "14 days", label: "Launch window" },
-  { value: "24/7", label: "Lead intake" },
-  { value: "4 seconds", label: "First judgment" },
+const HERO_ANIM_INIT = "opacity-0 motion-reduce:opacity-100";
+
+const LUXURY_SEGMENTS = [
+  "Luxury pools",
+  "Custom builders",
+  "Wine cellars",
+  "Premium outdoor living",
 ];
 
-const HERO_ANIM_INIT = "opacity-0 motion-reduce:opacity-100";
+const PIPELINE_STAGES = [
+  { name: "Qualified", value: "8" },
+  { name: "Routed", value: "7" },
+  { name: "Booked", value: "5" },
+];
 
 function capPx(n: number, scale: number, max: number) {
   const value = n * scale;
@@ -29,21 +35,14 @@ function capPx(n: number, scale: number, max: number) {
 }
 
 export default function HeroSection({ ready }: Props) {
-  const id = useId().replace(/:/g, "");
-  const grainId = `hero-grain-${id}`;
-
   const sectionRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const backdropRef = useRef<HTMLDivElement>(null);
-  const blueprintRef = useRef<HTMLDivElement>(null);
-  const visualRef = useRef<HTMLDivElement>(null);
-  const mobileVisualRef = useRef<HTMLDivElement>(null);
-  const kickerRef = useRef<HTMLParagraphElement>(null);
+  const proofRef = useRef<HTMLDivElement>(null);
+  const bgRef = useRef<HTMLDivElement>(null);
+  const eyebrowRef = useRef<HTMLParagraphElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
-  const subRef = useRef<HTMLParagraphElement>(null);
+  const copyRef = useRef<HTMLParagraphElement>(null);
   const ctaRowRef = useRef<HTMLDivElement>(null);
-  const metricsRef = useRef<HTMLDivElement>(null);
-  const scrollRef = useRef<HTMLDivElement>(null);
 
   const targetPtrRef = useRef({ x: 0, y: 0 });
   const smoothPtrRef = useRef({ x: 0, y: 0 });
@@ -57,117 +56,51 @@ export default function HeroSection({ ready }: Props) {
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduced) {
-      [
-        backdropRef.current,
-        blueprintRef.current,
-        visualRef.current,
-        mobileVisualRef.current,
-        kickerRef.current,
-        headlineRef.current,
-        subRef.current,
-        ctaRowRef.current,
-        metricsRef.current,
-        scrollRef.current,
-      ].forEach((element) => {
-        if (!element) return;
-        element.style.opacity = "1";
-        element.style.transform = "none";
-      });
+      [bgRef.current, eyebrowRef.current, headlineRef.current, copyRef.current, ctaRowRef.current, proofRef.current].forEach(
+        (element) => {
+          if (!element) return;
+          element.style.opacity = "1";
+          element.style.transform = "none";
+          element.style.filter = "none";
+        },
+      );
       return;
     }
 
     const ctx = gsap.context(() => {
-      const timeline = gsap.timeline({ delay: 0.06 });
+      const timeline = gsap.timeline({ delay: 0.08 });
 
-      if (backdropRef.current) {
-        timeline.fromTo(
-          backdropRef.current,
-          { opacity: 0 },
-          { opacity: 1, duration: 0.9, ease: "power2.out" },
-          0,
-        );
-      }
-
-      if (blueprintRef.current) {
-        timeline.fromTo(
-          blueprintRef.current,
-          { opacity: 0, y: 24, scale: 0.985 },
-          { opacity: 1, y: 0, scale: 1, duration: 1.05, ease: "power3.out" },
-          0.04,
-        );
-      }
-
-      if (visualRef.current) {
-        timeline.fromTo(
-          visualRef.current,
-          { opacity: 0, y: 22, filter: "blur(10px)" },
-          { opacity: 1, y: 0, filter: "blur(0px)", duration: 1, ease: "power3.out" },
-          0.12,
-        );
-      }
-
-      if (mobileVisualRef.current) {
-        timeline.fromTo(
-          mobileVisualRef.current,
-          { opacity: 0, y: 18, filter: "blur(10px)" },
-          { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.9, ease: "power3.out" },
-          0.16,
-        );
-      }
-
-      if (kickerRef.current) {
-        timeline.fromTo(
-          kickerRef.current,
-          { opacity: 0, y: 10 },
-          { opacity: 1, y: 0, duration: 0.46, ease: "power3.out" },
-          0.08,
-        );
-      }
-
-      if (headlineRef.current) {
-        timeline.fromTo(
-          headlineRef.current,
-          { opacity: 0, y: 26 },
-          { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" },
-          0.16,
-        );
-      }
-
-      if (subRef.current) {
-        timeline.fromTo(
-          subRef.current,
-          { opacity: 0, y: 14 },
-          { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
-          0.28,
-        );
-      }
-
-      if (ctaRowRef.current) {
-        timeline.fromTo(
-          ctaRowRef.current,
-          { opacity: 0, y: 14 },
-          { opacity: 1, y: 0, duration: 0.54, ease: "power3.out" },
-          0.36,
-        );
-      }
-
-      if (metricsRef.current) {
-        timeline.fromTo(
-          metricsRef.current,
-          { opacity: 0, y: 12 },
-          { opacity: 1, y: 0, duration: 0.52, ease: "power3.out" },
-          0.46,
-        );
-      }
-
-      if (scrollRef.current) {
-        timeline.fromTo(
-          scrollRef.current,
-          { opacity: 0 },
-          { opacity: 1, duration: 0.3, ease: "power2.out" },
-          0.66,
-        );
-      }
+      timeline.fromTo(bgRef.current, { opacity: 0 }, { opacity: 1, duration: 0.9, ease: "power2.out" }, 0);
+      timeline.fromTo(
+        eyebrowRef.current,
+        { opacity: 0, y: 10 },
+        { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" },
+        0.08,
+      );
+      timeline.fromTo(
+        headlineRef.current,
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.85, ease: "power3.out" },
+        0.14,
+      );
+      timeline.fromTo(
+        copyRef.current,
+        { opacity: 0, y: 14 },
+        { opacity: 1, y: 0, duration: 0.58, ease: "power3.out" },
+        0.28,
+      );
+      timeline.fromTo(
+        ctaRowRef.current,
+        { opacity: 0, y: 14 },
+        { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" },
+        0.36,
+      );
+      timeline.fromTo(
+        proofRef.current,
+        { opacity: 0, y: 20, filter: "blur(8px)" },
+        { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.88, ease: "power3.out" },
+        0.18,
+      );
     }, root);
 
     return () => ctx.revert();
@@ -181,7 +114,7 @@ export default function HeroSection({ ready }: Props) {
     const ctx = gsap.context(() => {
       if (contentRef.current) {
         gsap.to(contentRef.current, {
-          yPercent: -3.5,
+          yPercent: -3,
           ease: "none",
           scrollTrigger: {
             trigger: root,
@@ -192,22 +125,9 @@ export default function HeroSection({ ready }: Props) {
         });
       }
 
-      if (visualRef.current) {
-        gsap.to(visualRef.current, {
-          yPercent: -6,
-          ease: "none",
-          scrollTrigger: {
-            trigger: root,
-            start: "top top",
-            end: "bottom top",
-            scrub: true,
-          },
-        });
-      }
-
-      if (blueprintRef.current) {
-        gsap.to(blueprintRef.current, {
-          yPercent: -4,
+      if (proofRef.current) {
+        gsap.to(proofRef.current, {
+          yPercent: -5,
           ease: "none",
           scrollTrigger: {
             trigger: root,
@@ -227,6 +147,7 @@ export default function HeroSection({ ready }: Props) {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const root = sectionRef.current;
     if (!root) return;
+
     pointerNeedsFrameRef.current = true;
     if (rafPtrRef.current != null) return;
 
@@ -237,15 +158,15 @@ export default function HeroSection({ ready }: Props) {
       smooth.x += (target.x - smooth.x) * 0.08;
       smooth.y += (target.y - smooth.y) * 0.08;
 
-      const visualX = capPx(smooth.x, 20, 12);
-      const visualY = capPx(smooth.y, 16, 10);
-      const blueprintX = capPx(smooth.x, 10, 6);
-      const blueprintY = capPx(smooth.y, 9, 6);
+      const glowX = capPx(smooth.x, 24, 12);
+      const glowY = capPx(smooth.y, 16, 10);
+      const proofX = capPx(smooth.x, 14, 8);
+      const proofY = capPx(smooth.y, 12, 8);
 
-      root.style.setProperty("--hero-vx", `${visualX}px`);
-      root.style.setProperty("--hero-vy", `${visualY}px`);
-      root.style.setProperty("--hero-bx", `${blueprintX}px`);
-      root.style.setProperty("--hero-by", `${blueprintY}px`);
+      root.style.setProperty("--hero-glow-x", `${glowX}px`);
+      root.style.setProperty("--hero-glow-y", `${glowY}px`);
+      root.style.setProperty("--hero-proof-x", `${proofX}px`);
+      root.style.setProperty("--hero-proof-y", `${proofY}px`);
 
       const stillMoving =
         Math.abs(target.x - smooth.x) > 0.0008 ||
@@ -266,6 +187,7 @@ export default function HeroSection({ ready }: Props) {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const root = sectionRef.current;
     if (!root) return;
+
     const rect = root.getBoundingClientRect();
     targetPtrRef.current = {
       x: (event.clientX - rect.left) / rect.width - 0.5,
@@ -293,114 +215,69 @@ export default function HeroSection({ ready }: Props) {
         aria-hidden="true"
         style={{
           background:
-            "linear-gradient(180deg, #04070d 0%, #050911 38%, #050912 100%)",
+            "linear-gradient(180deg, #04070d 0%, #050a12 52%, #04070d 100%)",
         }}
       />
 
       <div
-        ref={backdropRef}
+        ref={bgRef}
+        aria-hidden="true"
         className={`pointer-events-none absolute inset-0 z-[1] ${HERO_ANIM_INIT}`}
-        aria-hidden="true"
-        style={{
-          background: [
-            "radial-gradient(circle at 18% 18%, rgba(255,255,255,0.03) 0%, transparent 28%)",
-            "radial-gradient(circle at 82% 24%, rgba(201,168,76,0.045) 0%, transparent 24%)",
-            "radial-gradient(circle at 72% 72%, rgba(255,255,255,0.025) 0%, transparent 32%)",
-          ].join(", "),
-        }}
-      />
-
-      <div
-        className="pointer-events-none absolute inset-0 z-[2] opacity-[0.018]"
-        aria-hidden="true"
       >
-        <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <filter id={grainId} x="0%" y="0%" width="100%" height="100%">
-              <feTurbulence
-                type="fractalNoise"
-                numOctaves="3"
-                stitchTiles="stitch"
-                result="grain"
-              >
-                <animate
-                  attributeName="baseFrequency"
-                  dur="24s"
-                  repeatCount="indefinite"
-                  values="0.8 0.8;1.05 0.92;0.85 0.88;0.8 0.8"
-                />
-              </feTurbulence>
-              <feColorMatrix in="grain" type="saturate" values="0" />
-            </filter>
-          </defs>
-          <rect width="100%" height="100%" filter={`url(#${grainId})`} />
+        <div className="absolute inset-0 opacity-60 [background:radial-gradient(1200px_520px_at_24%_18%,rgba(13,53,117,0.35),transparent_66%)]" />
+        <div
+          className="absolute inset-0 opacity-70 [background:radial-gradient(900px_540px_at_75%_30%,rgba(201,168,76,0.12),transparent_68%)]"
+          style={{ transform: "translate3d(var(--hero-glow-x, 0px), var(--hero-glow-y, 0px), 0)" }}
+        />
+        <svg className="absolute inset-0 h-full w-full opacity-[0.14]" viewBox="0 0 1600 900" fill="none">
+          <path d="M0 650H1600" stroke="rgba(255,255,255,0.14)" strokeDasharray="2 10" />
+          <path d="M0 710H1600" stroke="rgba(255,255,255,0.08)" strokeDasharray="2 10" />
+          <path d="M980 0V900" stroke="rgba(255,255,255,0.1)" strokeDasharray="2 8" />
+          <path d="M900 0V900" stroke="rgba(255,255,255,0.07)" strokeDasharray="2 8" />
         </svg>
       </div>
 
-      <div className="relative z-[5] mx-auto max-w-[1600px] px-6 pb-[max(3rem,calc(env(safe-area-inset-bottom)+1.25rem))] pt-[calc(3.36rem+env(safe-area-inset-top))] sm:px-8 lg:px-12 lg:pb-[max(4rem,calc(env(safe-area-inset-bottom)+1.5rem))] lg:pt-[calc(3.84rem+env(safe-area-inset-top))] xl:px-16">
-        <div className="grid min-h-[100dvh] items-center gap-14 lg:grid-cols-[minmax(0,0.92fr)_minmax(480px,0.88fr)] lg:gap-[4.5rem]">
-          <div
-            ref={contentRef}
-            className="relative z-[6] flex max-w-[760px] flex-col justify-center"
-          >
+      <div className="relative z-[5] mx-auto max-w-[1560px] px-6 pb-[max(3.25rem,calc(env(safe-area-inset-bottom)+1.75rem))] pt-[calc(3.36rem+env(safe-area-inset-top))] sm:px-8 lg:px-12 lg:pb-[max(4.25rem,calc(env(safe-area-inset-bottom)+2rem))] xl:px-16">
+        <div className="grid min-h-[100dvh] items-center gap-14 lg:grid-cols-[minmax(0,0.95fr)_minmax(520px,0.9fr)] lg:gap-16">
+          <div ref={contentRef} className="relative z-[6] mx-auto flex w-full max-w-[760px] flex-col lg:mx-0">
             <p
-              ref={kickerRef}
-              className={`font-body text-[11px] font-medium uppercase tracking-[0.34em] text-[rgba(154,166,186,0.72)] ${HERO_ANIM_INIT}`}
+              ref={eyebrowRef}
+              className={`font-body text-[11px] font-medium uppercase tracking-[0.34em] text-[rgba(167,180,201,0.76)] ${HERO_ANIM_INIT}`}
             >
-              Virginia / Precision digital / Applied AI
+              UpLevel Services / Premium web positioning / Applied AI intake
             </p>
 
             <h1
               ref={headlineRef}
-              className={`mt-[0.9rem] font-display text-[rgba(246,247,251,0.97)] ${HERO_ANIM_INIT}`}
-              style={{
-                fontSize: "clamp(3.2rem, 6.3vw, 6.1rem)",
-                lineHeight: 0.92,
-                letterSpacing: "-0.055em",
-              }}
+              className={`mt-4 font-display text-[rgba(246,247,251,0.98)] ${HERO_ANIM_INIT}`}
+              style={{ fontSize: "clamp(3rem, 6.05vw, 6.2rem)", lineHeight: 0.93, letterSpacing: "-0.052em" }}
             >
-              <span className="block">The authority</span>
-              <span className="block">your market</span>
-              <span className="block">feels before</span>
-              <span className="block">you ever</span>
-              <span className="block">speak.</span>
+              Digital authority for premium builders and service brands.
             </h1>
 
             <p
-              ref={subRef}
-              className={`mt-6 max-w-[35ch] font-body text-[rgba(174,185,204,0.78)] ${HERO_ANIM_INIT}`}
-              style={{
-                fontSize: "clamp(1.05rem, 1.34vw, 1.28rem)",
-                lineHeight: 1.72,
-                letterSpacing: "-0.015em",
-              }}
+              ref={copyRef}
+              className={`mt-7 max-w-[39ch] font-body text-[rgba(177,190,211,0.84)] ${HERO_ANIM_INIT}`}
+              style={{ fontSize: "clamp(1.02rem,1.25vw,1.23rem)", lineHeight: 1.72, letterSpacing: "-0.01em" }}
             >
-              Signature-caliber websites, embedded voice intake, and lead handling for premium
-              operators who cannot afford a generic first impression.
+              We design high-end websites, conversion systems, and AI-powered intake workflows so every qualified inquiry is captured,
+              routed, and turned into owner-ready opportunity.
             </p>
 
-            <div
-              ref={ctaRowRef}
-              className={`mt-9 flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-8 ${HERO_ANIM_INIT}`}
-            >
-              <MagneticButton
-                href={bookUrl}
-                variant="primary"
-                luxe
-                aria-label="Discuss your vision"
-              >
-                Discuss your vision
+            <div ref={ctaRowRef} className={`mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-7 ${HERO_ANIM_INIT}`}>
+              <MagneticButton href={bookUrl} variant="primary" luxe aria-label="Book a strategy call">
+                Book a strategy call
               </MagneticButton>
 
               <TransitionLink
                 href="/work"
-                className="group inline-flex items-center gap-2 font-body text-[12px] font-medium uppercase tracking-[0.22em] text-white/70 transition-colors duration-500 hover:text-white"
+                className="group inline-flex min-h-12 items-center gap-2 font-body text-[12px] font-medium uppercase tracking-[0.21em] text-white/72 transition-colors duration-500 hover:text-white focus-visible:text-white"
               >
-                <span className="border-b border-white/35 pb-1 transition-colors duration-500 group-hover:border-white/70">
+                <span className="border-b border-white/35 pb-1 transition-colors duration-500 group-hover:border-white/72 group-focus-visible:border-white/72">
                   View selected work
                 </span>
                 <svg
-                  className="h-3 w-3 shrink-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1"
+                  className="h-3 w-3 shrink-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1 group-focus-visible:translate-x-1"
                   viewBox="0 0 12 12"
                   fill="none"
                   stroke="currentColor"
@@ -411,103 +288,68 @@ export default function HeroSection({ ready }: Props) {
                 </svg>
               </TransitionLink>
             </div>
+          </div>
 
+          <div className="relative lg:min-h-[620px]">
             <div
-              ref={metricsRef}
-              className={`mt-10 flex flex-wrap gap-3 ${HERO_ANIM_INIT}`}
+              ref={proofRef}
+              className={`relative mx-auto flex h-full w-full max-w-[700px] flex-col justify-center ${HERO_ANIM_INIT}`}
+              style={{ transform: "translate3d(var(--hero-proof-x,0px), var(--hero-proof-y,0px), 0)" }}
             >
-              {METRICS.map((metric) => (
-                <div
-                  key={metric.label}
-                  className="rounded-full border border-white/[0.08] bg-white/[0.03] px-4 py-3 backdrop-blur-sm"
-                  style={{ boxShadow: "0 0 0 1px rgba(255,255,255,0.02) inset" }}
-                >
-                  <div className="font-display text-[1.22rem] leading-none tracking-[-0.05em] text-white/92">
-                    {metric.value}
+              <div className="relative overflow-hidden rounded-[30px] border border-white/10 bg-[linear-gradient(160deg,rgba(7,13,22,0.95),rgba(9,17,30,0.9))] p-6 shadow-[0_30px_80px_rgba(0,0,0,0.42)] backdrop-blur-sm sm:p-8">
+                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(115deg,transparent_30%,rgba(255,255,255,0.08)_50%,transparent_70%)] opacity-50 motion-safe:animate-[heroSignalSweep_7s_linear_infinite]" />
+
+                <div className="relative z-[2] grid gap-6 sm:gap-7">
+                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-4">
+                    <div>
+                      <p className="font-body text-[10px] uppercase tracking-[0.32em] text-white/56">Precision signal field</p>
+                      <p className="mt-2 font-display text-[2rem] leading-none tracking-[-0.04em] text-white">Owner-ready pipeline</p>
+                    </div>
+                    <span className="inline-flex min-h-10 items-center rounded-full border border-[rgba(201,168,76,0.38)] bg-[rgba(201,168,76,0.14)] px-4 font-body text-[11px] uppercase tracking-[0.2em] text-[rgba(255,241,203,0.94)]">
+                      97% qualified-fit score
+                    </span>
                   </div>
-                  <div className="mt-1 font-body text-[9px] uppercase tracking-[0.22em] text-white/38">
-                    {metric.label}
+
+                  <div className="grid gap-4 rounded-2xl border border-white/10 bg-[rgba(8,14,24,0.8)] p-4 sm:grid-cols-[1.1fr_0.9fr] sm:p-5">
+                    <div>
+                      <p className="font-body text-[10px] uppercase tracking-[0.26em] text-white/50">Lead qualification summary</p>
+                      <p className="mt-3 font-body text-[1rem] leading-relaxed text-white/86">
+                        “$420k estate pool + outdoor kitchen in Scottsdale. Budget approved. Decision maker on first call.”
+                      </p>
+                      <div className="mt-4 inline-flex min-h-9 items-center rounded-full border border-cyan-300/30 bg-cyan-300/10 px-3 font-body text-[10px] uppercase tracking-[0.2em] text-cyan-100">
+                        Routed to design + estimator within 2m 14s
+                      </div>
+                    </div>
+
+                    <div className="rounded-xl border border-white/10 bg-black/20 p-4">
+                      <p className="font-body text-[10px] uppercase tracking-[0.25em] text-white/48">Priority markets</p>
+                      <ul className="mt-3 grid gap-2">
+                        {LUXURY_SEGMENTS.map((segment) => (
+                          <li key={segment} className="inline-flex min-h-8 items-center justify-between rounded-lg border border-white/10 bg-white/[0.03] px-3 text-[0.78rem] text-white/85">
+                            <span>{segment}</span>
+                            <span className="text-[0.67rem] uppercase tracking-[0.18em] text-white/48">Active</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="grid gap-3 sm:grid-cols-3">
+                    {PIPELINE_STAGES.map((stage) => (
+                      <div key={stage.name} className="rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3">
+                        <p className="font-body text-[10px] uppercase tracking-[0.22em] text-white/46">{stage.name}</p>
+                        <p className="mt-2 font-display text-[1.55rem] leading-none tracking-[-0.04em] text-white/95">{stage.value}</p>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
 
-            <div ref={mobileVisualRef} className={`relative mt-12 lg:hidden ${HERO_ANIM_INIT}`}>
-              <HeroSignalInteractive compact />
-            </div>
-          </div>
-
-          <div className="relative hidden min-h-[620px] items-center lg:flex">
-            <div
-              ref={blueprintRef}
-              className={`pointer-events-none absolute inset-[-8%_-6%_-10%_-10%] ${HERO_ANIM_INIT}`}
-              style={{
-                transform: "translate3d(var(--hero-bx, 0px), var(--hero-by, 0px), 0)",
-              }}
-              aria-hidden="true"
-            >
-              <div className="absolute inset-[20%_14%_16%_18%] rounded-[999px] bg-[radial-gradient(circle_at_50%_42%,rgba(201,168,76,0.06)_0%,transparent_56%)]" />
-              <svg viewBox="0 0 820 700" className="h-full w-full">
-                <g fill="none">
-                  <line x1="460" y1="32" x2="460" y2="664" stroke="rgba(255,255,255,0.07)" />
-                  <line x1="142" y1="418" x2="758" y2="418" stroke="rgba(255,255,255,0.06)" />
-                  <line x1="244" y1="504" x2="758" y2="504" stroke="rgba(255,255,255,0.045)" />
-                  <line x1="244" y1="524" x2="758" y2="524" stroke="rgba(255,255,255,0.045)" />
-                  <line x1="244" y1="544" x2="758" y2="544" stroke="rgba(255,255,255,0.045)" />
-                  <circle
-                    cx="460"
-                    cy="332"
-                    r="194"
-                    stroke="rgba(255,255,255,0.065)"
-                    strokeDasharray="3 7"
-                  />
-                  <circle cx="460" cy="332" r="108" stroke="rgba(255,255,255,0.04)" />
-                  <path
-                    d="M 286 544 L 460 188 L 634 544"
-                    stroke="rgba(255,255,255,0.085)"
-                    strokeWidth="1.1"
-                  />
-                  <path
-                    d="M 336 420 L 460 264 L 584 420"
-                    stroke="rgba(255,255,255,0.055)"
-                    strokeWidth="1"
-                  />
-                  <path d="M 316 502 H 604" stroke="rgba(255,255,255,0.08)" />
-                  <path
-                    d="M 246 126 L 342 8"
-                    stroke="rgba(255,255,255,0.05)"
-                    strokeWidth="1"
-                  />
-                  <path
-                    d="M 562 8 L 658 126"
-                    stroke="rgba(255,255,255,0.05)"
-                    strokeWidth="1"
-                  />
-                </g>
-              </svg>
-            </div>
-
-            <div
-              ref={visualRef}
-              className={`relative z-[2] ml-auto h-[560px] w-[min(100%,620px)] ${HERO_ANIM_INIT}`}
-              style={{
-                transform: "translate3d(var(--hero-vx, 0px), var(--hero-vy, 0px), 0)",
-              }}
-            >
-              <HeroSignalInteractive className="h-full" />
+              <p className="mt-4 px-2 font-body text-[11px] uppercase tracking-[0.2em] text-white/46 sm:text-[10px]">
+                Designed for luxury contractors, custom builders, and premium home-service brands.
+              </p>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div
-        ref={scrollRef}
-        className={`pointer-events-none absolute bottom-8 left-1/2 z-[20] -translate-x-1/2 md:bottom-10 ${HERO_ANIM_INIT}`}
-        aria-hidden="true"
-      >
-        <div className="relative h-12 w-[2px] overflow-hidden rounded-full">
-          <div className="absolute inset-0 bg-gradient-to-b from-white/12 via-[rgba(201,168,76,0.12)] to-transparent" />
-          <div className="absolute inset-x-0 top-0 h-[42%] bg-gradient-to-b from-[var(--warm)]/24 to-transparent motion-safe:animate-[heroScrollShine_2.8s_ease-in-out_infinite]" />
         </div>
       </div>
     </section>
