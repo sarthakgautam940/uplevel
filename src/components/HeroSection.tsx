@@ -248,8 +248,10 @@ export default function HeroSection({ ready }: Props) {
         />
         <div className="absolute inset-0 opacity-60 [background:radial-gradient(700px_500px_at_28%_74%,rgba(9,17,33,0.78),transparent_72%)]" />
         <div className="absolute inset-0 opacity-40 [background:linear-gradient(140deg,rgba(197,214,255,0.06)_0%,transparent_28%,transparent_100%)]" />
-        <div className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(rgba(255,255,255,0.8)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.8)_1px,transparent_1px)] [background-size:120px_120px]" />
+        <div className="absolute inset-0 opacity-[0.12] [background:linear-gradient(90deg,transparent_0%,rgba(218,231,255,0.1)_38%,transparent_52%,rgba(200,219,255,0.08)_72%,transparent_100%)]" />
+        <div className="absolute inset-0 opacity-[0.2] [background:linear-gradient(180deg,transparent_0%,rgba(176,201,255,0.06)_48%,transparent_100%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,5,11,0.98)_0%,rgba(2,5,11,0.72)_36%,rgba(2,5,11,0.24)_58%,rgba(2,5,11,0.14)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_52%_44%,transparent_0%,rgba(2,5,11,0.36)_62%,rgba(2,5,11,0.88)_100%)]" />
       </div>
 
       <div className="relative z-[4] mx-auto min-h-[100dvh] w-full max-w-[1600px] px-6 pb-[max(3.5rem,calc(env(safe-area-inset-bottom)+1.75rem))] pt-[calc(3.3rem+env(safe-area-inset-top))] sm:px-8 lg:px-12 xl:px-16">
@@ -269,8 +271,8 @@ export default function HeroSection({ ready }: Props) {
               ref={headlineRef}
               className={`mt-6 max-w-[7.15ch] font-display text-[rgba(250,252,255,0.985)] ${HERO_ANIM_INIT}`}
               style={{
-                fontSize: "clamp(3.45rem,7.2vw,7.65rem)",
-                lineHeight: 0.84,
+                fontSize: "clamp(3.7rem,7.55vw,8rem)",
+                lineHeight: 0.82,
                 letterSpacing: "-0.072em",
               }}
             >
@@ -288,7 +290,7 @@ export default function HeroSection({ ready }: Props) {
 
             <p
               ref={copyRef}
-              className={`mt-8 max-w-[35ch] font-body text-[rgba(186,199,220,0.84)] ${HERO_ANIM_INIT}`}
+              className={`mt-10 max-w-[31ch] font-body text-[rgba(176,191,216,0.76)] ${HERO_ANIM_INIT}`}
               style={{
                 fontSize: "clamp(1.02rem,1.22vw,1.2rem)",
                 lineHeight: 1.66,
@@ -359,38 +361,49 @@ export default function HeroSection({ ready }: Props) {
                 transform: "translate3d(var(--hero-stage-x,0px),var(--hero-stage-y,0px),0)",
               }}
             >
-              <div className="absolute inset-[4%_4%_16%_9%] border border-white/8 bg-[linear-gradient(150deg,rgba(9,16,29,0.46),rgba(8,12,22,0.16))] shadow-[inset_0_0_120px_rgba(188,214,255,0.03)]" />
-              <div className="absolute inset-[11%_11%_28%_16%] border border-white/10" />
-              <div className="absolute inset-[17%_18%_38%_22%] border border-white/6" />
-
-              <div className="absolute right-[12%] top-[17%] h-[34%] w-[29%] bg-[radial-gradient(circle_at_50%_0%,rgba(230,238,255,0.18),transparent_78%)]" />
-              <div className="absolute left-[12%] top-[8%] h-[1px] w-[55%] bg-gradient-to-r from-transparent via-white/18 to-transparent" />
-              <div className="absolute bottom-[24%] right-[12%] h-[1px] w-[46%] bg-gradient-to-r from-transparent via-white/12 to-transparent" />
+              <div className="absolute inset-[11%_8%_20%_12%] bg-[radial-gradient(circle_at_72%_30%,rgba(154,196,255,0.14),transparent_64%)]" />
+              <div className="absolute inset-[12%_8%_22%_12%] rounded-[38px] border border-white/8 bg-[linear-gradient(152deg,rgba(10,16,28,0.42),rgba(8,12,22,0.18))] shadow-[inset_0_0_120px_rgba(188,214,255,0.02)]" />
+              <div className="absolute inset-[12%_8%_22%_12%] rounded-[38px] bg-[linear-gradient(110deg,transparent_6%,rgba(196,219,255,0.08)_44%,transparent_68%)] opacity-35" />
 
               <svg
-                className="absolute inset-[6%_4%_12%_8%] h-auto w-auto opacity-[0.18]"
-                viewBox="0 0 920 720"
+                className="absolute inset-[18%_12%_24%_16%] h-auto w-auto opacity-[0.32]"
+                viewBox="0 0 820 520"
                 fill="none"
               >
-                <path d="M110 620L460 180L808 620" stroke="rgba(255,255,255,0.12)" />
-                <path d="M185 620L460 260L734 620" stroke="rgba(255,255,255,0.08)" />
-                <path d="M0 560H920" stroke="rgba(255,255,255,0.06)" strokeDasharray="2 10" />
-                <path d="M0 620H920" stroke="rgba(255,255,255,0.05)" strokeDasharray="2 10" />
-                <path d="M460 0V720" stroke="rgba(255,255,255,0.06)" strokeDasharray="2 10" />
+                <path
+                  d="M40 420C150 384 246 312 320 266C416 206 488 164 610 124C686 98 748 88 780 84"
+                  stroke="rgba(223,235,255,0.22)"
+                  strokeWidth="1.4"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M40 420C150 384 246 312 320 266C416 206 488 164 610 124C686 98 748 88 780 84"
+                  stroke="rgba(128,205,255,0.45)"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeDasharray="6 16"
+                  className="motion-safe:animate-[heroSignalSweep_6.6s_linear_infinite]"
+                />
+                <circle cx="238" cy="318" r="5.5" fill="rgba(255,255,255,0.25)" />
+                <circle cx="430" cy="196" r="5.5" fill="rgba(255,255,255,0.25)" />
+                <circle cx="615" cy="122" r="5.5" fill="rgba(255,255,255,0.32)" />
+                <circle
+                  cx="615"
+                  cy="122"
+                  r="15"
+                  fill="none"
+                  stroke="rgba(176,221,255,0.26)"
+                  className="motion-safe:animate-[heroSignalPulse_2.9s_ease-in-out_infinite]"
+                />
               </svg>
-
-              <div className="absolute left-[19%] top-[22%] rounded-full border border-white/10 bg-white/[0.03] px-4 py-3 backdrop-blur-md">
-                <p className="font-body text-[9px] uppercase tracking-[0.26em] text-white/42">
-                  Market
-                </p>
-                <p className="mt-1 text-[0.92rem] text-white/80">Austin / Miami / Scottsdale</p>
+              <div className="absolute left-[24%] top-[46%] rounded-full bg-[rgba(6,10,18,0.52)] px-3 py-1.5 text-[9px] uppercase tracking-[0.2em] text-white/48">
+                Captured
               </div>
-
-              <div className="absolute right-[18%] top-[44%] rounded-full border border-white/10 bg-white/[0.03] px-4 py-3 backdrop-blur-md">
-                <p className="font-body text-[9px] uppercase tracking-[0.26em] text-white/42">
-                  Perception
-                </p>
-                <p className="mt-1 text-[0.92rem] text-white/80">Premium before contact</p>
+              <div className="absolute left-[47%] top-[34%] rounded-full bg-[rgba(6,10,18,0.52)] px-3 py-1.5 text-[9px] uppercase tracking-[0.2em] text-white/48">
+                Qualified
+              </div>
+              <div className="absolute left-[67%] top-[25%] rounded-full bg-[rgba(6,10,18,0.52)] px-3 py-1.5 text-[9px] uppercase tracking-[0.2em] text-white/48">
+                Routed
               </div>
             </div>
 
