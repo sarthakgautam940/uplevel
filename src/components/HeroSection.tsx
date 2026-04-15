@@ -274,7 +274,16 @@ export default function HeroSection({ ready }: Props) {
                 letterSpacing: "-0.072em",
               }}
             >
-              The first impression that wins the premium bid.
+              That first{" "}
+              <span
+                className="inline-block text-[1.08em] text-[rgba(252,254,255,0.995)]"
+                style={{
+                  textShadow:
+                    "0 0 16px rgba(236,242,255,0.16), 0 0 34px rgba(210,224,250,0.12)",
+                }}
+              >
+                impression.
+              </span>
             </h1>
 
             <p
