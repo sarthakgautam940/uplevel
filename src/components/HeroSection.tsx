@@ -258,7 +258,7 @@ export default function HeroSection({ ready }: Props) {
         <div className="relative min-h-[calc(100dvh-5rem)]">
           <div
             ref={contentRef}
-            className="relative z-[8] max-w-[720px] pb-20 pt-10 lg:pb-0 lg:pt-14"
+            className="relative z-[8] max-w-[680px] pb-20 pt-14 lg:ml-8 lg:pb-0 lg:pt-24"
           >
             <p
               ref={eyebrowRef}
@@ -269,31 +269,25 @@ export default function HeroSection({ ready }: Props) {
 
             <h1
               ref={headlineRef}
-              className={`mt-6 max-w-[7.15ch] font-display text-[rgba(250,252,255,0.985)] ${HERO_ANIM_INIT}`}
+              className={`mt-6 max-w-[5.9ch] font-display text-[rgba(252,254,255,0.995)] ${HERO_ANIM_INIT}`}
               style={{
-                fontSize: "clamp(3.7rem,7.55vw,8rem)",
-                lineHeight: 0.82,
-                letterSpacing: "-0.072em",
+                fontSize: "clamp(3.95rem,8.1vw,8.7rem)",
+                lineHeight: 0.79,
+                letterSpacing: "-0.076em",
               }}
             >
-              That first{" "}
-              <span
-                className="inline-block text-[1.08em] text-[rgba(252,254,255,0.995)]"
-                style={{
-                  textShadow:
-                    "0 0 16px rgba(236,242,255,0.16), 0 0 34px rgba(210,224,250,0.12)",
-                }}
-              >
-                impression.
-              </span>
+              <span className="block">The first</span>
+              <span className="block">impression</span>
+              <span className="block">that wins the</span>
+              <span className="block">premium bid.</span>
             </h1>
 
             <p
               ref={copyRef}
-              className={`mt-10 max-w-[31ch] font-body text-[rgba(176,191,216,0.76)] ${HERO_ANIM_INIT}`}
+              className={`mt-12 max-w-[32ch] font-body text-[rgba(170,186,212,0.74)] ${HERO_ANIM_INIT}`}
               style={{
-                fontSize: "clamp(1.02rem,1.22vw,1.2rem)",
-                lineHeight: 1.66,
+                fontSize: "clamp(0.98rem,1.1vw,1.1rem)",
+                lineHeight: 1.74,
                 letterSpacing: "-0.012em",
               }}
             >
@@ -304,7 +298,7 @@ export default function HeroSection({ ready }: Props) {
 
             <div
               ref={ctaRef}
-              className={`mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-7 ${HERO_ANIM_INIT}`}
+              className={`mt-14 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-7 ${HERO_ANIM_INIT}`}
             >
               <MagneticButton href={bookUrl} variant="primary" luxe aria-label="Book a strategy call">
                 Book a strategy call
@@ -330,10 +324,7 @@ export default function HeroSection({ ready }: Props) {
               </TransitionLink>
             </div>
 
-            <div
-              ref={microProofRef}
-              className={`mt-10 flex flex-wrap items-center gap-3 ${HERO_ANIM_INIT}`}
-            >
+            <div ref={microProofRef} className={`mt-14 flex flex-wrap items-center gap-2 ${HERO_ANIM_INIT}`}>
               {[
                 "Luxury pools",
                 "Custom builders",
@@ -342,7 +333,7 @@ export default function HeroSection({ ready }: Props) {
               ].map((item) => (
                 <span
                   key={item}
-                  className="rounded-full border border-white/10 bg-white/[0.035] px-4 py-2.5 font-body text-[10px] uppercase tracking-[0.18em] text-white/58 backdrop-blur-sm"
+                  className="rounded-full border border-white/10 bg-white/[0.02] px-3 py-1.5 font-body text-[9px] uppercase tracking-[0.18em] text-white/34 backdrop-blur-sm"
                 >
                   {item}
                 </span>
@@ -361,58 +352,44 @@ export default function HeroSection({ ready }: Props) {
                 transform: "translate3d(var(--hero-stage-x,0px),var(--hero-stage-y,0px),0)",
               }}
             >
-              <div className="absolute inset-[11%_8%_20%_12%] bg-[radial-gradient(circle_at_72%_30%,rgba(154,196,255,0.14),transparent_64%)]" />
-              <div className="absolute inset-[12%_8%_22%_12%] rounded-[38px] border border-white/8 bg-[linear-gradient(152deg,rgba(10,16,28,0.42),rgba(8,12,22,0.18))] shadow-[inset_0_0_120px_rgba(188,214,255,0.02)]" />
-              <div className="absolute inset-[12%_8%_22%_12%] rounded-[38px] bg-[linear-gradient(110deg,transparent_6%,rgba(196,219,255,0.08)_44%,transparent_68%)] opacity-35" />
+              <div className="absolute inset-[8%_9%_24%_13%] bg-[radial-gradient(circle_at_74%_26%,rgba(154,196,255,0.18),transparent_66%)]" />
+              <div className="absolute inset-[14%_8%_22%_10%] rounded-[34px] border border-white/7 bg-[linear-gradient(152deg,rgba(10,16,28,0.3),rgba(8,12,22,0.14))]" />
+              <div className="absolute inset-[19%_13%_28%_15%] rounded-[28px] border border-white/8" />
+              <div className="absolute inset-[31%_18%_53%_20%] h-[1px] bg-gradient-to-r from-transparent via-white/16 to-transparent" />
+              <div className="absolute inset-[54%_24%_36%_28%] h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+              <div className="absolute left-[19%] top-[20%] h-[58%] w-[1px] bg-gradient-to-b from-transparent via-white/10 to-transparent" />
 
               <svg
-                className="absolute inset-[18%_12%_24%_16%] h-auto w-auto opacity-[0.32]"
+                className="absolute inset-[26%_16%_34%_24%] h-auto w-auto opacity-[0.16]"
                 viewBox="0 0 820 520"
                 fill="none"
               >
                 <path
-                  d="M40 420C150 384 246 312 320 266C416 206 488 164 610 124C686 98 748 88 780 84"
-                  stroke="rgba(223,235,255,0.22)"
-                  strokeWidth="1.4"
+                  d="M64 424C190 360 250 296 352 232C472 158 560 126 780 88"
+                  stroke="rgba(199,225,255,0.16)"
+                  strokeWidth="1.2"
                   strokeLinecap="round"
                 />
                 <path
-                  d="M40 420C150 384 246 312 320 266C416 206 488 164 610 124C686 98 748 88 780 84"
-                  stroke="rgba(128,205,255,0.45)"
-                  strokeWidth="2.2"
+                  d="M64 424C190 360 250 296 352 232C472 158 560 126 780 88"
+                  stroke="rgba(122,198,255,0.24)"
+                  strokeWidth="1.8"
                   strokeLinecap="round"
-                  strokeDasharray="6 16"
+                  strokeDasharray="5 18"
                   className="motion-safe:animate-[heroSignalSweep_6.6s_linear_infinite]"
                 />
-                <circle cx="238" cy="318" r="5.5" fill="rgba(255,255,255,0.25)" />
-                <circle cx="430" cy="196" r="5.5" fill="rgba(255,255,255,0.25)" />
-                <circle cx="615" cy="122" r="5.5" fill="rgba(255,255,255,0.32)" />
-                <circle
-                  cx="615"
-                  cy="122"
-                  r="15"
-                  fill="none"
-                  stroke="rgba(176,221,255,0.26)"
-                  className="motion-safe:animate-[heroSignalPulse_2.9s_ease-in-out_infinite]"
-                />
+                <circle cx="352" cy="232" r="4.8" fill="rgba(255,255,255,0.2)" />
+                <circle cx="520" cy="150" r="4.8" fill="rgba(255,255,255,0.2)" />
+                <circle cx="680" cy="110" r="4.8" fill="rgba(255,255,255,0.24)" />
               </svg>
-              <div className="absolute left-[24%] top-[46%] rounded-full bg-[rgba(6,10,18,0.52)] px-3 py-1.5 text-[9px] uppercase tracking-[0.2em] text-white/48">
-                Captured
-              </div>
-              <div className="absolute left-[47%] top-[34%] rounded-full bg-[rgba(6,10,18,0.52)] px-3 py-1.5 text-[9px] uppercase tracking-[0.2em] text-white/48">
-                Qualified
-              </div>
-              <div className="absolute left-[67%] top-[25%] rounded-full bg-[rgba(6,10,18,0.52)] px-3 py-1.5 text-[9px] uppercase tracking-[0.2em] text-white/48">
-                Routed
-              </div>
             </div>
 
             <div
               ref={dossierRef}
-              className={`absolute bottom-[8%] right-[5%] w-[min(560px,38vw)] border border-white/18 bg-[linear-gradient(165deg,rgba(9,15,28,0.97),rgba(7,12,23,0.94))] p-9 shadow-[0_50px_130px_rgba(0,0,0,0.58)] ${HERO_ANIM_INIT}`}
+              className={`absolute bottom-[6%] right-[4%] w-[clamp(420px,31vw,500px)] border border-white/14 bg-[linear-gradient(165deg,rgba(9,15,28,0.97),rgba(7,12,23,0.94))] p-10 shadow-[0_70px_140px_rgba(0,0,0,0.48)] ${HERO_ANIM_INIT}`}
               style={{
                 transform:
-                  "translate3d(var(--hero-dossier-x,0px),var(--hero-dossier-y,0px),0) rotate(-1.15deg)",
+                  "translate3d(var(--hero-dossier-x,0px),var(--hero-dossier-y,0px),0) rotate(-1.45deg)",
               }}
             >
               <div className="absolute inset-0 bg-[radial-gradient(120%_120%_at_90%_8%,rgba(82,122,194,0.14),transparent_42%)]" />
@@ -421,11 +398,11 @@ export default function HeroSection({ ready }: Props) {
                   Owner dossier
                 </p>
 
-                <h2 className="mt-4 max-w-[10.5ch] font-display text-[3.3rem] leading-[0.86] tracking-[-0.062em] text-white">
+                <h2 className="mt-4 max-w-[11ch] font-display text-[3rem] leading-[0.9] tracking-[-0.055em] text-white/95">
                   Premium lead secured.
                 </h2>
 
-                <p className="mt-5 max-w-[35ch] font-body text-[1.02rem] leading-relaxed text-white/78">
+                <p className="mt-5 max-w-[34ch] font-body text-[0.98rem] leading-relaxed text-white/74">
                   Custom wine cellar and climate system for a $350k scope. Budget verified,
                   architectural drawings attached, decision-maker engaged, consultation
                   confirmed.
