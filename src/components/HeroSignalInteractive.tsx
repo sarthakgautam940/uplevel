@@ -330,9 +330,9 @@ export default function HeroSignalInteractive({
 
   return (
     <div className={`relative h-full min-h-[500px] ${className}`}>
-      <div className="pointer-events-none absolute inset-[4%_4%_2%_2%] rounded-[999px] bg-[radial-gradient(circle_at_42%_46%,rgba(255,255,255,0.035)_0%,transparent_46%),radial-gradient(circle_at_78%_22%,rgba(201,168,76,0.055)_0%,transparent_26%)]" />
+      <div className="pointer-events-none absolute inset-[4%_4%_2%_2%] rounded-[999px] bg-[radial-gradient(circle_at_42%_46%,rgba(255,255,255,0.026)_0%,transparent_52%),radial-gradient(circle_at_78%_22%,rgba(201,168,76,0.042)_0%,transparent_28%)]" />
 
-      <section className="group absolute left-[2%] top-[10%] z-[2] w-[61%] rounded-[32px] border border-white/[0.08] bg-[linear-gradient(160deg,rgba(255,255,255,0.045)_0%,rgba(9,13,22,0.9)_100%)] px-6 py-6 shadow-[0_28px_100px_-42px_rgba(0,0,0,0.82)] backdrop-blur-[22px] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] motion-safe:hover:-translate-y-1.5">
+      <section className="group absolute left-[0%] top-[6%] z-[2] w-[67%] rounded-[32px] border border-white/[0.1] bg-[linear-gradient(160deg,rgba(255,255,255,0.052)_0%,rgba(9,13,22,0.92)_100%)] px-6 py-6 shadow-[0_28px_90px_-48px_rgba(0,0,0,0.84)] backdrop-blur-[18px] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] motion-safe:hover:-translate-y-1">
         <div className="flex items-center justify-between gap-3">
           <div>
             <p className="font-body text-[10px] uppercase tracking-[0.3em] text-white/38">
@@ -377,7 +377,7 @@ export default function HeroSignalInteractive({
           <p className="font-body text-[10px] uppercase tracking-[0.24em] text-white/34">
             {activeLead.client}
           </p>
-          <h3 className="mt-3 max-w-[12ch] font-display text-[clamp(2.15rem,4vw,3.2rem)] leading-[0.95] tracking-[-0.05em] text-white/95">
+          <h3 className="mt-3 max-w-[14ch] font-display text-[clamp(2.1rem,3.5vw,2.95rem)] leading-[0.95] tracking-[-0.05em] text-white/95">
             {activeMode.title}
           </h3>
           <p className="mt-4 max-w-[24ch] font-body text-[15px] leading-relaxed text-white/58">
@@ -390,7 +390,7 @@ export default function HeroSignalInteractive({
         </div>
       </section>
 
-      <section className="absolute right-[0%] top-[2%] z-[3] w-[38%] rounded-[30px] border border-white/[0.08] bg-[linear-gradient(160deg,rgba(255,255,255,0.04)_0%,rgba(8,11,18,0.9)_100%)] px-5 py-5 shadow-[0_24px_90px_-44px_rgba(0,0,0,0.84)] backdrop-blur-[20px] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] motion-safe:hover:-translate-y-1">
+      <section className="absolute right-[0%] top-[5%] z-[3] w-[31%] rounded-[26px] border border-white/[0.1] bg-[linear-gradient(160deg,rgba(255,255,255,0.04)_0%,rgba(8,11,18,0.9)_100%)] px-4 py-4 shadow-[0_22px_74px_-44px_rgba(0,0,0,0.84)] backdrop-blur-[16px] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] motion-safe:hover:-translate-y-1">
         <div className="flex items-center justify-between gap-3">
           <p className="font-body text-[10px] uppercase tracking-[0.24em] text-white/40">
             Lead queue
@@ -400,7 +400,7 @@ export default function HeroSignalInteractive({
           </p>
         </div>
 
-        <div className="mt-4 grid gap-2.5">
+        <div className="mt-3 grid gap-2">
           {LEADS.map((lead, index) => {
             const active = index === leadIndex;
             return (
@@ -423,7 +423,7 @@ export default function HeroSignalInteractive({
                     <p className="font-body text-[9px] uppercase tracking-[0.22em] text-white/36">
                       {lead.client}
                     </p>
-                    <p className="mt-1 font-body text-[14px] leading-relaxed text-white/80">
+                    <p className="mt-1 font-body text-[13px] leading-relaxed text-white/80">
                       {lead.inquiry}
                     </p>
                   </div>
@@ -437,7 +437,7 @@ export default function HeroSignalInteractive({
         </div>
       </section>
 
-      <section className="absolute bottom-[3%] right-[7%] z-[4] w-[58%] rounded-[28px] border border-white/[0.08] bg-[linear-gradient(160deg,rgba(255,255,255,0.04)_0%,rgba(8,11,18,0.88)_100%)] px-5 py-5 shadow-[0_22px_80px_-42px_rgba(0,0,0,0.82)] backdrop-blur-[20px] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] motion-safe:hover:-translate-y-1">
+      <section className="absolute bottom-[8%] left-[8%] z-[4] w-[66%] rounded-[24px] border border-white/[0.08] bg-[linear-gradient(160deg,rgba(255,255,255,0.028)_0%,rgba(8,11,18,0.86)_100%)] px-5 py-4 shadow-[0_18px_52px_-36px_rgba(0,0,0,0.82)] backdrop-blur-[14px] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
         <div className="flex items-center justify-between gap-4">
           <div>
             <p className="font-body text-[10px] uppercase tracking-[0.24em] text-white/38">
