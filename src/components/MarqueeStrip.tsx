@@ -6,14 +6,15 @@ type Props = {
 };
 
 const DEFAULT_ITEMS = [
-  "Premium Digital Experiences",
-  "Applied AI Intelligence",
+  "Founder-led execution",
+  "Affluent-market positioning  ·  Conversion architecture  ·  Faster follow-up",
+  "Luxury website design",
   "14-Day Builds",
-  "Luxury Service Businesses",
-  "Core Web Vitals 98%",
-  "No Templates",
-  "Award-Winning Design",
-  "Virginia LLC",
+  "AI voice intake",
+  "Missed-call recovery",
+  "No templates",
+  "TSA Award-Winning",
+  "Lead routing automation",
 ];
 
 export default function MarqueeStrip({

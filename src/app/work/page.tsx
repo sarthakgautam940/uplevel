@@ -54,8 +54,8 @@ export default function WorkPage() {
               <span className="text-[var(--text-dim)]">are proven.</span>
             </h1>
             <p className="mx-auto mt-10 max-w-[50ch] font-body text-[16px] leading-[1.72] text-[var(--text-dim)]">
-              Verified competition results and real client outcomes. No stock
-              photos, no mockups, no invented firm names.
+              Verified competition results and real client work. No stock photography, no mockups, no
+              invented case studies.
             </p>
           </div>
         </section>
@@ -79,7 +79,7 @@ export default function WorkPage() {
               </h2>
               <div className="flex flex-wrap items-center gap-5">
                 <MagneticButton href={bookUrl} variant="primary">
-                  Book a strategy call
+                  Book a fit call →
                 </MagneticButton>
                 <TransitionLink
                   href="/contact"

@@ -51,7 +51,7 @@ export default function ServicesPage() {
               <span className="text-[var(--text-dim)]">for your business.</span>
             </h1>
             <p className="mt-8 max-w-[48ch] font-body text-[15px] leading-[1.72] text-[var(--text-dim)]">
-              Every engagement starts with a 20-minute fit call. If we are not the right match, you
+              Every engagement starts with a 20-minute fit call. If UpLevel is not the right match, you
               will know before you commit a dollar.
             </p>
           </div>
@@ -67,13 +67,13 @@ export default function ServicesPage() {
               Pricing
             </p>
             <p className="mt-3 max-w-[40ch] font-display text-[clamp(1.15rem,2vw,1.45rem)] font-medium leading-snug tracking-[-0.02em] text-neutral-800">
-              Three retainers. One standard of build quality.
+              Three tiers. One standard of execution.
             </p>
             <div className="mt-12">
               <ServiceTierCards variant="paper" />
             </div>
             <p className="mt-10 max-w-[52ch] font-body text-[12px] leading-relaxed text-neutral-600">
-              All pricing USD. Monthly retainer begins after launch. Payment schedules available.
+              All pricing USD. Monthly retainer begins after launch. Deposit-on-signing, balance at launch.
             </p>
           </div>
         </section>
@@ -139,8 +139,8 @@ export default function ServicesPage() {
                   <span className="text-[var(--text-dim)]">which tier?</span>
                 </h2>
                 <p className="mt-6 max-w-[40ch] font-body text-[15px] leading-[1.75] text-[var(--text-dim)]">
-                  The fit call is how we map scope, timing, and model — without a pitch deck. If we are
-                  not the right match, you will hear that clearly.
+                  The fit call is where scope, timeline, and tier are mapped — without a pitch deck. If
+                  UpLevel is not the right fit, you will hear that directly.
                 </p>
                 <p className="mt-8 font-display text-[clamp(1.35rem,2.8vw,2rem)] font-medium leading-snug tracking-[-0.02em] text-[var(--warm)]">
                   The call decides.
@@ -153,13 +153,13 @@ export default function ServicesPage() {
                     Reserve
                   </p>
                   <p className="mt-3 font-body text-[14px] leading-[1.65] text-[var(--text-dim)]">
-                    Pick a time that works. You will get a calendar invite and a single point of contact
-                    — no handoffs.
+                    Pick a time that works. You get a calendar invite and one thread — no handoffs, no
+                    account managers.
                   </p>
                 </div>
                 <div className="flex flex-col gap-6">
                   <MagneticButton href={bookUrl} variant="primary">
-                    Book the fit call
+                    See what I would change →
                   </MagneticButton>
                   <div className="h-px w-full bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
                   <div>

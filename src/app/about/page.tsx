@@ -17,27 +17,27 @@ const principles = [
   {
     n: "01",
     label: "Conversion over decoration.",
-    body: "If it doesn't sharpen trust or move the right visitor forward — it doesn't stay. Beautiful is a byproduct of clear. Every element on every page is tested against one question: does this move someone closer to calling?",
+    body: "If it doesn't sharpen trust or move the right visitor toward a call — it doesn't stay. Beautiful is a byproduct of clarity. Every element is tested against one question: does this move someone closer to contacting you?",
   },
   {
     n: "02",
     label: "Clarity as a premium signal.",
-    body: "Confusion reads cheap faster than bad taste does. Every element on every page has a reason to be there. If two layouts both work, the one that requires less interpretation wins.",
+    body: "Confusion reads cheap faster than bad taste. Every element has a reason. If two layouts both work, the one that requires less interpretation always wins.",
   },
   {
     n: "03",
     label: "One operator. Zero dilution.",
-    body: "No account managers between strategy and execution. Every decision made by the person building it. That constraint is not a limitation — it is the reason quality doesn't dilute.",
+    body: "No account managers between strategy and execution. Every decision made by the person building it. That constraint is not a limitation — it is why quality does not dilute.",
   },
   {
     n: "04",
     label: "Proof before promise.",
-    body: "Standards are shown through the work, the response time, and the decisions — not through what we claim to be. If it isn't in the work index, it didn't happen.",
+    body: "Standards are shown through the work, the response time, and the decisions — not through claims. If it isn't in the work index, it didn't happen.",
   },
   {
     n: "05",
     label: "Technology should disappear.",
-    body: "AI is not the product. The buyer's experience is. The best AI integration is the one your clients never notice — it just means they got an answer at 11pm and called you in the morning.",
+    body: "AI is not the product. The buyer's experience is. The best integration is the one clients never notice — it just means they got an answer at 11pm and called you in the morning.",
   },
 ];
 
@@ -45,22 +45,22 @@ const standards = [
   {
     n: "01",
     title: "Direct communication",
-    body: "You reach the person building your site — not an account manager.",
+    body: "You reach the person building the work — not an account manager.",
   },
   {
     n: "02",
     title: "Scope precision",
-    body: "Every SOW is specific. Additional work beyond scope is invoiced at the agreed rate, never assumed.",
+    body: "Every Statement of Work is specific. Work beyond scope is invoiced at the agreed rate — never assumed, never surprise-billed.",
   },
   {
     n: "03",
     title: "No decorative strategy",
-    body: "Every recommendation has a revenue rationale.",
+    body: "Every recommendation has a revenue rationale. If it doesn't make you easier to trust or easier to call, it doesn't belong.",
   },
   {
     n: "04",
     title: "14-day builds",
-    body: "Not because it's rushed — because the system is built to move precisely.",
+    body: "Not because it is rushed — because the system is designed to move at this speed precisely.",
   },
 ] as const;
 
@@ -68,17 +68,17 @@ const purposeCards = [
   {
     label: "What we do",
     statement:
-      "To build digital systems that make premium service businesses look and perform as well online as they do in real life — and close the gap between attention and action.",
+      "To build digital systems that make premium service businesses appear and perform online at the level they already operate — and close the gap between the quality of the work and the quality of the first impression.",
   },
   {
     label: "What we're working toward",
     statement:
-      "A market where the best operators are not hidden behind weak digital first impressions. Where craft is visible. Where quality finds its audience.",
+      "A market where the best operators are not lost behind generic digital presences. Where craft is visible. Where quality finds its audience before the conversation even starts.",
   },
   {
     label: "Why it matters",
     statement:
-      "To remove the friction, doubt, and dead space that cost high-value businesses trust before the first conversation ever starts.",
+      "To remove the friction, hesitation, and dead space that cost high-value businesses trust before the first conversation begins.",
   },
 ] as const;
 
@@ -175,11 +175,10 @@ export default function AboutPage() {
                 </h2>
               </div>
               <p className="font-body text-[14px] leading-[1.75] text-neutral-600 lg:col-span-7 lg:max-w-[54ch] lg:pb-1">
-                The gap between the quality of what premium service businesses do and the quality of how
-                they appear online is not an oversight. It is the result of an industry that prioritizes
-                visual templates over conversion systems, and beautiful screenshots over measurable business
-                outcomes. UpLevel exists to close that gap — specifically for businesses whose work has
-                already earned the right to look as good as it is.
+                The gap between the quality of work premium service businesses deliver and how they appear
+                online is not an oversight. It is what happens when design agencies prioritize screenshots
+                over outcomes and templates over strategy. UpLevel exists to close that gap — specifically
+                for businesses whose work has already earned the right to look as good as it is.
               </p>
             </div>
 
@@ -247,8 +246,7 @@ export default function AboutPage() {
                   <span className="text-[var(--text-dim)]">agreement.</span>
                 </h2>
                 <p className="mt-8 max-w-[36ch] border-l border-[color-mix(in_srgb,var(--warm)_35%,var(--border))] pl-5 font-body text-[14px] leading-[1.75] text-[var(--text-dim)] md:mt-9 md:pl-6 md:text-[15px]">
-                  Four commitments, written in plain language — the same terms you&apos;d get in scope, just
-                  legible up front.
+                  Four commitments — the same terms you would find in scope, written in plain language.
                 </p>
               </div>
 
@@ -329,7 +327,7 @@ export default function AboutPage() {
                 </h2>
               </div>
               <p className="max-w-[42ch] font-body text-[14px] leading-[1.72] text-[var(--text-dim)] md:justify-self-end md:text-right">
-                Not a values slide. The actual criteria used when a design choice has two reasonable paths.
+                Not a values slide. The actual criteria used when a decision has two defensible paths.
               </p>
             </div>
 
@@ -400,23 +398,21 @@ export default function AboutPage() {
                   {brand.operatorTitle}
                 </h2>
                 <p className="mt-6 max-w-[58ch] font-body text-[15px] leading-[1.78] text-[var(--text-dim)] md:mt-7 md:text-[16px]">
-                  I started UpLevel after too many conversations where serious operators thought they were
-                  hiring the person with the judgment — and got a conveyor belt instead. The commitment is
-                  plain: the same person on the first call builds the work, answers when it needs attention,
-                  and stays accountable long after launch. I keep the roster small on purpose, not as a flex,
-                  but because good work doesn&apos;t happen at arm&apos;s length. I care whether clients are
-                  proud to send a prospect to their site, and I stay stubborn about the details that earn that
-                  trust. If the fit isn&apos;t right, I&apos;ll say so before anyone asks for a commitment.
-                  What I&apos;m building is work that still holds up years later, relationships that stay
-                  human, and a practice I&apos;m willing to be judged on — that&apos;s the bar I hold for myself
-                  first.
+                  I started UpLevel because I kept seeing premium businesses lose the digital first
+                  impression. Incredible firms with beautiful work were being sold online by generic
+                  websites, slow follow-up, and clunky inquiry systems. I build premium websites, AI voice
+                  intake, and automation workflows so the online experience finally matches the quality of
+                  the work behind it. I keep the roster intentionally small because I would rather build a
+                  handful of category-defining systems than scale into another agency where quality dilutes
+                  with headcount. The person on the first call is the person in the repository. That is the
+                  arrangement — and it is why it works.
                 </p>
               </div>
 
               <div className="flex w-full justify-center lg:col-span-4 lg:justify-end lg:pl-1">
                 <blockquote className="w-full rounded-sm border border-[var(--border)] border-l-[3px] border-l-[color-mix(in_srgb,var(--warm)_55%,var(--border))] bg-[color-mix(in_srgb,var(--surface)_75%,transparent)] px-5 py-6 text-left md:px-6 md:py-7 lg:sticky lg:top-28">
                   <p className="font-display text-[clamp(1rem,1.55vw,1.15rem)] font-normal leading-snug tracking-[-0.015em] text-[var(--text)]">
-                    &ldquo;Selective by design. Serious by default.&rdquo;
+                    &ldquo;The work either holds up or it doesn&apos;t. That&apos;s the only bar.&rdquo;
                   </p>
                   <footer className="mt-4 font-body text-[10px] uppercase tracking-[0.18em] text-[var(--text-dim)]">
                     Operating posture
@@ -507,7 +503,7 @@ export default function AboutPage() {
                   </p>
                   <div className="mt-6 flex flex-col gap-4">
                     <MagneticButton href={bookUrl} variant="primary" className="shadow-sm">
-                      Book the fit call
+                      See what I would change →
                     </MagneticButton>
                     <div className="h-px bg-neutral-200/90" />
                     <div className="w-full min-w-0">

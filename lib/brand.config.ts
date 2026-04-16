@@ -14,9 +14,9 @@ export const bookUrl =
 export const brand = {
   legalName: "UpLevel Services LLC",
   name: "UpLevel",
-  shortTagline: "Precision-built for premium operators.",
+  shortTagline: "Precision-built for luxury service businesses.",
   tagline:
-    "Premium digital experiences and embedded AI intelligence for luxury service businesses.",
+    "Premium websites, AI voice intake, and automation for luxury builders, designers, and specialty contractors.",
   jurisdiction: "Virginia, United States",
   operator: "Sarthak Gautam",
   operatorTitle: "Founder & Manager",
@@ -120,22 +120,22 @@ export const brand = {
     {
       step: "01",
       title: "Understand the gap",
-      body: "One focused 30-minute call. No questionnaire. No kickoff deck. We learn what the site is losing today — and map the revenue cost of the current state.",
+      body: "One focused 30-minute call. No questionnaire, no kickoff deck. We map what your current digital system is costing in lost inquiries — and what it would take to close that gap.",
     },
     {
       step: "02",
       title: "Map the system",
-      body: "Site structure, AI configuration, automation flow. Every decision made before a single pixel is placed. You see the full plan before anything is built.",
+      body: "Site structure, AI configuration, automation flow — every decision locked before a pixel is placed. You see the complete system before anything is built.",
     },
     {
       step: "03",
       title: "Build at the standard",
-      body: "Front-end built in Next.js. Vapi AI configured for your niche. Make.com connects lead capture to your phone within 30 seconds of a call.",
+      body: "Frontend in Next.js. Vapi AI configured for your specific niche. Make.com delivers qualified leads to your phone within 30 seconds of every call.",
     },
     {
       step: "04",
-      title: "Live in 14 days",
-      body: "Deployed, tested, and handed off with full context. Monthly optimization from day 15 onward — the site improves every month without you thinking about it.",
+      title: "Deployed in 14 days",
+      body: "Deployed, tested, and handed off with full context. Monthly optimization begins on day 15 — the system improves continuously without you managing it.",
     },
   ],
 
@@ -143,11 +143,11 @@ export const brand = {
     {
       tier: "T3",
       layer: "Complete System",
-      name: "Full Stack",
-      price: "$18,000",
-      monthly: "$1,497 / mo",
-      headline: "Full Layers 1 + 2 + 3. Site + AI + Automation — complete.",
-      roiLine: "At $180K average job, one client per month = 10× annual return.",
+      name: "Market Domination",
+      price: "$55,000",
+      monthly: "$6,500 / mo",
+      headline: "Site + AI + SEO + automation + social kit — the complete system.",
+      roiLine: "At $200K average project, one recovered client relationship covers the year's investment twice over.",
       items: [
         "Custom Next.js site (no templates)",
         "Embedded AI voice or chat intake",
@@ -162,11 +162,11 @@ export const brand = {
     {
       tier: "T2",
       layer: "Most Selected",
-      name: "Digital Presence",
-      price: "$9,500",
-      monthly: "$997 / mo",
-      headline: "Full Layers 1 + 2. Site + AI intake. The standard engagement.",
-      roiLine: "At $120K average job, less than one job covers the year.",
+      name: "Growth Partner",
+      price: "$25,000",
+      monthly: "$3,500 / mo",
+      headline: "Site + AI voice intake + full automation. The standard engagement.",
+      roiLine: "At $120K average job, one recovered lead covers most of the year's investment.",
       items: [
         "Custom Next.js site (no templates)",
         "Embedded AI lead intake (Vapi or chat)",
@@ -182,9 +182,9 @@ export const brand = {
       tier: "T1",
       layer: "Foundation",
       name: "Audit + Rebuild",
-      price: "$4,500",
-      monthly: "$497 / mo",
-      headline: "Layer 1 only. For sites that are close — but not converting.",
+      price: "$12,000",
+      monthly: "$1,497 / mo",
+      headline: "For sites that are close — but not converting. Site strategy, custom rebuild, analytics foundation.",
       roiLine: "Can be upgraded to include AI at any time.",
       items: [
         "Full site audit + conversion map",
@@ -200,23 +200,23 @@ export const brand = {
   faq: [
     {
       q: "Who is this for?",
-      a: "Service businesses where a single closed job pays back the site investment. Think legal, financial, medical, aviation, luxury trades. If your average client is worth $5K+, the math works.",
+      a: "Luxury service businesses — custom pool builders, wine cellar designers, custom home builders, luxury outdoor living companies, and premium interior designers — whose work commands high project values but whose digital presence doesn't reflect that quality.",
     },
     {
-      q: "How is UpLevel different from a freelancer or agency?",
-      a: "No account managers, no bloated team, no six-week discovery phase. You work directly with the operator — the person building your site is the person on your calls. Capped at 12 clients total so quality doesn't dilute.",
+      q: "Why are your projects priced higher than typical web design?",
+      a: "Because the work is not just design. Each engagement rebuilds positioning, conversion flow, AI intake systems, and lead-response automation. The price reflects the commercial infrastructure being built, not the hours spent on pixels.",
     },
     {
-      q: "What does the AI component actually do?",
-      a: "It captures leads 24/7 — qualifying, answering questions, and routing appointments — without a human on call. The most expensive missed lead is the one at 9pm on a Sunday.",
+      q: "Will AI make our brand feel impersonal?",
+      a: "Not if it is deployed correctly. The AI handles triage and missed opportunities — answering calls at 11pm, qualifying leads, routing summaries to your phone. Your team still owns every relationship and every close.",
     },
     {
-      q: "How long does a build take?",
-      a: "14 days from signed contract to launched site. Retainer work (monthly SEO, conversion refinement) continues after.",
+      q: "How involved do we need to be?",
+      a: "Very involved during discovery — your input shapes everything. Intentionally less burdened during build. Aligned on key decision points throughout. After launch, monthly optimization runs without requiring your time.",
     },
     {
-      q: "Do you work with businesses outside Virginia?",
-      a: "Yes. UpLevel is fully remote. Clients are across the US.",
+      q: "What happens after launch?",
+      a: "Monthly optimization, AI performance monitoring, lead routing improvements, and site refinements continue under the retainer. The system improves every month. You receive a performance report by the 10th of each month.",
     },
   ],
 } as const;

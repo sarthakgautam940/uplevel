@@ -7,18 +7,18 @@ import ContactForm from "@/components/ContactForm";
 export const metadata: Metadata = {
   title: "Contact — Let's see if it fits",
   description:
-    "Use the brief form or book a 30-minute strategy call. Honest assessment of whether UpLevel is the right fit — no sales script.",
+    "Use the brief form or book a 30-minute fit call. Honest assessment of whether UpLevel is the right fit — no pitch.",
   alternates: { canonical: `${siteUrl}/contact` },
 };
 
 const TRUST = [
   {
-    title: "30-minute strategy call.",
-    body: "No sales script. Honest assessment of whether UpLevel is the right fit for where you are now.",
+    title: "30-minute fit call.",
+    body: "No script. An honest assessment of whether UpLevel is the right fit — and if not, what would need to be true to get there.",
   },
   {
     title: "Straight answers.",
-    body: "If the scope, timing, or model isn't a match, you'll hear that directly — along with what would need to be true to move forward.",
+    body: "If the scope, timing, or model isn't a match, you will hear that clearly — along with what would need to change.",
   },
   {
     title: "Response within 1 business day.",
@@ -78,7 +78,7 @@ export default function ContactPage() {
                 </h1>
                 <p className="mt-8 max-w-[46ch] font-body text-[15px] leading-[1.72] text-[var(--text-dim)]">
                   Book a call to talk it through, or send a brief if you already know the gap. Either
-                  path gets the same standard: direct answers, no script.
+                  path gets the same standard: direct answers, no pitch.
                 </p>
 
                 <div className="mt-14 border-t border-[var(--border)] pt-12 md:mt-16 md:pt-14" aria-label="Contact options">
@@ -113,7 +113,7 @@ export default function ContactPage() {
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-1 text-[var(--text)] transition-colors hover:text-[var(--warm)]"
                         >
-                          Book a strategy call
+                          Book a fit call →
                           <span className="text-[var(--text-dim)]" aria-hidden="true">
                             →
                           </span>
@@ -124,7 +124,7 @@ export default function ContactPage() {
                           href="#project-brief"
                           className="inline-flex items-center gap-1 text-[var(--text)] transition-colors hover:text-[var(--warm)]"
                         >
-                          Send the project brief
+                          Send a brief →
                           <span className="text-[var(--text-dim)]" aria-hidden="true">
                             →
                           </span>

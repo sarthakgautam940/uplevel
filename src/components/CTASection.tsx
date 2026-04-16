@@ -195,14 +195,14 @@ export default function CTASection() {
             </h2>
 
             <p className="mt-8 max-w-[40ch] font-body text-[16px] leading-[1.72] text-[var(--text-dim)]">
-              You will leave with a clear read on what is broken, what to fix first, and whether we are the right layer.
-              No pitch deck. No retainers pitched on mute.
+              You will leave with a clear read on what is broken, what to address first, and whether UpLevel is the
+              right fit. No pitch deck. No retainer pitched on mute.
             </p>
           </div>
 
           <div className="cta-col-right flex flex-col gap-7 lg:items-end lg:text-right">
-            <MagneticButton href={bookUrl} variant="primary" luxe aria-label="Schedule 30 minutes">
-              Schedule 30 minutes
+            <MagneticButton href={bookUrl} variant="primary" luxe aria-label="See what I would change →">
+              See what I would change →
             </MagneticButton>
             <a
               href={`mailto:${brand.email}?subject=UpLevel%20%E2%80%94%20project%20fit`}
@@ -211,8 +211,8 @@ export default function CTASection() {
               {brand.email}
             </a>
             <p className="max-w-[34ch] font-body text-[11px] leading-relaxed text-[var(--text-dim)] lg:ml-auto">
-              30 minutes. If we are not the right layer, you will know in the first five — and leave with a clear next
-              steps sheet.
+              30 minutes. If we are not the right fit, you will know in the first five — and leave with a clear
+              picture of what needs to change.
             </p>
           </div>
         </div>

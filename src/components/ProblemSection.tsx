@@ -11,19 +11,19 @@ const problems = [
   {
     n: "01",
     title: "The referral ceiling",
-    body: "Referrals send people to check your site. What they find decides whether they call.",
-    pull: "Referrals are a gift.\nGifts run out.",
+    body: "Referrals send people to your site. What they find in the first ten seconds decides whether they call — or move on.",
+    pull: "Referrals are earned.\nFirst impressions are permanent.",
   },
   {
     n: "02",
     title: "The 9pm decision",
-    body: "High-value decisions happen after hours — when your competitor has a site that loads fast, answers their question, and has a clear next step.",
+    body: "High-value decisions happen after hours — when your competitor's AI answered their question before you woke up.",
     pull: "Prospects decide\nbefore you're\nin the room.",
   },
   {
     n: "03",
     title: "The gap no one talks about",
-    body: "The work is excellent. The photography is good. The site still reads like 2019. That gap between quality of delivery and quality of appearance is a revenue problem.",
+    body: "The work is exceptional. The photography is strong. The site still reads like a template. That gap — between the quality of what you deliver and how you appear online — costs you clients before they ever call.",
     pull: "UpLevel closes\nthis gap.",
   },
 ];
@@ -166,21 +166,22 @@ export default function ProblemSection() {
             <div className="mb-20 grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,0.5fr)_minmax(0,1fr)] lg:gap-20 md:mb-24">
               <div>
                 <p className="prob-eyebrow font-body text-[11px] font-normal tracking-[-0.01em] text-[var(--text-dim)]">
-                  <span className="text-[var(--teal)]">Why</span> it feels unfair
+                  <span className="text-[var(--teal)]">Why</span> good work still gets overlooked
                 </p>
                 <h2
                   id="problem-heading"
                   className="prob-headline mt-5 font-display leading-[0.95] tracking-[-0.03em] text-[var(--text)]"
                   style={{ fontSize: "clamp(2rem,4.5vw,3.5rem)", overflow: "hidden", maxWidth: "20ch" }}
                 >
-                  They&apos;re not comparing you to competitors.
+                  In luxury service businesses, quality alone is not enough.
                 </h2>
               </div>
 
               <div className="lg:pt-8">
                 <p className="prob-subhead max-w-[42ch] font-body text-[16px] leading-[1.72] text-[var(--text-dim)]">
-                  They&apos;re comparing you to the last premium experience their money bought — Apple Store,
-                  architecture firm, luxury hotel. That&apos;s the benchmark. Not your competitor down the street.
+                  In luxury service businesses, quality alone is not enough. If your digital presence feels generic,
+                  slow, or hard to trust, better-fit clients hesitate before they ever contact you. UpLevel fixes the
+                  gap between exceptional craftsmanship and the online experience selling it.
                 </p>
               </div>
             </div>
