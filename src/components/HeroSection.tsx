@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { MouseEventHandler } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -13,6 +13,8 @@ gsap.registerPlugin(ScrollTrigger);
 type Props = { ready: boolean };
 
 const HERO_ANIM_INIT = "opacity-0 motion-reduce:opacity-100";
+const STATUS_STEPS = ["Lead captured", "Qualified", "Routed"] as const;
+const TYPE_LINE_FULL = "Custom wine cellar — $350K scope";
 
 function clampOffset(value: number, scale: number, max: number) {
   const shifted = value * scale;
@@ -22,6 +24,8 @@ function clampOffset(value: number, scale: number, max: number) {
 }
 
 export default function HeroSection({ ready }: Props) {
+  const [statusIndex, setStatusIndex] = useState(0);
+  const [typedLine, setTypedLine] = useState("");
   const sectionRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const atmosphereRef = useRef<HTMLDivElement>(null);
@@ -161,6 +165,26 @@ export default function HeroSection({ ready }: Props) {
     };
   }, []);
 
+  useEffect(() => {
+    const id = window.setInterval(() => {
+      setStatusIndex((prev) => (prev + 1) % STATUS_STEPS.length);
+    }, 3600);
+    return () => window.clearInterval(id);
+  }, []);
+
+  useEffect(() => {
+    setTypedLine("");
+    let index = 0;
+    const id = window.setInterval(() => {
+      index += 1;
+      setTypedLine(TYPE_LINE_FULL.slice(0, index));
+      if (index >= TYPE_LINE_FULL.length) {
+        window.clearInterval(id);
+      }
+    }, 28);
+    return () => window.clearInterval(id);
+  }, []);
+
   const schedulePointerFrame = () => {
     if (typeof window === "undefined") return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -269,14 +293,18 @@ export default function HeroSection({ ready }: Props) {
 
             <h1
               ref={headlineRef}
-              className={`mt-6 max-w-[5.9ch] font-display text-[rgba(252,254,255,0.995)] ${HERO_ANIM_INIT}`}
+              className={`mt-6 max-w-[6ch] font-display text-[rgba(252,254,255,0.995)] ${HERO_ANIM_INIT}`}
               style={{
                 fontSize: "clamp(3.95rem,8.1vw,8.7rem)",
                 lineHeight: 0.79,
                 letterSpacing: "-0.076em",
               }}
             >
-              That first impression.
+              The first impression
+              <br />
+              that wins the
+              <br />
+              higher-value client.
             </h1>
 
             <p
@@ -319,21 +347,7 @@ export default function HeroSection({ ready }: Props) {
               </TransitionLink>
             </div>
 
-            <div ref={microProofRef} className={`mt-14 flex flex-wrap items-center gap-2 ${HERO_ANIM_INIT}`}>
-              {[
-                "Custom pool builders",
-                "Custom home builders",
-                "Wine cellar designers",
-                "Luxury outdoor living",
-              ].map((item) => (
-                <span
-                  key={item}
-                  className="rounded-full border border-white/10 bg-white/[0.02] px-3 py-1.5 font-body text-[9px] uppercase tracking-[0.18em] text-white/34 backdrop-blur-sm"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
+            <div ref={microProofRef} className={`mt-10 h-[1px] w-0 ${HERO_ANIM_INIT}`} aria-hidden="true" />
           </div>
 
           <div
@@ -347,28 +361,28 @@ export default function HeroSection({ ready }: Props) {
                 transform: "translate3d(var(--hero-stage-x,0px),var(--hero-stage-y,0px),0)",
               }}
             >
-              <div className="absolute inset-[8%_9%_24%_13%] bg-[radial-gradient(circle_at_74%_26%,rgba(154,196,255,0.18),transparent_66%)]" />
-              <div className="absolute inset-[14%_8%_22%_10%] rounded-[34px] border border-white/7 bg-[linear-gradient(152deg,rgba(10,16,28,0.3),rgba(8,12,22,0.14))]" />
-              <div className="absolute inset-[19%_13%_28%_15%] rounded-[28px] border border-white/8" />
-              <div className="absolute inset-[31%_18%_53%_20%] h-[1px] bg-gradient-to-r from-transparent via-white/16 to-transparent" />
-              <div className="absolute inset-[54%_24%_36%_28%] h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-              <div className="absolute left-[19%] top-[20%] h-[58%] w-[1px] bg-gradient-to-b from-transparent via-white/10 to-transparent" />
+              <div className="absolute inset-[8%_10%_18%_16%] bg-[radial-gradient(circle_at_72%_24%,rgba(150,198,255,0.2),transparent_66%)]" />
+              <div className="absolute inset-[16%_12%_20%_16%] rounded-[28px] border border-white/8 bg-[linear-gradient(155deg,rgba(8,14,24,0.24),rgba(8,12,22,0.06))]" />
+              <div className="absolute inset-[22%_18%_26%_22%] rounded-[24px] border border-white/7" />
+              <div className="absolute left-[28%] top-[23%] h-[50%] w-[1px] bg-gradient-to-b from-transparent via-white/10 to-transparent" />
+              <div className="absolute left-[46%] top-[30%] h-[40%] w-[1px] bg-gradient-to-b from-transparent via-white/7 to-transparent" />
+              <div className="absolute bottom-[34%] left-[22%] h-[1px] w-[44%] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
               <svg
-                className="absolute inset-[26%_16%_34%_24%] h-auto w-auto opacity-[0.16]"
+                className="absolute inset-[31%_18%_32%_28%] h-auto w-auto opacity-[0.2]"
                 viewBox="0 0 820 520"
                 fill="none"
               >
                 <path
                   d="M64 424C190 360 250 296 352 232C472 158 560 126 780 88"
-                  stroke="rgba(199,225,255,0.16)"
+                  stroke="rgba(199,225,255,0.12)"
                   strokeWidth="1.2"
                   strokeLinecap="round"
                 />
                 <path
                   d="M64 424C190 360 250 296 352 232C472 158 560 126 780 88"
-                  stroke="rgba(122,198,255,0.24)"
-                  strokeWidth="1.8"
+                  stroke="rgba(122,198,255,0.3)"
+                  strokeWidth="1.6"
                   strokeLinecap="round"
                   strokeDasharray="5 18"
                   className="motion-safe:animate-[heroSignalSweep_6.6s_linear_infinite]"
@@ -381,7 +395,7 @@ export default function HeroSection({ ready }: Props) {
 
             <div
               ref={dossierRef}
-              className={`absolute bottom-[6%] right-[4%] w-[clamp(420px,31vw,500px)] border border-white/14 bg-[linear-gradient(165deg,rgba(9,15,28,0.97),rgba(7,12,23,0.94))] p-10 shadow-[0_70px_140px_rgba(0,0,0,0.48)] ${HERO_ANIM_INIT}`}
+              className={`absolute bottom-[5%] right-[4%] w-[clamp(460px,30vw,520px)] border border-white/12 bg-[linear-gradient(165deg,rgba(9,15,28,0.97),rgba(7,12,23,0.94))] p-10 shadow-[0_80px_150px_rgba(0,0,0,0.45)] ${HERO_ANIM_INIT}`}
               style={{
                 transform:
                   "translate3d(var(--hero-dossier-x,0px),var(--hero-dossier-y,0px),0) rotate(-1.45deg)",
@@ -389,23 +403,34 @@ export default function HeroSection({ ready }: Props) {
             >
               <div className="absolute inset-0 bg-[radial-gradient(120%_120%_at_90%_8%,rgba(82,122,194,0.14),transparent_42%)]" />
               <div className="relative">
-                <p className="font-body text-[10px] uppercase tracking-[0.3em] text-white/48">
-                  Owner Dossier  ·  Lead Qualified  ·  11:47 PM
+                <p className="font-body text-[10px] uppercase tracking-[0.24em] text-white/52">
+                  {STATUS_STEPS[0]} • {STATUS_STEPS[statusIndex]} 
+                </p>
+                <p className="mt-3 font-body text-[10px] uppercase tracking-[0.3em] text-white/48">
+                  Owner dossier
                 </p>
 
                 <p className="mt-4 max-w-[34ch] font-body text-[1.02rem] leading-relaxed text-white/88">
-                  Custom wine cellar and climate system — $350K scope.
+                  {typedLine}
                   <br />
-                  Budget confirmed. Architectural drawings attached.
+                  Budget confirmed
                   <br />
-                  Decision-maker engaged. Consultation: tomorrow 9 AM.
+                  Architectural drawings attached
+                  <br />
+                  Decision-maker engaged
                 </p>
 
-                <div className="mt-8 border-t border-white/10 pt-5">
+                <div className="mt-8 border-t border-white/10 pt-5 font-body text-[0.9rem] text-white/72">
+                  <p>Status: Routing to estimator</p>
+                  <p className="mt-1">Next: Owner review at 9:00 AM</p>
+                </div>
+
+                <div className="mt-5 border-t border-white/10 pt-4">
                   <p className="font-body text-[0.9rem] text-white/72">
                     Market: Austin + Westlake Hills  ·  Status: Owner review
                   </p>
                 </div>
+                <span className="absolute right-2 top-2 h-2.5 w-2.5 rounded-full bg-[rgba(166,210,255,0.85)] shadow-[0_0_16px_rgba(154,203,255,0.52)] motion-safe:animate-[heroSignalPulse_2.5s_ease-in-out_infinite]" />
               </div>
             </div>
           </div>
@@ -416,10 +441,10 @@ export default function HeroSection({ ready }: Props) {
                 <div className="absolute inset-0 bg-[radial-gradient(90%_70%_at_82%_14%,rgba(87,126,200,0.16),transparent_46%)]" />
                 <div className="relative">
                   <p className="font-body text-[10px] uppercase tracking-[0.26em] text-white/46">
-                    Owner Dossier  ·  Lead Qualified  ·  11:47 PM
+                    Lead captured • Processing
                   </p>
                   <p className="mt-3 text-sm leading-relaxed text-white/80">
-                    Custom wine cellar and climate system — $350K scope.
+                    {TYPE_LINE_FULL}
                     <br />
                     Budget confirmed. Architectural drawings attached.
                     <br />
