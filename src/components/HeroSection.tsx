@@ -282,7 +282,7 @@ export default function HeroSection({ ready }: Props) {
         <div className="relative min-h-[calc(100dvh-5rem)]">
           <div
             ref={contentRef}
-            className="relative z-[8] max-w-[680px] pb-20 pt-14 lg:ml-8 lg:pb-0 lg:pt-24"
+            className="relative z-[8] max-w-[640px] pb-16 pt-12 lg:ml-8 lg:pb-0 lg:pt-16"
           >
             <p
               ref={eyebrowRef}
@@ -293,23 +293,25 @@ export default function HeroSection({ ready }: Props) {
 
             <h1
               ref={headlineRef}
-              className={`mt-6 max-w-[6ch] font-display text-[rgba(252,254,255,0.995)] ${HERO_ANIM_INIT}`}
+              className={`mt-6 max-w-[6.3ch] font-display text-[rgba(252,254,255,0.995)] ${HERO_ANIM_INIT}`}
               style={{
-                fontSize: "clamp(3.95rem,8.1vw,8.7rem)",
-                lineHeight: 0.79,
-                letterSpacing: "-0.076em",
+                fontSize: "clamp(3.1rem,6.8vw,6.8rem)",
+                lineHeight: 0.82,
+                letterSpacing: "-0.065em",
               }}
             >
               The first impression
               <br />
               that wins the
               <br />
-              higher-value client.
+              higher-value
+              <br />
+              client.
             </h1>
 
             <p
               ref={copyRef}
-              className={`mt-12 max-w-[32ch] font-body text-[rgba(170,186,212,0.74)] ${HERO_ANIM_INIT}`}
+              className={`mt-11 max-w-[31ch] font-body text-[rgba(170,186,212,0.74)] ${HERO_ANIM_INIT}`}
               style={{
                 fontSize: "clamp(0.98rem,1.1vw,1.1rem)",
                 lineHeight: 1.74,
@@ -321,7 +323,7 @@ export default function HeroSection({ ready }: Props) {
 
             <div
               ref={ctaRef}
-              className={`mt-14 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-7 ${HERO_ANIM_INIT}`}
+              className={`mt-12 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-7 ${HERO_ANIM_INIT}`}
             >
               <MagneticButton href={bookUrl} variant="primary" luxe aria-label="Book a strategy call">
                 Book a strategy call
@@ -362,6 +364,7 @@ export default function HeroSection({ ready }: Props) {
               }}
             >
               <div className="absolute inset-[8%_10%_18%_16%] bg-[radial-gradient(circle_at_72%_24%,rgba(150,198,255,0.2),transparent_66%)]" />
+              <div className="absolute inset-[22%_24%_52%_10%] bg-[linear-gradient(115deg,transparent,rgba(124,195,255,0.12),transparent)] opacity-50" />
               <div className="absolute inset-[16%_12%_20%_16%] rounded-[28px] border border-white/8 bg-[linear-gradient(155deg,rgba(8,14,24,0.24),rgba(8,12,22,0.06))]" />
               <div className="absolute inset-[22%_18%_26%_22%] rounded-[24px] border border-white/7" />
               <div className="absolute left-[28%] top-[23%] h-[50%] w-[1px] bg-gradient-to-b from-transparent via-white/10 to-transparent" />
@@ -395,7 +398,7 @@ export default function HeroSection({ ready }: Props) {
 
             <div
               ref={dossierRef}
-              className={`absolute bottom-[5%] right-[4%] w-[clamp(460px,30vw,520px)] border border-white/12 bg-[linear-gradient(165deg,rgba(9,15,28,0.97),rgba(7,12,23,0.94))] p-10 shadow-[0_80px_150px_rgba(0,0,0,0.45)] ${HERO_ANIM_INIT}`}
+              className={`absolute bottom-[12%] right-[4%] w-[clamp(430px,29vw,500px)] border border-white/12 bg-[linear-gradient(165deg,rgba(9,15,28,0.97),rgba(7,12,23,0.94))] p-9 shadow-[0_80px_150px_rgba(0,0,0,0.45)] ${HERO_ANIM_INIT}`}
               style={{
                 transform:
                   "translate3d(var(--hero-dossier-x,0px),var(--hero-dossier-y,0px),0) rotate(-1.45deg)",
@@ -403,14 +406,14 @@ export default function HeroSection({ ready }: Props) {
             >
               <div className="absolute inset-0 bg-[radial-gradient(120%_120%_at_90%_8%,rgba(82,122,194,0.14),transparent_42%)]" />
               <div className="relative">
-                <p className="font-body text-[10px] uppercase tracking-[0.24em] text-white/52">
-                  {STATUS_STEPS[0]} • {STATUS_STEPS[statusIndex]} 
+                <p className="font-body text-[10px] uppercase tracking-[0.22em] text-white/58">
+                  Lead captured → {STATUS_STEPS[statusIndex]}
                 </p>
                 <p className="mt-3 font-body text-[10px] uppercase tracking-[0.3em] text-white/48">
                   Owner dossier
                 </p>
 
-                <p className="mt-4 max-w-[34ch] font-body text-[1.02rem] leading-relaxed text-white/88">
+                <p className="mt-4 max-w-[34ch] font-body text-[0.98rem] leading-relaxed text-white/86">
                   {typedLine}
                   <br />
                   Budget confirmed
@@ -420,12 +423,12 @@ export default function HeroSection({ ready }: Props) {
                   Decision-maker engaged
                 </p>
 
-                <div className="mt-8 border-t border-white/10 pt-5 font-body text-[0.9rem] text-white/72">
+                <div className="mt-7 border-t border-white/10 pt-4 font-body text-[0.88rem] text-white/72">
                   <p>Status: Routing to estimator</p>
                   <p className="mt-1">Next: Owner review at 9:00 AM</p>
                 </div>
 
-                <div className="mt-5 border-t border-white/10 pt-4">
+                <div className="mt-4 border-t border-white/10 pt-4">
                   <p className="font-body text-[0.9rem] text-white/72">
                     Market: Austin + Westlake Hills  ·  Status: Owner review
                   </p>
