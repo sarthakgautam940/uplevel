@@ -338,10 +338,10 @@ export default function HeroSection({ ready }: Props) {
       </div>
 
       <div className="relative z-[5] mx-auto max-w-[1600px] px-6 pb-[max(3rem,calc(env(safe-area-inset-bottom)+1.25rem))] pt-[calc(3.36rem+env(safe-area-inset-top))] sm:px-8 lg:px-12 lg:pb-[max(4rem,calc(env(safe-area-inset-bottom)+1.5rem))] lg:pt-[calc(3.84rem+env(safe-area-inset-top))] xl:px-16">
-        <div className="grid min-h-[100dvh] items-center gap-14 lg:grid-cols-[minmax(0,0.92fr)_minmax(480px,0.88fr)] lg:gap-[4.5rem]">
+        <div className="grid min-h-[100dvh] items-center gap-14 lg:grid-cols-[minmax(0,1.02fr)_minmax(500px,0.98fr)] lg:gap-[3.5rem]">
           <div
             ref={contentRef}
-            className="relative z-[6] flex max-w-[760px] flex-col justify-center"
+            className="relative z-[6] flex w-full max-w-none flex-col justify-center pr-2 lg:pr-8"
           >
             <p
               ref={kickerRef}
@@ -368,7 +368,7 @@ export default function HeroSection({ ready }: Props) {
 
             <p
               ref={subRef}
-              className={`mt-6 max-w-[35ch] font-body text-[rgba(174,185,204,0.78)] ${HERO_ANIM_INIT}`}
+              className={`mt-6 max-w-[46ch] font-body text-[rgba(174,185,204,0.78)] ${HERO_ANIM_INIT}`}
               style={{
                 fontSize: "clamp(1.05rem, 1.34vw, 1.28rem)",
                 lineHeight: 1.72,
