@@ -204,15 +204,19 @@ body.transitioning {
   }
 }
 
-@keyframes heroSilverBreathe {
+@keyframes heroImpressionPulse {
   0%,
   100% {
-    filter: drop-shadow(0 0 0 rgba(147, 186, 255, 0));
-    opacity: 0.9;
+    color: rgba(231, 240, 255, 0.94);
+    text-shadow:
+      0 0 0 rgba(151, 192, 255, 0),
+      0 0 0 rgba(151, 192, 255, 0);
   }
   50% {
-    filter: drop-shadow(0 0 12px rgba(152, 193, 255, 0.24));
-    opacity: 1;
+    color: rgba(241, 247, 255, 0.99);
+    text-shadow:
+      0 0 8px rgba(156, 197, 255, 0.18),
+      0 0 16px rgba(112, 163, 255, 0.14);
   }
 }
 

@@ -282,7 +282,7 @@ export default function HeroSection({ ready }: Props) {
         <div className="relative min-h-[calc(100dvh-5rem)]">
           <div
             ref={contentRef}
-            className="relative z-[8] max-w-[640px] pb-16 pt-12 lg:ml-8 lg:pb-0 lg:pt-16"
+            className="relative z-[8] max-w-[760px] pb-16 pt-12 lg:pb-0 lg:pt-16"
           >
             <p
               ref={eyebrowRef}
@@ -293,24 +293,24 @@ export default function HeroSection({ ready }: Props) {
 
             <h1
               ref={headlineRef}
-              className={`mt-6 max-w-[6.3ch] font-display text-[rgba(252,254,255,0.995)] ${HERO_ANIM_INIT}`}
+              className={`mt-6 max-w-[9.2ch] font-display text-[rgba(252,254,255,0.995)] ${HERO_ANIM_INIT}`}
               style={{
-                fontSize: "clamp(3.1rem,6.8vw,6.8rem)",
-                lineHeight: 0.82,
-                letterSpacing: "-0.065em",
+                fontSize: "clamp(3.1rem,6.2vw,6.2rem)",
+                lineHeight: 0.84,
+                letterSpacing: "-0.058em",
               }}
             >
               That{" "}
               <span className="font-serif italic text-[0.94em] text-white/96">first</span>
               <br />
-              <span className="inline-block text-[1.08em] leading-[0.78] text-transparent [background:linear-gradient(118deg,rgba(252,254,255,0.92)_0%,rgba(223,233,255,0.96)_46%,rgba(160,192,245,0.9)_100%)] bg-clip-text motion-safe:animate-[heroSilverBreathe_9s_ease-in-out_infinite]">
+              <span className="inline-block text-[1.07em] leading-[0.8] text-[rgba(231,240,255,0.96)] motion-safe:animate-[heroImpressionPulse_8.8s_ease-in-out_infinite]">
                 impression.
               </span>
             </h1>
 
             <p
               ref={copyRef}
-              className={`mt-11 max-w-[31ch] font-body text-[rgba(170,186,212,0.74)] ${HERO_ANIM_INIT}`}
+              className={`mt-11 max-w-[42ch] font-body text-[rgba(170,186,212,0.74)] ${HERO_ANIM_INIT}`}
               style={{
                 fontSize: "clamp(0.98rem,1.1vw,1.1rem)",
                 lineHeight: 1.74,
@@ -357,21 +357,17 @@ export default function HeroSection({ ready }: Props) {
           >
             <div
               ref={stageRef}
-              className={`absolute bottom-[8%] right-[1%] top-[8%] w-[58%] ${HERO_ANIM_INIT}`}
+              className={`absolute bottom-[10%] right-[2%] top-[10%] w-[56%] ${HERO_ANIM_INIT}`}
               style={{
                 transform: "translate3d(var(--hero-stage-x,0px),var(--hero-stage-y,0px),0)",
               }}
             >
-              <div className="absolute inset-[8%_10%_18%_16%] bg-[radial-gradient(circle_at_72%_24%,rgba(150,198,255,0.2),transparent_66%)]" />
-              <div className="absolute inset-[22%_24%_52%_10%] bg-[linear-gradient(115deg,transparent,rgba(124,195,255,0.12),transparent)] opacity-50" />
-              <div className="absolute inset-[16%_12%_20%_16%] rounded-[28px] border border-white/8 bg-[linear-gradient(155deg,rgba(8,14,24,0.24),rgba(8,12,22,0.06))]" />
-              <div className="absolute inset-[22%_18%_26%_22%] rounded-[24px] border border-white/7" />
-              <div className="absolute left-[28%] top-[23%] h-[50%] w-[1px] bg-gradient-to-b from-transparent via-white/10 to-transparent" />
-              <div className="absolute left-[46%] top-[30%] h-[40%] w-[1px] bg-gradient-to-b from-transparent via-white/7 to-transparent" />
-              <div className="absolute bottom-[34%] left-[22%] h-[1px] w-[44%] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+              <div className="absolute inset-[10%_10%_14%_16%] bg-[radial-gradient(circle_at_66%_24%,rgba(150,198,255,0.2),transparent_68%)]" />
+              <div className="absolute inset-[18%_14%_18%_20%] rounded-[34px] border border-white/10 bg-[linear-gradient(155deg,rgba(8,14,24,0.22),rgba(8,12,22,0.06))]" />
+              <div className="absolute inset-[24%_20%_24%_24%] rounded-[28px] border border-white/8" />
 
               <svg
-                className="absolute inset-[31%_18%_32%_28%] h-auto w-auto opacity-[0.2]"
+                className="absolute inset-[32%_22%_34%_31%] h-auto w-auto opacity-[0.22]"
                 viewBox="0 0 820 520"
                 fill="none"
               >
@@ -397,10 +393,9 @@ export default function HeroSection({ ready }: Props) {
 
             <div
               ref={dossierRef}
-              className={`absolute bottom-[12%] right-[4%] w-[clamp(430px,29vw,500px)] border border-white/12 bg-[linear-gradient(165deg,rgba(9,15,28,0.97),rgba(7,12,23,0.94))] p-9 shadow-[0_80px_150px_rgba(0,0,0,0.45)] ${HERO_ANIM_INIT}`}
+              className={`absolute bottom-[14%] right-[5%] w-[clamp(420px,28vw,480px)] border border-white/14 bg-[linear-gradient(165deg,rgba(8,14,26,0.98),rgba(7,12,23,0.95))] p-9 shadow-[0_58px_100px_rgba(0,0,0,0.42)] ${HERO_ANIM_INIT}`}
               style={{
-                transform:
-                  "translate3d(var(--hero-dossier-x,0px),var(--hero-dossier-y,0px),0) rotate(-1.45deg)",
+                transform: "translate3d(var(--hero-dossier-x,0px),var(--hero-dossier-y,0px),0)",
               }}
             >
               <div className="absolute inset-0 bg-[radial-gradient(120%_120%_at_90%_8%,rgba(82,122,194,0.14),transparent_42%)]" />
