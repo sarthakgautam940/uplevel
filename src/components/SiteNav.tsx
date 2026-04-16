@@ -126,6 +126,8 @@ export default function SiteNav() {
     return pathname === href || pathname.startsWith(href + "/");
   };
 
+  const heroToneDownCTA = pathname === "/" && !scrolled;
+
   return (
     <header
       ref={headerRef}
@@ -185,7 +187,16 @@ export default function SiteNav() {
               </TransitionLink>
             );
           })}
-          <MagneticButton href={bookUrl} variant="primary" aria-label="Book a call →">
+          <MagneticButton
+            href={bookUrl}
+            variant="primary"
+            aria-label="Book a call →"
+            className={
+              heroToneDownCTA
+                ? "!border-[rgba(201,168,76,0.44)] !bg-[rgba(201,168,76,0.78)] !shadow-[0_0_0_1px_rgba(201,168,76,0.14),inset_0_1px_0_rgba(255,255,255,0.07)]"
+                : ""
+            }
+          >
             Book a call →
           </MagneticButton>
         </nav>
