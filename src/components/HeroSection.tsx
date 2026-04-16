@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import type { MouseEventHandler } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -13,8 +13,6 @@ gsap.registerPlugin(ScrollTrigger);
 type Props = { ready: boolean };
 
 const HERO_ANIM_INIT = "opacity-0 motion-reduce:opacity-100";
-const STATUS_STEPS = ["Lead captured", "Qualified", "Routed"] as const;
-const TYPE_LINE_FULL = "Custom wine cellar — $350K scope";
 
 function clampOffset(value: number, scale: number, max: number) {
   const shifted = value * scale;
@@ -24,18 +22,15 @@ function clampOffset(value: number, scale: number, max: number) {
 }
 
 export default function HeroSection({ ready }: Props) {
-  const [statusIndex, setStatusIndex] = useState(0);
-  const [typedLine, setTypedLine] = useState("");
   const sectionRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const atmosphereRef = useRef<HTMLDivElement>(null);
-  const stageRef = useRef<HTMLDivElement>(null);
-  const dossierRef = useRef<HTMLDivElement>(null);
+  const portalWrapRef = useRef<HTMLDivElement>(null);
+  const artifactRef = useRef<HTMLDivElement>(null);
   const eyebrowRef = useRef<HTMLParagraphElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const copyRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
-  const microProofRef = useRef<HTMLDivElement>(null);
 
   const targetPtrRef = useRef({ x: 0, y: 0 });
   const smoothPtrRef = useRef({ x: 0, y: 0 });
@@ -56,14 +51,12 @@ export default function HeroSection({ ready }: Props) {
         headlineRef.current,
         copyRef.current,
         ctaRef.current,
-        stageRef.current,
-        dossierRef.current,
-        microProofRef.current,
+        portalWrapRef.current,
+        artifactRef.current,
       ].forEach((el) => {
         if (!el) return;
         el.style.opacity = "1";
         el.style.transform = "none";
-        el.style.filter = "none";
       });
       return;
     }
@@ -86,38 +79,32 @@ export default function HeroSection({ ready }: Props) {
         .fromTo(
           headlineRef.current,
           { opacity: 0, y: 34 },
-          { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" },
+          { opacity: 1, y: 0, duration: 0.85, ease: "power3.out" },
           0.16,
         )
         .fromTo(
           copyRef.current,
           { opacity: 0, y: 16 },
-          { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" },
+          { opacity: 1, y: 0, duration: 0.54, ease: "power3.out" },
           0.3,
         )
         .fromTo(
           ctaRef.current,
           { opacity: 0, y: 14 },
           { opacity: 1, y: 0, duration: 0.52, ease: "power3.out" },
-          0.38,
+          0.37,
         )
         .fromTo(
-          microProofRef.current,
-          { opacity: 0, y: 12 },
-          { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" },
-          0.44,
+          portalWrapRef.current,
+          { opacity: 0, y: 16, scale: 0.99 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.95, ease: "power2.out" },
+          0.24,
         )
         .fromTo(
-          stageRef.current,
-          { opacity: 0, scale: 0.985, y: 12 },
-          { opacity: 1, scale: 1, y: 0, duration: 1, ease: "power2.out" },
-          0.2,
-        )
-        .fromTo(
-          dossierRef.current,
-          { opacity: 0, y: 22, rotate: -2.2 },
-          { opacity: 1, y: 0, rotate: -1.15, duration: 0.92, ease: "power3.out" },
-          0.34,
+          artifactRef.current,
+          { opacity: 0, y: 24 },
+          { opacity: 1, y: 0, duration: 0.88, ease: "power3.out" },
+          0.36,
         );
 
       gsap.to(contentRef.current, {
@@ -131,19 +118,8 @@ export default function HeroSection({ ready }: Props) {
         },
       });
 
-      gsap.to(stageRef.current, {
-        yPercent: -4.5,
-        ease: "none",
-        scrollTrigger: {
-          trigger: root,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
-
-      gsap.to(dossierRef.current, {
-        yPercent: -6,
+      gsap.to(portalWrapRef.current, {
+        yPercent: -4,
         ease: "none",
         scrollTrigger: {
           trigger: root,
@@ -165,26 +141,6 @@ export default function HeroSection({ ready }: Props) {
     };
   }, []);
 
-  useEffect(() => {
-    const id = window.setInterval(() => {
-      setStatusIndex((prev) => (prev + 1) % STATUS_STEPS.length);
-    }, 3600);
-    return () => window.clearInterval(id);
-  }, []);
-
-  useEffect(() => {
-    setTypedLine("");
-    let index = 0;
-    const id = window.setInterval(() => {
-      index += 1;
-      setTypedLine(TYPE_LINE_FULL.slice(0, index));
-      if (index >= TYPE_LINE_FULL.length) {
-        window.clearInterval(id);
-      }
-    }, 28);
-    return () => window.clearInterval(id);
-  }, []);
-
   const schedulePointerFrame = () => {
     if (typeof window === "undefined") return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -203,12 +159,12 @@ export default function HeroSection({ ready }: Props) {
       smooth.x += (target.x - smooth.x) * 0.075;
       smooth.y += (target.y - smooth.y) * 0.075;
 
-      root.style.setProperty("--hero-atmo-x", `${clampOffset(smooth.x, 18, 10)}px`);
-      root.style.setProperty("--hero-atmo-y", `${clampOffset(smooth.y, 16, 9)}px`);
-      root.style.setProperty("--hero-stage-x", `${clampOffset(smooth.x, 10, 6)}px`);
-      root.style.setProperty("--hero-stage-y", `${clampOffset(smooth.y, 10, 6)}px`);
-      root.style.setProperty("--hero-dossier-x", `${clampOffset(smooth.x, 13, 8)}px`);
-      root.style.setProperty("--hero-dossier-y", `${clampOffset(smooth.y, 9, 6)}px`);
+      root.style.setProperty("--hero-atmo-x", `${clampOffset(smooth.x, 16, 10)}px`);
+      root.style.setProperty("--hero-atmo-y", `${clampOffset(smooth.y, 14, 9)}px`);
+      root.style.setProperty("--hero-portal-x", `${clampOffset(smooth.x, 11, 7)}px`);
+      root.style.setProperty("--hero-portal-y", `${clampOffset(smooth.y, 9, 6)}px`);
+      root.style.setProperty("--hero-artifact-x", `${clampOffset(smooth.x, 8, 5)}px`);
+      root.style.setProperty("--hero-artifact-y", `${clampOffset(smooth.y, 7, 4)}px`);
 
       const moving =
         Math.abs(target.x - smooth.x) > 0.001 ||
@@ -253,9 +209,9 @@ export default function HeroSection({ ready }: Props) {
       aria-label="Hero"
       onMouseMove={onPointerMove}
       onMouseLeave={onPointerLeave}
-      className="relative isolate overflow-hidden bg-[#03060d]"
+      className="relative isolate overflow-hidden bg-[#04070f]"
     >
-      <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(180deg,#03060d_0%,#040913_45%,#02050b_100%)]" />
+      <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(180deg,#04070f_0%,#040810_52%,#02050b_100%)]" />
 
       <div
         ref={atmosphereRef}
@@ -263,27 +219,22 @@ export default function HeroSection({ ready }: Props) {
         aria-hidden="true"
       >
         <div
-          className="absolute inset-0 opacity-90"
+          className="absolute inset-0"
           style={{
             transform: "translate3d(var(--hero-atmo-x,0px),var(--hero-atmo-y,0px),0)",
             background:
-              "radial-gradient(900px 560px at 76% 14%, rgba(61,102,173,0.22), transparent 68%)",
+              "radial-gradient(760px 540px at 72% 40%, rgba(138,178,246,0.17), transparent 68%)",
           }}
         />
-        <div className="absolute inset-0 opacity-60 [background:radial-gradient(700px_500px_at_28%_74%,rgba(9,17,33,0.78),transparent_72%)]" />
-        <div className="absolute inset-0 opacity-40 [background:linear-gradient(140deg,rgba(197,214,255,0.06)_0%,transparent_28%,transparent_100%)]" />
-        <div className="absolute inset-0 opacity-[0.12] [background:linear-gradient(90deg,transparent_0%,rgba(218,231,255,0.1)_38%,transparent_52%,rgba(200,219,255,0.08)_72%,transparent_100%)]" />
-        <div className="absolute inset-0 opacity-[0.2] [background:linear-gradient(180deg,transparent_0%,rgba(176,201,255,0.06)_48%,transparent_100%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,5,11,0.98)_0%,rgba(2,5,11,0.72)_36%,rgba(2,5,11,0.24)_58%,rgba(2,5,11,0.14)_100%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_52%_44%,transparent_0%,rgba(2,5,11,0.36)_62%,rgba(2,5,11,0.88)_100%)]" />
+        <div className="absolute inset-0 opacity-70 [background:linear-gradient(180deg,transparent_0%,rgba(17,28,47,0.3)_48%,transparent_100%)]" />
+        <div className="absolute inset-0 opacity-40 [background:linear-gradient(90deg,rgba(2,5,11,0.97)_0%,rgba(2,5,11,0.58)_42%,rgba(2,5,11,0.14)_60%,rgba(2,5,11,0.7)_100%)]" />
+        <div className="absolute inset-0 opacity-[0.08] [background:linear-gradient(90deg,transparent_0%,rgba(200,221,255,0.16)_40%,transparent_52%,rgba(200,221,255,0.1)_76%,transparent_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,transparent_0%,rgba(2,5,11,0.5)_64%,rgba(2,5,11,0.9)_100%)]" />
       </div>
 
       <div className="relative z-[4] mx-auto min-h-[100dvh] w-full max-w-[1600px] px-6 pb-[max(3.5rem,calc(env(safe-area-inset-bottom)+1.75rem))] pt-[calc(3.3rem+env(safe-area-inset-top))] sm:px-8 lg:px-12 xl:px-16">
-        <div className="relative min-h-[calc(100dvh-5rem)]">
-          <div
-            ref={contentRef}
-            className="relative z-[8] max-w-[760px] pb-16 pt-12 lg:pb-0 lg:pt-16"
-          >
+        <div className="relative min-h-[calc(100dvh-5rem)] lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(520px,1.08fr)] lg:items-center lg:gap-10">
+          <div ref={contentRef} className="relative z-[8] max-w-[700px] pb-14 pt-10 lg:pb-0 lg:pt-0">
             <p
               ref={eyebrowRef}
               className={`font-body text-[11px] font-medium uppercase tracking-[0.34em] text-[rgba(171,184,205,0.72)] ${HERO_ANIM_INIT}`}
@@ -293,31 +244,26 @@ export default function HeroSection({ ready }: Props) {
 
             <h1
               ref={headlineRef}
-              className={`mt-6 max-w-[9.2ch] font-display text-[rgba(252,254,255,0.995)] ${HERO_ANIM_INIT}`}
+              className={`mt-6 max-w-[11ch] font-display text-[rgba(250,252,255,0.99)] ${HERO_ANIM_INIT}`}
               style={{
-                fontSize: "clamp(3.1rem,6.2vw,6.2rem)",
-                lineHeight: 0.84,
-                letterSpacing: "-0.058em",
+                fontSize: "clamp(3rem,5.9vw,6.3rem)",
+                lineHeight: 0.86,
+                letterSpacing: "-0.056em",
               }}
             >
-              That{" "}
-              <span className="font-serif italic text-[0.94em] text-white/96">first</span>
-              <br />
-              <span className="inline-block text-[1.07em] leading-[0.8] text-[rgba(231,240,255,0.96)] motion-safe:animate-[heroImpressionPulse_8.8s_ease-in-out_infinite]">
-                impression.
-              </span>
+              The first impression that wins the premium bid.
             </h1>
 
             <p
               ref={copyRef}
-              className={`mt-11 max-w-[42ch] font-body text-[rgba(170,186,212,0.74)] ${HERO_ANIM_INIT}`}
+              className={`mt-9 max-w-[43ch] font-body text-[rgba(172,188,212,0.76)] ${HERO_ANIM_INIT}`}
               style={{
-                fontSize: "clamp(0.98rem,1.1vw,1.1rem)",
-                lineHeight: 1.74,
-                letterSpacing: "-0.012em",
+                fontSize: "clamp(0.98rem,1.08vw,1.08rem)",
+                lineHeight: 1.72,
+                letterSpacing: "-0.01em",
               }}
             >
-              UpLevel designs premium websites, AI voice intake, and automation systems for luxury builders, designers, and specialty contractors. The result: a brand that looks more expensive, responds faster, and converts more of the right inquiries.
+              UpLevel designs authority-driven websites and automation systems for builders, designers, and specialty contractors that need to command trust before the first call.
             </p>
 
             <div
@@ -347,110 +293,54 @@ export default function HeroSection({ ready }: Props) {
                 </svg>
               </TransitionLink>
             </div>
-
-            <div ref={microProofRef} className={`mt-10 h-[1px] w-0 ${HERO_ANIM_INIT}`} aria-hidden="true" />
           </div>
 
-          <div
-            className="pointer-events-none absolute inset-0 z-[6] hidden lg:block"
-            aria-hidden="true"
-          >
+          <div ref={portalWrapRef} className={`pointer-events-none relative hidden h-[74vh] min-h-[560px] lg:block ${HERO_ANIM_INIT}`} aria-hidden="true">
             <div
-              ref={stageRef}
-              className={`absolute bottom-[10%] right-[2%] top-[10%] w-[56%] ${HERO_ANIM_INIT}`}
-              style={{
-                transform: "translate3d(var(--hero-stage-x,0px),var(--hero-stage-y,0px),0)",
-              }}
+              className="absolute inset-[4%_3%_6%_6%]"
+              style={{ transform: "translate3d(var(--hero-portal-x,0px),var(--hero-portal-y,0px),0)" }}
             >
-              <div className="absolute inset-[10%_10%_14%_16%] bg-[radial-gradient(circle_at_66%_24%,rgba(150,198,255,0.2),transparent_68%)]" />
-              <div className="absolute inset-[18%_14%_18%_20%] rounded-[34px] border border-white/10 bg-[linear-gradient(155deg,rgba(8,14,24,0.22),rgba(8,12,22,0.06))]" />
-              <div className="absolute inset-[24%_20%_24%_24%] rounded-[28px] border border-white/8" />
+              <div className="absolute inset-0 rounded-[46px] border border-white/16 bg-[linear-gradient(150deg,rgba(8,14,24,0.56),rgba(7,11,20,0.12))] shadow-[0_50px_120px_rgba(0,0,0,0.5)]" />
+              <div className="absolute inset-[9%_8%_10%_9%] rounded-[34px] border border-white/14 bg-[linear-gradient(160deg,rgba(9,16,29,0.72),rgba(8,13,23,0.28))]" />
+              <div className="absolute inset-[15%_13%_16%_14%] rounded-[28px] border border-white/12 bg-[radial-gradient(100%_85%_at_70%_25%,rgba(135,178,244,0.2),transparent_62%)] motion-safe:animate-[heroThresholdBreathe_8s_ease-in-out_infinite]" />
+              <div className="absolute inset-[18%_16%_19%_17%] rounded-[24px] bg-[linear-gradient(100deg,transparent_0%,rgba(176,206,255,0.17)_48%,transparent_100%)] motion-safe:animate-[heroThresholdSweep_7.2s_linear_infinite]" />
 
-              <svg
-                className="absolute inset-[32%_22%_34%_31%] h-auto w-auto opacity-[0.22]"
-                viewBox="0 0 820 520"
-                fill="none"
+              <div
+                ref={artifactRef}
+                className="absolute inset-x-[22%] bottom-[24%] top-[37%] rounded-[18px] border border-white/14 bg-[linear-gradient(162deg,rgba(10,17,30,0.95),rgba(8,13,23,0.88))] px-6 py-5"
+                style={{ transform: "translate3d(var(--hero-artifact-x,0px),var(--hero-artifact-y,0px),0)" }}
               >
-                <path
-                  d="M64 424C190 360 250 296 352 232C472 158 560 126 780 88"
-                  stroke="rgba(199,225,255,0.12)"
-                  strokeWidth="1.2"
-                  strokeLinecap="round"
-                />
-                <path
-                  d="M64 424C190 360 250 296 352 232C472 158 560 126 780 88"
-                  stroke="rgba(122,198,255,0.3)"
-                  strokeWidth="1.6"
-                  strokeLinecap="round"
-                  strokeDasharray="5 18"
-                  className="motion-safe:animate-[heroSignalSweep_6.6s_linear_infinite]"
-                />
-                <circle cx="352" cy="232" r="4.8" fill="rgba(255,255,255,0.2)" />
-                <circle cx="520" cy="150" r="4.8" fill="rgba(255,255,255,0.2)" />
-                <circle cx="680" cy="110" r="4.8" fill="rgba(255,255,255,0.24)" />
-              </svg>
-            </div>
-
-            <div
-              ref={dossierRef}
-              className={`absolute bottom-[14%] right-[5%] w-[clamp(420px,28vw,480px)] border border-white/14 bg-[linear-gradient(165deg,rgba(8,14,26,0.98),rgba(7,12,23,0.95))] p-9 shadow-[0_58px_100px_rgba(0,0,0,0.42)] ${HERO_ANIM_INIT}`}
-              style={{
-                transform: "translate3d(var(--hero-dossier-x,0px),var(--hero-dossier-y,0px),0)",
-              }}
-            >
-              <div className="absolute inset-0 bg-[radial-gradient(120%_120%_at_90%_8%,rgba(82,122,194,0.14),transparent_42%)]" />
-              <div className="relative">
-                <p className="font-body text-[10px] uppercase tracking-[0.22em] text-white/58">
-                  Lead captured → {STATUS_STEPS[statusIndex]}
-                </p>
-                <p className="mt-3 font-body text-[10px] uppercase tracking-[0.3em] text-white/48">
-                  Owner dossier
-                </p>
-
-                <p className="mt-4 max-w-[34ch] font-body text-[0.98rem] leading-relaxed text-white/86">
-                  {typedLine}
+                <p className="font-body text-[10px] uppercase tracking-[0.22em] text-white/52">Premium lead brief</p>
+                <p className="mt-3 font-body text-[1rem] leading-relaxed text-white/86">
+                  Westlake Hills residence
                   <br />
-                  Budget confirmed
+                  Full interior renovation
                   <br />
-                  Architectural drawings attached
-                  <br />
-                  Decision-maker engaged
+                  Estimated project value: $420K
                 </p>
-
-                <div className="mt-7 border-t border-white/10 pt-4 font-body text-[0.88rem] text-white/72">
-                  <p>Status: Routing to estimator</p>
-                  <p className="mt-1">Next: Owner review at 9:00 AM</p>
-                </div>
-
-                <div className="mt-4 border-t border-white/10 pt-4">
-                  <p className="font-body text-[0.9rem] text-white/72">
-                    Market: Austin + Westlake Hills  ·  Status: Owner review
-                  </p>
-                </div>
-                <span className="absolute right-2 top-2 h-2.5 w-2.5 rounded-full bg-[rgba(166,210,255,0.85)] shadow-[0_0_16px_rgba(154,203,255,0.52)] motion-safe:animate-[heroSignalPulse_2.5s_ease-in-out_infinite]" />
+                <p className="mt-4 border-t border-white/10 pt-3 font-body text-[0.88rem] text-white/72">
+                  Outcome: Strategy call booked in 14 minutes.
+                </p>
               </div>
             </div>
           </div>
 
-          <div className="relative z-[7] mt-14 lg:hidden">
-            <div className="overflow-hidden rounded-[1.75rem] border border-white/12 bg-[linear-gradient(165deg,rgba(10,16,30,0.96),rgba(8,13,24,0.92))] shadow-[0_24px_70px_rgba(0,0,0,0.45)]">
+          <div className="relative z-[7] mt-12 lg:hidden">
+            <div className="overflow-hidden rounded-[1.8rem] border border-white/14 bg-[linear-gradient(165deg,rgba(10,16,30,0.96),rgba(8,13,24,0.9))] shadow-[0_24px_70px_rgba(0,0,0,0.45)]">
               <div className="relative px-5 pb-5 pt-6">
-                <div className="absolute inset-0 bg-[radial-gradient(90%_70%_at_82%_14%,rgba(87,126,200,0.16),transparent_46%)]" />
+                <div className="absolute inset-0 bg-[radial-gradient(90%_70%_at_78%_16%,rgba(95,141,214,0.2),transparent_48%)]" />
                 <div className="relative">
-                  <p className="font-body text-[10px] uppercase tracking-[0.26em] text-white/46">
-                    Lead captured • Processing
-                  </p>
-                  <p className="mt-3 text-sm leading-relaxed text-white/80">
-                    {TYPE_LINE_FULL}
+                  <p className="font-body text-[10px] uppercase tracking-[0.26em] text-white/48">Premium lead brief</p>
+                  <p className="mt-3 text-sm leading-relaxed text-white/82">
+                    Westlake Hills residence.
                     <br />
-                    Budget confirmed. Architectural drawings attached.
+                    Full interior renovation.
                     <br />
-                    Decision-maker engaged. Consultation: tomorrow 9 AM.
+                    Estimated project value: $420K.
                   </p>
-
-                  <div className="mt-5 border-t border-white/10 pt-4">
-                    <p className="text-sm text-white/70">Market: Austin + Westlake Hills  ·  Status: Owner review</p>
-                  </div>
+                  <p className="mt-4 border-t border-white/10 pt-3 text-sm text-white/72">
+                    Outcome: Strategy call booked in 14 minutes.
+                  </p>
                 </div>
               </div>
             </div>
