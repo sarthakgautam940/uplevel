@@ -299,9 +299,7 @@ export default function HeroSection({ ready }: Props) {
               }}
             >
               <span className="block">The first</span>
-              <span className="block">impression</span>
-              <span className="block">that wins the</span>
-              <span className="block">premium bid.</span>
+              <span className="block">impression.</span>
             </h1>
 
             <p
