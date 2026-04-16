@@ -300,13 +300,12 @@ export default function HeroSection({ ready }: Props) {
                 letterSpacing: "-0.065em",
               }}
             >
-              The first impression
+              That{" "}
+              <span className="font-serif italic text-[0.94em] text-white/96">first</span>
               <br />
-              that wins the
-              <br />
-              higher-value
-              <br />
-              client.
+              <span className="inline-block text-[1.08em] leading-[0.78] text-transparent [background:linear-gradient(118deg,rgba(252,254,255,0.92)_0%,rgba(223,233,255,0.96)_46%,rgba(160,192,245,0.9)_100%)] bg-clip-text motion-safe:animate-[heroSilverBreathe_9s_ease-in-out_infinite]">
+                impression.
+              </span>
             </h1>
 
             <p
