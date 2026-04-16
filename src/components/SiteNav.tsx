@@ -185,8 +185,8 @@ export default function SiteNav() {
               </TransitionLink>
             );
           })}
-          <MagneticButton href={bookUrl} variant="primary" aria-label="Book a strategy call">
-            Book a call
+          <MagneticButton href={bookUrl} variant="primary" aria-label="Book a call →">
+            Book a call →
           </MagneticButton>
         </nav>
 
@@ -241,7 +241,7 @@ export default function SiteNav() {
           ))}
           <div className="mt-6">
             <MagneticButton href={bookUrl} variant="primary">
-              Book a call
+              Book a call →
             </MagneticButton>
           </div>
         </nav>

@@ -255,7 +255,7 @@ export default function SiteFooter({ variant = "default" }: { variant?: FooterVa
               {brand.shortTagline}
             </p>
             <p className="mt-5 max-w-[38ch] font-body text-[13px] leading-[1.65] text-[var(--text-dim)]">
-              Premium digital experiences and applied AI intelligence for luxury service businesses.
+              Premium websites, AI voice intake, and automation systems for luxury builders, designers, and specialty contractors.
             </p>
           </div>
 
@@ -279,6 +279,12 @@ export default function SiteFooter({ variant = "default" }: { variant?: FooterVa
                 className="font-body text-[13px] text-[var(--text-dim)] opacity-40 transition-colors duration-250 hover:opacity-70"
               >
                 Privacy Policy
+              </TransitionLink>
+              <TransitionLink
+                href="/terms"
+                className="font-body text-[13px] text-[var(--text-dim)] opacity-40 transition-colors duration-250 hover:opacity-70"
+              >
+                Terms
               </TransitionLink>
             </nav>
           </div>
@@ -350,7 +356,7 @@ export default function SiteFooter({ variant = "default" }: { variant?: FooterVa
             © {year} {brand.legalName}. All rights reserved.
           </span>
           <span className="font-body text-[11px] opacity-50">
-            Virginia LLC
+            Lead routing automation
           </span>
           <a
             href={siteUrl}

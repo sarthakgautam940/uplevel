@@ -11,9 +11,9 @@ const SITUATIONS = [
 ];
 
 const BUDGET_OPTIONS = [
-  { value: "exploring", label: "Exploring / not sure yet" },
-  { value: "defined", label: "Defined project — ready when the fit is right" },
-  { value: "urgent", label: "Urgent — this needs to move quickly" },
+  { value: "exploring", label: "Exploring — not sure yet" },
+  { value: "defined", label: "Defined project — ready when the fit is confirmed" },
+  { value: "urgent", label: "Urgent — this needs to move in the next 30 days" },
 ];
 
 interface FormState {
@@ -190,11 +190,11 @@ export default function ContactForm({ tone = "site" }: { tone?: FormTone }) {
           </select>
         </Field>
 
-        <Field label="What's breaking right now" required tone={tone}>
+        <Field label="What's costing you right now?" required tone={tone}>
           <textarea
             value={form.details}
             onChange={(e) => setField("details", e.target.value)}
-            placeholder="What feels like it's costing you? What would 'fixed' actually look like for your business?"
+            placeholder="What feels like it's losing you money or clients right now? What would 'fixed' actually look like?"
             rows={4}
           />
         </Field>
@@ -203,7 +203,7 @@ export default function ContactForm({ tone = "site" }: { tone?: FormTone }) {
           <p
             className={`mb-3 font-body text-[10px] uppercase tracking-[0.18em] ${glass ? "text-[var(--glass-ink)]" : light ? "text-neutral-500" : "text-[var(--text-dim)]"}`}
           >
-            Investment comfort
+            Investment range
             <span
               className={`ml-1.5 ${glass ? "text-[var(--glass-ink-muted)]" : "opacity-40"}`}
             >
@@ -282,12 +282,12 @@ export default function ContactForm({ tone = "site" }: { tone?: FormTone }) {
                 }
           }
         >
-          {submitting ? "Sending…" : "Send the brief"}
+          {submitting ? "Sending…" : "Send the brief →"}
         </button>
         <p
           className={`mt-3 font-body text-[11px] ${glass ? "text-[var(--glass-ink-muted)]" : light ? "text-neutral-400" : "text-[var(--text-dim)] opacity-40"}`}
         >
-          No spam. No sales sequence. Just a direct response.
+          No spam. No follow-up sequence. One direct reply.
         </p>
       </div>
     </form>

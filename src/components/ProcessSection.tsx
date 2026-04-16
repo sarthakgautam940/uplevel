@@ -153,8 +153,8 @@ export default function ProcessSection() {
                 Not fourteen weeks.
               </h2>
               <p className="proc-sub mt-6 max-w-[34ch] font-body text-[15px] leading-[1.65] text-[var(--void)]/65">
-                Four steps, each one earns the next. The industry average for custom sites is 8–16 weeks. This is 14
-                days.
+                Four steps, each one earns the next. The industry standard for custom builds is 8–16 weeks. We move
+                in 14 days because the system is built for it.
               </p>
 
               <div className="mt-10 flex items-center gap-2" aria-hidden="true">

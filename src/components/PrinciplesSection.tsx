@@ -10,22 +10,22 @@ const principles = [
   {
     n: "01",
     title: "Conversion over decoration.",
-    body: "If it doesn't sharpen trust or move the right visitor forward — it doesn't stay. Beautiful is a byproduct of clear.",
+    body: "If it doesn't sharpen trust or move the right visitor toward a call — it doesn't stay. Beautiful is a byproduct of clear.",
   },
   {
     n: "02",
     title: "Clarity as a premium signal.",
-    body: "Confusion reads cheap faster than bad taste does. Every element on every page has a reason to be there. AI is not the product—the buyer's experience is. The best integration is the one they never notice.",
+    body: "Confusion reads cheap faster than bad taste. Every element has a reason to be there. The best AI integration is the one clients never notice — it just means they got an answer at 11pm and called you in the morning.",
   },
   {
     n: "03",
     title: "One operator. Zero dilution.",
-    body: "No account managers between strategy and execution. Every decision made by the person building it.",
+    body: "No account managers between strategy and execution. The person on the first call builds the work, answers when something needs attention, and stays accountable after launch.",
   },
   {
     n: "04",
     title: "Proof before promise.",
-    body: "Standards are shown through the work, the response time, and the decisions — not through what we claim to be.",
+    body: "Standards are demonstrated through the work, the response time, and every decision — not through what we claim.",
   },
 ];
 
@@ -101,7 +101,7 @@ export default function PrinciplesSection() {
           >
             Not a values slide.
             <br />
-            <span className="text-[var(--text-dim)]">Operational standards.</span>
+            <span className="text-[var(--text-dim)]">Operating standards.</span>
           </h2>
         </div>
 

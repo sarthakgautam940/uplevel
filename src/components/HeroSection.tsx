@@ -264,7 +264,7 @@ export default function HeroSection({ ready }: Props) {
               ref={eyebrowRef}
               className={`font-body text-[11px] font-medium uppercase tracking-[0.34em] text-[rgba(171,184,205,0.72)] ${HERO_ANIM_INIT}`}
             >
-              UpLevel Services / Signature positioning / Applied AI intake
+              Precision-built for luxury service businesses.
             </p>
 
             <h1
@@ -276,10 +276,7 @@ export default function HeroSection({ ready }: Props) {
                 letterSpacing: "-0.076em",
               }}
             >
-              <span className="block">The first</span>
-              <span className="block">impression</span>
-              <span className="block">that wins the</span>
-              <span className="block">premium bid.</span>
+              That first impression.
             </h1>
 
             <p
@@ -291,9 +288,7 @@ export default function HeroSection({ ready }: Props) {
                 letterSpacing: "-0.012em",
               }}
             >
-              We design high-end websites, conversion architecture, and AI-powered intake
-              systems for luxury contractors that need trust, clarity, and perceived value
-              before the first call ever happens.
+              UpLevel designs premium websites, AI voice intake, and automation systems for luxury builders, designers, and specialty contractors. The result: a brand that looks more expensive, responds faster, and converts more of the right inquiries.
             </p>
 
             <div
@@ -326,10 +321,10 @@ export default function HeroSection({ ready }: Props) {
 
             <div ref={microProofRef} className={`mt-14 flex flex-wrap items-center gap-2 ${HERO_ANIM_INIT}`}>
               {[
-                "Luxury pools",
-                "Custom builders",
-                "Wine cellars",
-                "Premium outdoor living",
+                "Custom pool builders",
+                "Custom home builders",
+                "Wine cellar designers",
+                "Luxury outdoor living",
               ].map((item) => (
                 <span
                   key={item}
@@ -395,32 +390,21 @@ export default function HeroSection({ ready }: Props) {
               <div className="absolute inset-0 bg-[radial-gradient(120%_120%_at_90%_8%,rgba(82,122,194,0.14),transparent_42%)]" />
               <div className="relative">
                 <p className="font-body text-[10px] uppercase tracking-[0.3em] text-white/48">
-                  Owner dossier
+                  Owner Dossier  ·  Lead Qualified  ·  11:47 PM
                 </p>
 
-                <h2 className="mt-4 max-w-[11ch] font-display text-[3rem] leading-[0.9] tracking-[-0.055em] text-white/95">
-                  Premium lead secured.
-                </h2>
-
-                <p className="mt-5 max-w-[34ch] font-body text-[0.98rem] leading-relaxed text-white/74">
-                  Custom wine cellar and climate system for a $350k scope. Budget verified,
-                  architectural drawings attached, decision-maker engaged, consultation
-                  confirmed.
+                <p className="mt-4 max-w-[34ch] font-body text-[1.02rem] leading-relaxed text-white/88">
+                  Custom wine cellar and climate system — $350K scope.
+                  <br />
+                  Budget confirmed. Architectural drawings attached.
+                  <br />
+                  Decision-maker engaged. Consultation: tomorrow 9 AM.
                 </p>
 
-                <div className="mt-8 grid grid-cols-2 gap-8 border-t border-white/10 pt-5">
-                  <div>
-                    <p className="font-body text-[10px] uppercase tracking-[0.22em] text-white/42">
-                      Market
-                    </p>
-                    <p className="mt-1 text-[0.95rem] text-white/84">Austin + West Lake Hills</p>
-                  </div>
-                  <div>
-                    <p className="font-body text-[10px] uppercase tracking-[0.22em] text-white/42">
-                      Status
-                    </p>
-                    <p className="mt-1 text-[0.95rem] text-white/84">Owner review at 10:00 AM</p>
-                  </div>
+                <div className="mt-8 border-t border-white/10 pt-5">
+                  <p className="font-body text-[0.9rem] text-white/72">
+                    Market: Austin + Westlake Hills  ·  Status: Owner review
+                  </p>
                 </div>
               </div>
             </div>
@@ -432,28 +416,18 @@ export default function HeroSection({ ready }: Props) {
                 <div className="absolute inset-0 bg-[radial-gradient(90%_70%_at_82%_14%,rgba(87,126,200,0.16),transparent_46%)]" />
                 <div className="relative">
                   <p className="font-body text-[10px] uppercase tracking-[0.26em] text-white/46">
-                    Owner dossier
+                    Owner Dossier  ·  Lead Qualified  ·  11:47 PM
                   </p>
-                  <p className="mt-3 max-w-[12ch] font-display text-[2rem] leading-[0.92] tracking-[-0.055em] text-white">
-                    Premium lead secured.
-                  </p>
-                  <p className="mt-3 text-sm leading-relaxed text-white/74">
-                    $350k scope, budget verified, drawings attached, consultation confirmed.
+                  <p className="mt-3 text-sm leading-relaxed text-white/80">
+                    Custom wine cellar and climate system — $350K scope.
+                    <br />
+                    Budget confirmed. Architectural drawings attached.
+                    <br />
+                    Decision-maker engaged. Consultation: tomorrow 9 AM.
                   </p>
 
-                  <div className="mt-5 grid grid-cols-2 gap-4 border-t border-white/10 pt-4">
-                    <div>
-                      <p className="font-body text-[10px] uppercase tracking-[0.18em] text-white/42">
-                        Market
-                      </p>
-                      <p className="mt-1 text-sm text-white/82">Austin</p>
-                    </div>
-                    <div>
-                      <p className="font-body text-[10px] uppercase tracking-[0.18em] text-white/42">
-                        Status
-                      </p>
-                      <p className="mt-1 text-sm text-white/82">Owner review</p>
-                    </div>
+                  <div className="mt-5 border-t border-white/10 pt-4">
+                    <p className="text-sm text-white/70">Market: Austin + Westlake Hills  ·  Status: Owner review</p>
                   </div>
                 </div>
               </div>

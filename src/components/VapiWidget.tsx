@@ -58,7 +58,11 @@ function computeWaveHeights(
 }
 
 const DEMO_SCRIPT: { delay: number; state: WidgetState; line: string }[] = [
-  { delay: 900, state: "speaking", line: "AI: You’ve reached UpLevel. In one sentence, what are you trying to fix on your site?" },
+  {
+    delay: 900,
+    state: "speaking",
+    line: "AI: Thanks for calling [Business Name]. I'm the 24/7 AI assistant helping the team with new inquiries. This call may be recorded and shared with the team so we can help you faster. If you'd prefer a human or don't want the call recorded, just say 'human' and I'll route you. How can I help you today?",
+  },
   { delay: 3200, state: "listening", line: "You: We need a sharper first impression and a way to capture leads after hours." },
   { delay: 2800, state: "speaking", line: "AI: Got it — premium positioning plus 24/7 intake. I can route you to a strategy call when you’re ready." },
   { delay: 3400, state: "listening", line: "You: Yes — book something this week if you have capacity." },
@@ -387,7 +391,7 @@ export default function VapiWidget() {
               target="_blank"
               rel="noreferrer"
             >
-              Book a call
+              Book a call →
             </Link>
           </div>
         </div>

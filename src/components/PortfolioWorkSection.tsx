@@ -154,7 +154,7 @@ export default function PortfolioWorkSection() {
 
       <div className="relative mx-auto w-full max-w-[1320px] px-4 md:px-8">
         <p className="sr-only">
-          Portfolio gallery coming soon. Three glass panels in a row: method, main message, outcomes.
+          Portfolio gallery releasing with first client launches. Every entry is a real engagement — real site, real results, real business impact.
         </p>
 
         {/* Desktop: three distinct columns — gap prevents “wings” peeking from behind */}
@@ -170,11 +170,11 @@ export default function PortfolioWorkSection() {
               Curation
             </p>
             <p className="mt-4 font-display text-[18px] font-medium leading-snug tracking-[-0.02em] text-[var(--void)]/85 md:text-[19px]">
-              Hand-picked releases
+              Curated releases
             </p>
             <p className="mt-3 font-body text-[12px] leading-relaxed text-[var(--void)]/50 md:text-[13px]">
-              Nothing lands in the gallery until it earns the room—no filler drops,
-              no volume for its own sake.
+              Nothing lands in the gallery until it earns its place. No filler.
+              No padding. Work that holds up.
             </p>
           </div>
 
@@ -200,7 +200,9 @@ export default function PortfolioWorkSection() {
                 className="text-center font-display font-medium leading-[1.05] tracking-[-0.04em] text-[var(--void)]"
                 style={{ fontSize: "clamp(2.5rem, 8vw, 3.75rem)" }}
               >
-                Coming Soon
+                Releasing
+                <br />
+                soon
               </h2>
             </div>
             <p className="font-body text-[12px] tracking-[0.02em] text-[var(--void)]/45 md:text-[13px]">
@@ -225,8 +227,8 @@ export default function PortfolioWorkSection() {
               Proof, not pitch
             </p>
             <p className="mt-3 font-body text-[12px] leading-relaxed text-[var(--void)]/50 md:text-[13px]">
-              When projects ship, the story and the metrics live here—authored by
-              real work, not a stock library.
+              When projects ship, the story and the results live here — authored by
+              real work, not templated case studies.
             </p>
           </div>
         </div>
@@ -247,7 +249,9 @@ export default function PortfolioWorkSection() {
               className="text-center font-display font-medium leading-[1.05] tracking-[-0.04em] text-[var(--void)]"
               style={{ fontSize: "clamp(2.5rem, 9vw, 3.75rem)" }}
             >
-              Coming Soon
+              Releasing
+              <br />
+              soon
             </h2>
           </div>
           <p className="font-body text-[12px] tracking-[0.02em] text-[var(--void)]/45">

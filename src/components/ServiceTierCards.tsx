@@ -204,7 +204,7 @@ export default function ServiceTierCards({ variant = "void" }: { variant?: Varia
                             : "border-b border-[color-mix(in_srgb,var(--warm)_45%,transparent)] pb-px"
                         }
                       >
-                        Recommended
+                        Most Selected
                       </span>
                     </p>
                   )}
@@ -226,7 +226,7 @@ export default function ServiceTierCards({ variant = "void" }: { variant?: Varia
                       : "mt-1.5 font-body text-[11px] tracking-[0.08em] text-[var(--text-dim)]/60"
                   }
                 >
-                  Tier {svc.tier}
+                  {svc.tier}
                 </p>
               </header>
 
@@ -243,11 +243,7 @@ export default function ServiceTierCards({ variant = "void" }: { variant?: Varia
                       : "mt-2 font-body text-[13px] leading-snug text-[var(--text-dim)]"
                   }
                 >
-                  then{" "}
-                  <span className={paper ? "text-neutral-700" : "text-[var(--text-dim)]"}>
-                    {svc.monthly}
-                  </span>{" "}
-                  retainer
+                  then <span className={paper ? "text-neutral-700" : "text-[var(--text-dim)]"}>{svc.monthly}</span>
                 </p>
               </div>
 
