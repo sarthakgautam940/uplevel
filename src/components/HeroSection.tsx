@@ -75,22 +75,22 @@ export default function HeroSection({ ready }: Props) {
         0,
       )
         .fromTo(
-          eyebrowRef.current,
-          { opacity: 0, y: 12 },
-          { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" },
-          0.1,
-        )
-        .fromTo(
           headlineRef.current,
           { opacity: 0, y: 32 },
           { opacity: 1, y: 0, duration: 0.95, ease: "power3.out" },
-          0.14,
+          0.12,
+        )
+        .fromTo(
+          eyebrowRef.current,
+          { opacity: 0, y: 12 },
+          { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" },
+          0.3,
         )
         .fromTo(
           copyRef.current,
           { opacity: 0, y: 18 },
           { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" },
-          0.3,
+          0.34,
         )
         .fromTo(
           ctaRef.current,
@@ -256,8 +256,8 @@ export default function HeroSection({ ready }: Props) {
         <div className="absolute inset-0 opacity-[0.055] [background-image:linear-gradient(rgba(255,255,255,0.9)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.9)_1px,transparent_1px)] [background-size:160px_160px]" />
       </div>
 
-      <div className="relative z-[4] mx-auto flex min-h-[100dvh] w-full max-w-[1580px] items-center px-6 pb-[max(2.2rem,env(safe-area-inset-bottom))] pt-[calc(2.8rem+env(safe-area-inset-top))] sm:px-8 lg:px-12 xl:px-16">
-        <div className="relative grid w-full items-center gap-8 lg:grid-cols-[minmax(540px,0.96fr)_minmax(420px,0.86fr)] xl:gap-12">
+      <div className="relative z-[4] mx-auto flex min-h-[100svh] w-full max-w-[1580px] items-center px-6 pb-[max(2.25rem,env(safe-area-inset-bottom))] pt-[calc(7.75rem+env(safe-area-inset-top))] sm:px-8 lg:px-12 xl:px-16">
+        <div className="relative grid w-full items-center gap-7 lg:grid-cols-[minmax(580px,1.02fr)_minmax(390px,0.78fr)] xl:gap-10">
           <div
             ref={contentRef}
             className="relative z-[8] max-w-[760px]"
@@ -265,20 +265,13 @@ export default function HeroSection({ ready }: Props) {
               transform: "translate3d(var(--hero-content-x,0px),var(--hero-content-y,0px),0)",
             }}
           >
-            <p
-              ref={eyebrowRef}
-              className={`font-body text-[11px] font-medium uppercase tracking-[0.32em] text-[rgba(178,194,219,0.7)] ${HERO_ANIM_INIT}`}
-            >
-              UpLevel Services • Brand positioning for premium contractors
-            </p>
-
             <h1
               ref={headlineRef}
-              className={`mt-7 max-w-[11ch] font-display text-[rgba(250,252,255,0.99)] ${HERO_ANIM_INIT}`}
+              className={`max-w-[10.8ch] font-display text-[rgba(250,252,255,0.99)] ${HERO_ANIM_INIT}`}
               style={{
-                fontSize: "clamp(2.85rem,6.5vw,6.85rem)",
-                lineHeight: 0.86,
-                letterSpacing: "-0.068em",
+                fontSize: "clamp(2.65rem,5.85vw,6.05rem)",
+                lineHeight: 0.87,
+                letterSpacing: "-0.062em",
               }}
             >
               <span className="block">The first impression</span>
@@ -287,8 +280,15 @@ export default function HeroSection({ ready }: Props) {
             </h1>
 
             <p
+              ref={eyebrowRef}
+              className={`mt-6 font-body text-[11px] font-medium uppercase tracking-[0.32em] text-[rgba(178,194,219,0.66)] ${HERO_ANIM_INIT}`}
+            >
+              UpLevel Services • Positioning systems for premium contractors
+            </p>
+
+            <p
               ref={copyRef}
-              className={`mt-8 max-w-[39ch] font-body text-[rgba(188,203,224,0.86)] ${HERO_ANIM_INIT}`}
+              className={`mt-6 max-w-[41ch] font-body text-[rgba(188,203,224,0.86)] ${HERO_ANIM_INIT}`}
               style={{
                 fontSize: "clamp(1rem,1.12vw,1.13rem)",
                 lineHeight: 1.7,
@@ -303,7 +303,7 @@ export default function HeroSection({ ready }: Props) {
 
             <div
               ref={ctaRef}
-              className={`mt-10 flex flex-wrap items-center gap-x-7 gap-y-4 ${HERO_ANIM_INIT}`}
+              className={`mt-8 flex flex-wrap items-center gap-x-7 gap-y-4 ${HERO_ANIM_INIT}`}
             >
               <MagneticButton
                 href={bookUrl}
@@ -337,15 +337,15 @@ export default function HeroSection({ ready }: Props) {
 
           <div
             ref={artifactShellRef}
-            className={`relative z-[7] mx-auto mt-5 hidden w-full max-w-[620px] lg:block ${HERO_ANIM_INIT}`}
+            className={`relative z-[7] mx-auto mt-3 hidden w-full max-w-[560px] lg:block ${HERO_ANIM_INIT}`}
             aria-hidden="true"
           >
-            <div className="absolute -left-[24%] top-[54%] h-px w-[45%] -translate-y-1/2 bg-gradient-to-r from-transparent via-[rgba(198,213,238,0.38)] to-[rgba(198,213,238,0.06)]" />
+            <div className="absolute -left-[20%] top-[57%] h-px w-[36%] -translate-y-1/2 bg-gradient-to-r from-transparent via-[rgba(198,213,238,0.34)] to-[rgba(198,213,238,0.05)]" />
             <div className="absolute right-[8%] top-[9%] h-[72%] w-px bg-gradient-to-b from-[rgba(190,207,232,0.03)] via-[rgba(190,207,232,0.22)] to-transparent" />
 
             <div
               ref={artifactRef}
-              className={`relative ml-auto w-[92%] rounded-[1.9rem] border border-[rgba(207,220,245,0.2)] bg-[linear-gradient(160deg,rgba(11,17,29,0.98),rgba(9,14,24,0.96))] p-8 shadow-[0_46px_120px_rgba(0,0,0,0.58)] ${HERO_ANIM_INIT}`}
+              className={`relative ml-auto w-[84%] rounded-[1.9rem] border border-[rgba(207,220,245,0.18)] bg-[linear-gradient(160deg,rgba(11,17,29,0.97),rgba(9,14,24,0.95))] p-7 shadow-[0_42px_108px_rgba(0,0,0,0.56)] ${HERO_ANIM_INIT}`}
               style={{
                 transform:
                   "translate3d(var(--hero-artifact-x,0px),var(--hero-artifact-y,0px),0) rotate(-3.75deg)",
@@ -364,7 +364,7 @@ export default function HeroSection({ ready }: Props) {
                   Positioning dossier • Signature outcome
                 </p>
 
-                <h2 className="mt-4 max-w-[16ch] font-display text-[2.22rem] leading-[0.92] tracking-[-0.055em] text-white">
+                <h2 className="mt-4 max-w-[16ch] font-display text-[2.02rem] leading-[0.92] tracking-[-0.05em] text-white">
                   Premium buyer trusted your brand before the first call.
                 </h2>
 
